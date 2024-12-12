@@ -55,6 +55,21 @@ PlayScreen::PlayScreen() {
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.52f);
 	mTextLine11 = new Texture("a specter known as the Wraith of the Waves,", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
+	mTextLine12 = new Texture("", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine12->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.52f);
+	mTextLine13 = new Texture("", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine13->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
+	mTextLine14 = new Texture("", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine14->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.52f);
+	mTextLine15 = new Texture("", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine15->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
+	mTextLine16 = new Texture("", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine16->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.52f);
+	mTextLine17 = new Texture("", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine17->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
+	mTextLine18 = new Texture("", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine18->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
+
 	
 	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
