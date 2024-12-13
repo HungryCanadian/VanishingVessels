@@ -156,6 +156,8 @@ void Player::calculateHealth() {
 
 void Player::FullHeal() {
     mHealth = mMaxHealth;
+    mSpecialAttackTotal = 3;
+    mUltimateAttackTotal = 3;
 }
 void Player::SetHitDice(int health) {
     mHitDice = health;

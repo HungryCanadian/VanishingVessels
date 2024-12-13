@@ -58,7 +58,27 @@ TavernScreen::TavernScreen() {
 	mTextLine9 = new Texture("You meander your way out of the room and down the stairs to the tavern", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 
+	mTextLine10 = new Texture("Barbossa: You alright there? you seem a little dazed and confused.", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
+	mTextLine10->Visible(false);
+	mTextLine11 = new Texture("Barbossa: Well, I would have a hangover too if I drank several bottles of rum.", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
+	mTextLine11->Visible(false);
+	mTextLine12 = new Texture("Barbossa: I do have some Errands to run, but breakfast is on the house!", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine12->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
+	mTextLine12->Visible(false);
+	mTextLine13 = new Texture("Barbossa: If you need anything, Varun can help you!", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine13->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
+	mTextLine13->Visible(false);
 
+	mTextLine14 = new Texture("Varun: Would you like to rest for the night?", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine14->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
+	mTextLine14->Visible(false);
+	mTextLine15 = new Texture("Leoric: How are you here?", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine15->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
+	mTextLine15->Visible(false);
+
+	mFirstVisit = true;
 
 	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
@@ -102,6 +122,18 @@ TavernScreen::~TavernScreen() {
 	mTextLine8 = nullptr;
 	delete mTextLine9;
 	mTextLine9 = nullptr;
+	delete mTextLine10;
+	mTextLine10 = nullptr;
+	delete mTextLine11;
+	mTextLine11 = nullptr;
+	delete mTextLine12;
+	mTextLine12 = nullptr;
+	delete mTextLine13;
+	mTextLine13 = nullptr;
+	delete mTextLine14;
+	mTextLine14 = nullptr;
+	delete mTextLine15;
+	mTextLine15 = nullptr;
 
 
 
@@ -118,7 +150,8 @@ TavernScreen::~TavernScreen() {
 
 }
 
-void TavernScreen::HideText() {
+void TavernScreen::Description() {
+	mButtons[4].Visible(false);
 	mTextLine1->Visible(false);
 	mTextLine2->Visible(false);
 	mTextLine3->Visible(false);
@@ -128,19 +161,82 @@ void TavernScreen::HideText() {
 	mTextLine7->Visible(false);
 	mTextLine8->Visible(false);
 	mTextLine9->Visible(false);
+	mTextLine14->Visible(false);
+	if (mFirstVisit) {
+		mTextLine10->Visible(true);
+		mTextLine11->Visible(true);
+		mTextLine12->Visible(true);
+		mTextLine13->Visible(true);
+		mFirstVisit = false;
+	}
+	else {
+		mTextLine10->Visible(false);
+		mTextLine11->Visible(false);
+		mTextLine12->Visible(false);
+		mTextLine13->Visible(false);
+		mTextLine15->Visible(true);
+	}
+}
+void TavernScreen::Rest() {
+	mTextLine1->Visible(false);
+	mTextLine2->Visible(false);
+	mTextLine3->Visible(false);
+	mTextLine4->Visible(false);
+	mTextLine5->Visible(false);
+	mTextLine6->Visible(false);
+	mTextLine7->Visible(false);
+	mTextLine8->Visible(false);
+	mTextLine9->Visible(false);
+
+	mButtons[4].Visible(true);
+
+	mTextLine10->Visible(false);
+	mTextLine11->Visible(false);
+	mTextLine12->Visible(false);
+	mTextLine13->Visible(false);
+
+	mTextLine14->Visible(true);
+	mTextLine15->Visible(false);
+	
+}
+
+void TavernScreen::DefaultText() {
+	mButtons[4].Visible(false);
+
+	mTextLine1->Visible(false);
+	mTextLine2->Visible(false);
+	mTextLine3->Visible(false);
+	mTextLine4->Visible(false);
+	mTextLine5->Visible(false);
+	mTextLine6->Visible(false);
+	mTextLine7->Visible(false);
+	mTextLine8->Visible(false);
+	mTextLine9->Visible(false);
+	mTextLine10->Visible(false);
+	mTextLine11->Visible(false);
+	mTextLine12->Visible(false);
+	mTextLine13->Visible(false);
+	mTextLine14->Visible(false);
+	mTextLine15->Visible(true);
 }
 
 void TavernScreen::SetupButtons() {
 	Button* backButton = new Button(Graphics::SCREEN_WIDTH * 0.27f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Back", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* quitButton = new Button(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Quit", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
-	Button* testButton = new Button(Graphics::SCREEN_WIDTH * 0.43f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Test", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* investigateButton = new Button(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Investigate", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* restButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Rest", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* leaveButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Leave", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* restConfirmButton = new Button(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.50f, 190, 42, "Confirm", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 
 	// Add buttons to the mButtons list
 	mButtons.push_back(*backButton);
 	mButtons.push_back(*quitButton);
-	mButtons.push_back(*testButton);
+	mButtons.push_back(*investigateButton);
+	mButtons.push_back(*restButton);
+	mButtons.push_back(*restConfirmButton);
+	mButtons.push_back(*leaveButton);
 
-	mButtons[0].Visible(false);
+	mButtons[4].Visible(false);
 
 
 }
@@ -165,17 +261,22 @@ void TavernScreen::Update() {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
 				if (btn.label == "Back") {
-					std::cout << "Back Clicked\n";
-					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Start);
+					TavernScreen::DefaultText();
 				}
 				else if (btn.label == "Quit") {
-					std::cout << "Quit Clicked\n";
 					GameManager::Instance()->QuitGame();
 
 				}
-				else if (btn.label == "Test") {
-					TavernScreen::HideText();
-
+				else if (btn.label == "Investigate") {
+					TavernScreen::Description();
+				}
+				else if (btn.label == "Rest") {
+					TavernScreen::Rest();
+				}
+				else if (btn.label == "Confirm") {
+					mPlayer->FullHeal();
+					std::cout << "Player Healed\n";
+					TavernScreen::DefaultText();
 				}
 			}
 		}
@@ -200,6 +301,12 @@ void TavernScreen::Render() {
 	if (mTextLine7->Visible()) mTextLine7->Render();
 	if (mTextLine8->Visible()) mTextLine8->Render();
 	if (mTextLine9->Visible()) mTextLine9->Render();
+	if (mTextLine10->Visible()) mTextLine10->Render();
+	if (mTextLine11->Visible()) mTextLine11->Render();
+	if (mTextLine12->Visible()) mTextLine12->Render();
+	if (mTextLine13->Visible()) mTextLine13->Render();
+	if (mTextLine14->Visible()) mTextLine14->Render();
+	if (mTextLine15->Visible()) mTextLine15->Render();
 
 
 

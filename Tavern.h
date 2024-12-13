@@ -11,7 +11,9 @@ public:
 	~TavernScreen();
 
 	void SetupButtons();
-	void HideText();
+	void Description();
+	void Rest();
+	void DefaultText();
 
 	void Update() override;
 	void Render() override;
@@ -22,6 +24,7 @@ private:
 	InputManager* mInputManager;
 	std::vector<Button> mButtons;
 	Player* mPlayer;
+	bool mFirstVisit;
 
 	Texture* mTest;
 	Texture* mTextArea;
@@ -38,6 +41,12 @@ private:
 	Texture* mTextLine7;
 	Texture* mTextLine8;
 	Texture* mTextLine9;
+	Texture* mTextLine10;
+	Texture* mTextLine11;
+	Texture* mTextLine12;
+	Texture* mTextLine13;
+	Texture* mTextLine14;
+	Texture* mTextLine15;
 
 
 	Texture* mSymbol;

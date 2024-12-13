@@ -55,9 +55,6 @@ CharacterCreatorScreen::CharacterCreatorScreen() {
 	mTieflingText = new Texture("+2 Charisma, +1 Intellect", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });  // Text, font, size, color
 	mTieflingText->Position(Graphics::SCREEN_WIDTH * 0.58f, Graphics::SCREEN_HEIGHT * 0.72f);
 	
-	mPlayer->GenerateRandomStats();
-	mPlayer->CalculateBonuses();
-
 	mStr = new Texture("Strength: " + std::to_string(mPlayer->GetStrength()) + " ( +" + std::to_string(mPlayer->GetStrengthBonus()) + ")", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
 	mStr->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.42f);
 	mStr->Visible(false);
@@ -172,7 +169,7 @@ void CharacterCreatorScreen::NewCharacter() {
 	mCon->Visible(false);
 	mInt->Visible(false);
 	mWis->Visible(false);
-	mDex->Visible(false);
+	mCha->Visible(false);
 
 	mButtons[0].Visible(true);
 	mButtons[2].Visible(true);
@@ -223,18 +220,30 @@ void CharacterCreatorScreen::ClassSelection() {
 	mCon->Visible(false);
 	mInt->Visible(false);
 	mWis->Visible(false);
-	mDex->Visible(false);
+	mCha->Visible(false);
 }
 
 void CharacterCreatorScreen::CharacterConfirm() {
 	mPlayer->GenerateRandomStats();
 	mPlayer->CalculateBonuses();
+	mStr = new Texture("Strength: " + std::to_string(mPlayer->GetStrength()) + " ( +" + std::to_string(mPlayer->GetStrengthBonus()) + ")", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
+	mStr->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.42f);
 	mStr->Visible(true);
+	mDex = new Texture("Dexterity: " + std::to_string(mPlayer->GetDexterity()) + " ( +" + std::to_string(mPlayer->GetDexterityBonus()) + ")", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
+	mDex->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.45f);
 	mDex->Visible(true);
+	mCon = new Texture("Constitution: " + std::to_string(mPlayer->GetConstitution()) + " ( +" + std::to_string(mPlayer->GetConstitutionBonus()) + ")", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
+	mCon->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.48f);
 	mCon->Visible(true);
+	mInt = new Texture("Intellect: " + std::to_string(mPlayer->GetIntelligence()) + " ( +" + std::to_string(mPlayer->GetIntelligenceBonus()) + ")", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
+	mInt->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.51f);
 	mInt->Visible(true);
+	mWis = new Texture("Wisdom: " + std::to_string(mPlayer->GetWisdom()) + " ( +" + std::to_string(mPlayer->GetWisdomBonus()) + ")", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
+	mWis->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.54f);
 	mWis->Visible(true);
-	mDex->Visible(true);
+	mCha = new Texture("Charisma: " + std::to_string(mPlayer->GetCharisma()) + " ( +" + std::to_string(mPlayer->GetCharismaBonus()) + ")", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
+	mCha->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.57f);
+	mCha->Visible(true);
 	mConfirmText->Visible(true);
 
 	mHumanText->Visible(false);
