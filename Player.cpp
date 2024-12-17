@@ -100,6 +100,17 @@ int Player::GetCharismaBonus() {
     return mCharismaBonus;
 }
 
+void Player::AddDamageReduction(int amount) {
+    totalDamageReduction += amount;
+}
+
+void Player::RemoveDamageReduction(int amount) {
+    totalDamageReduction -= amount;
+    if (totalDamageReduction < 0) {
+        totalDamageReduction = 0; // make sure you can't take extra damage anymore
+    }
+}
+
 
 void Player::RaceBonuses() {
     if (mRace == "Human") {

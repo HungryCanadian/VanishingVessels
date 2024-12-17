@@ -46,6 +46,8 @@ public:
     int GetIntelligenceBonus();
     int GetWisdomBonus();
     int GetCharismaBonus();
+    void RemoveDamageReduction(int amount);
+    void AddDamageReduction(int amount);
 
     void FullHeal();
 
@@ -72,6 +74,7 @@ private:
     int mExpToLevel;
     int mSpecialAttackTotal;
     int mUltimateAttackTotal;
+    int totalDamageReduction;
 
     //base Scores
     int mStrength;

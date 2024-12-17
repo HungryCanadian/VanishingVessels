@@ -2,15 +2,14 @@
 #include "StartScreen.h"
 #include "PlayScreen.h"
 #include "CharacterCreator.h"
-#include "CharacterClassSelection.h"
-#include "CharacterConfirm.h"
+#include "InventoryScreen.h"
 #include "Tavern.h"
 
 class ScreenManager {
 public:
 	static ScreenManager* Instance();
 	static void Release();
-	enum Screens { Start, Play, NewCharacter, CharacterClass, CharacterConfirm,
+	enum Screens { Start, Play, NewCharacter, Inventory, CharacterConfirm,
 					Tavern};
 
 	void Update();
@@ -20,8 +19,7 @@ public:
 	StartScreen* mStartScreen;
 	PlayScreen* mPlayScreen;
 	CharacterCreatorScreen* mCharacterCreator;
-	CharacterClassScreen* mClassSelection;
-	CharacterConfirmation* mCharacterConfirm;
+	InventoryScreen* mInventoryScreen;
 	TavernScreen* mTavern;
 private:
 	ScreenManager();

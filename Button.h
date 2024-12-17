@@ -13,6 +13,10 @@ namespace SDLFramework {
         void Visible(bool visibility);  // Method to set the visibility of the button
         bool Visible() const;  // Method to get the visibility status of the button
 
+        bool operator==(const Button& other) const {
+            return label == other.label;  // Compare based on label (or whatever you like)
+        }
+
         bool isHovered;
         std::string label;
     private:

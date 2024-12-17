@@ -74,9 +74,37 @@ TavernScreen::TavernScreen() {
 	mTextLine14 = new Texture("Varun: Would you like to rest for the night?", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine14->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine14->Visible(false);
-	mTextLine15 = new Texture("Leoric: How are you here?", "ToThePoint.ttf", 35, { 0,0,0 });
-	mTextLine15->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
+
+	mTextLine15 = new Texture("The old tavern, with its creaky wooden floorboards and dimly lit corners,", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine15->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine15->Visible(false);
+	mTextLine16 = new Texture("feels almost forgotten in the morning light. The air is thick", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine16->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
+	mTextLine16->Visible(false);
+	mTextLine17 = new Texture("with the scent of stale ale and smoke, remnants of last night's", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine17->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
+	mTextLine17->Visible(false);
+	mTextLine18 = new Texture("revelry still hanging heavy. A few weary patrons sit hunched", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine18->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
+	mTextLine18->Visible(false);
+	mTextLine19 = new Texture("over at the bar, nursing mugs of water or weak coffee,", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine19->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
+	mTextLine19->Visible(false);
+	mTextLine20 = new Texture("their eyes tired and unfocused. The once-lively space now ", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine20->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
+	mTextLine20->Visible(false);
+	mTextLine21 = new Texture("holds only the soft clink of glass and the quiet hum of murmurs,", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine21->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
+	mTextLine21->Visible(false);
+	mTextLine22 = new Texture("as sunlight filters lazily through dusty windows, casting long", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine22->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
+	mTextLine22->Visible(false);
+	mTextLine23 = new Texture("shadows across the worn furniture. The rowdy energy ", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine23->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
+	mTextLine23->Visible(false); 
+	mTextLine24 = new Texture("of the night has faded, leaving only the quiet hum of recovery.", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine24->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
+	mTextLine24->Visible(false);
 
 	mFirstVisit = true;
 
@@ -134,6 +162,24 @@ TavernScreen::~TavernScreen() {
 	mTextLine14 = nullptr;
 	delete mTextLine15;
 	mTextLine15 = nullptr;
+	delete mTextLine16;
+	mTextLine16 = nullptr;
+	delete mTextLine17;
+	mTextLine17 = nullptr;
+	delete mTextLine18;
+	mTextLine18 = nullptr;
+	delete mTextLine19;
+	mTextLine19 = nullptr;
+	delete mTextLine20;
+	mTextLine20 = nullptr;
+	delete mTextLine21;
+	mTextLine21 = nullptr;
+	delete mTextLine22;
+	mTextLine22 = nullptr;
+	delete mTextLine23;
+	mTextLine23 = nullptr;
+	delete mTextLine24;
+	mTextLine24 = nullptr;
 
 
 
@@ -168,6 +214,16 @@ void TavernScreen::Description() {
 		mTextLine12->Visible(true);
 		mTextLine13->Visible(true);
 		mFirstVisit = false;
+		mTextLine15->Visible(false);
+		mTextLine16->Visible(false);
+		mTextLine17->Visible(false);
+		mTextLine18->Visible(false);
+		mTextLine19->Visible(false);
+		mTextLine20->Visible(false);
+		mTextLine21->Visible(false);
+		mTextLine22->Visible(false);
+		mTextLine23->Visible(false);
+		mTextLine24->Visible(false);
 	}
 	else {
 		mTextLine10->Visible(false);
@@ -175,6 +231,15 @@ void TavernScreen::Description() {
 		mTextLine12->Visible(false);
 		mTextLine13->Visible(false);
 		mTextLine15->Visible(true);
+		mTextLine16->Visible(true);
+		mTextLine17->Visible(true);
+		mTextLine18->Visible(true);
+		mTextLine19->Visible(true);
+		mTextLine20->Visible(true);
+		mTextLine21->Visible(true);
+		mTextLine22->Visible(true);
+		mTextLine23->Visible(true);
+		mTextLine24->Visible(true);
 	}
 }
 void TavernScreen::Rest() {
@@ -197,6 +262,16 @@ void TavernScreen::Rest() {
 
 	mTextLine14->Visible(true);
 	mTextLine15->Visible(false);
+	mTextLine16->Visible(false);
+	mTextLine17->Visible(false);
+	mTextLine18->Visible(false);
+	mTextLine19->Visible(false);
+	mTextLine20->Visible(false);
+	mTextLine21->Visible(false);
+	mTextLine22->Visible(false);
+	mTextLine23->Visible(false);
+	mTextLine24->Visible(false);
+
 	
 }
 
@@ -218,6 +293,15 @@ void TavernScreen::DefaultText() {
 	mTextLine13->Visible(false);
 	mTextLine14->Visible(false);
 	mTextLine15->Visible(true);
+	mTextLine16->Visible(true);
+	mTextLine17->Visible(true);
+	mTextLine18->Visible(true);
+	mTextLine19->Visible(true);
+	mTextLine20->Visible(true);
+	mTextLine21->Visible(true);
+	mTextLine22->Visible(true);
+	mTextLine23->Visible(true);
+	mTextLine24->Visible(true);
 }
 
 void TavernScreen::SetupButtons() {
@@ -227,6 +311,9 @@ void TavernScreen::SetupButtons() {
 	Button* restButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Rest", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* leaveButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Leave", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* restConfirmButton = new Button(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.50f, 190, 42, "Confirm", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* inventoryButton = new Button(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Inventory", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+
+
 
 	// Add buttons to the mButtons list
 	mButtons.push_back(*backButton);
@@ -235,6 +322,7 @@ void TavernScreen::SetupButtons() {
 	mButtons.push_back(*restButton);
 	mButtons.push_back(*restConfirmButton);
 	mButtons.push_back(*leaveButton);
+	mButtons.push_back(*inventoryButton);
 
 	mButtons[4].Visible(false);
 
@@ -278,6 +366,9 @@ void TavernScreen::Update() {
 					std::cout << "Player Healed\n";
 					TavernScreen::DefaultText();
 				}
+				else if (btn.label == "Inventory") {
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Inventory);
+				}
 			}
 		}
 	}
@@ -292,6 +383,8 @@ void TavernScreen::Render() {
 	if (mTopBar->Visible()) mTopBar->Render();
 	if (mSymbol->Visible()) mSymbol->Render();
 	if (mBottomBar->Visible()) mBottomBar->Render();
+
+	//First block of text 'waking up'
 	if (mTextLine1->Visible()) mTextLine1->Render();
 	if (mTextLine2->Visible()) mTextLine2->Render();
 	if (mTextLine3->Visible()) mTextLine3->Render();
@@ -301,12 +394,27 @@ void TavernScreen::Render() {
 	if (mTextLine7->Visible()) mTextLine7->Render();
 	if (mTextLine8->Visible()) mTextLine8->Render();
 	if (mTextLine9->Visible()) mTextLine9->Render();
+
+	//First time Investigation
 	if (mTextLine10->Visible()) mTextLine10->Render();
 	if (mTextLine11->Visible()) mTextLine11->Render();
 	if (mTextLine12->Visible()) mTextLine12->Render();
 	if (mTextLine13->Visible()) mTextLine13->Render();
+
+	//Varun's Rest Text
 	if (mTextLine14->Visible()) mTextLine14->Render();
+
+	//Regular Investigation
 	if (mTextLine15->Visible()) mTextLine15->Render();
+	if (mTextLine16->Visible()) mTextLine16->Render();
+	if (mTextLine17->Visible()) mTextLine17->Render();
+	if (mTextLine18->Visible()) mTextLine18->Render();
+	if (mTextLine19->Visible()) mTextLine19->Render();
+	if (mTextLine20->Visible()) mTextLine20->Render();
+	if (mTextLine21->Visible()) mTextLine21->Render();
+	if (mTextLine22->Visible()) mTextLine22->Render();
+	if (mTextLine23->Visible()) mTextLine23->Render();
+	if (mTextLine24->Visible()) mTextLine24->Render();
 
 
 

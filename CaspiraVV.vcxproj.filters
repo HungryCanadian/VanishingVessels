@@ -138,6 +138,12 @@
     <ClCompile Include="Tavern.cpp">
       <Filter>Caspira\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Caspira\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryScreen.cpp">
+      <Filter>Caspira\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MathHelper.h">
@@ -237,6 +243,12 @@
       <Filter>Caspira\Header</Filter>
     </ClInclude>
     <ClInclude Include="Tavern.h">
+      <Filter>Caspira\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Caspira\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryScreen.h">
       <Filter>Caspira\Header</Filter>
     </ClInclude>
   </ItemGroup>

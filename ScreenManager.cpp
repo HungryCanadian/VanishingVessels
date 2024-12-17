@@ -25,8 +25,7 @@ ScreenManager::ScreenManager() {
 	mStartScreen = new StartScreen();
 	mPlayScreen = new PlayScreen();
 	mCharacterCreator = new CharacterCreatorScreen();
-	mClassSelection = new CharacterClassScreen();
-	mCharacterConfirm = new CharacterConfirmation();
+	mInventoryScreen = new InventoryScreen();
 	mTavern = new TavernScreen();
 
 	mCurrentScreen = Start;
@@ -61,11 +60,8 @@ void ScreenManager::Update() {
 	case ScreenManager::NewCharacter:
 		mCharacterCreator->Update();
 		break;
-	case ScreenManager::CharacterClass:
-		mClassSelection->Update();
-		break;
-	case ScreenManager::CharacterConfirm:
-		mCharacterConfirm->Update();
+	case ScreenManager::Inventory:
+		mInventoryScreen->Update();
 		break;
 	case ScreenManager::Tavern:
 		mTavern->Update();
@@ -87,11 +83,8 @@ void ScreenManager::Render() {
 	case ScreenManager::NewCharacter:
 		mCharacterCreator->Render();
 		break;
-	case ScreenManager::CharacterClass:
-		mClassSelection->Render();
-		break;
-	case ScreenManager::CharacterConfirm:
-		mCharacterConfirm->Render();
+	case ScreenManager::Inventory:
+		mInventoryScreen->Render();
 		break;
 	case ScreenManager::Tavern:
 		mTavern->Render();
