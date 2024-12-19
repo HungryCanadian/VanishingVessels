@@ -3,7 +3,6 @@
 #include "Scoreboard.h"
 #include "AnimatedTexture.h"
 #include "Button.h"
-#include "TextInput.h"
 #include "Inventory.h"
 
 
@@ -17,6 +16,10 @@ public:
 	void SetupButtons();
 	void DisplayInventoryItem(std::vector<Inventory> inventory);
 	void DisplayConsumableItems(std::vector<Inventory> inventory);
+	void DisplayEquippableItems(std::vector<Inventory> inventory);
+	std::vector<Inventory>& GetMerchantInventory();
+	std::vector<Inventory>& GetBlacksmithInventory();
+	std::vector<Inventory>& GetPlayerInventory();
 
 	void Update() override;
 	void Render() override;
@@ -30,13 +33,13 @@ private:
 	Inventory* mInventory;
 	std::vector<Button> mButtons;
 	std::vector<Texture*> mTextLines;
+	Player* mPlayer;
 
 	Texture* mTest;
 	Texture* mTextArea;
 	Texture* mTopBar;
 	Texture* mBottomBar;
 	Texture* mPaperOverlay;
-	TextInput* mName;
 
 	Texture* mSymbol;
 

@@ -35,3 +35,11 @@ Inventory::~Inventory() {
 bool Inventory::IsUsable() {
     return mConsumable;
 }
+
+ItemType Inventory::GetType() const {
+    return mType;
+}
+
+void Inventory::AddItem() {
+
+}

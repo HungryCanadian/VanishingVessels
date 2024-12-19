@@ -85,9 +85,6 @@ CharacterCreatorScreen::CharacterCreatorScreen() {
 	mHP->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.57f);
 	mHP->Visible(false);
 
-
-	
-	SDL_StartTextInput();
 	SetupButtons();
 
 }
@@ -95,9 +92,6 @@ CharacterCreatorScreen::CharacterCreatorScreen() {
 CharacterCreatorScreen::~CharacterCreatorScreen() {
 	mTimer = nullptr;
 	mAudio = nullptr;
-
-	SDL_StopTextInput();
-
 
 	delete mTest;
 	mTest = nullptr;
@@ -170,6 +164,7 @@ void CharacterCreatorScreen::NewCharacter() {
 	mInt->Visible(false);
 	mWis->Visible(false);
 	mCha->Visible(false);
+	mHP->Visible(false);
 
 	mButtons[0].Visible(true);
 	mButtons[2].Visible(true);
@@ -221,6 +216,7 @@ void CharacterCreatorScreen::ClassSelection() {
 	mInt->Visible(false);
 	mWis->Visible(false);
 	mCha->Visible(false);
+	mHP->Visible(false);
 }
 
 void CharacterCreatorScreen::CharacterConfirm() {
@@ -244,6 +240,9 @@ void CharacterCreatorScreen::CharacterConfirm() {
 	mCha = new Texture("Charisma: " + std::to_string(mPlayer->GetCharisma()) + " ( +" + std::to_string(mPlayer->GetCharismaBonus()) + ")", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
 	mCha->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.57f);
 	mCha->Visible(true);
+	mHP = new Texture("Max Health: " + std::to_string(mPlayer->GetMaxHealth()), "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
+	mHP->Position(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.42f);
+	mHP->Visible(true);
 	mConfirmText->Visible(true);
 
 	mHumanText->Visible(false);
@@ -276,9 +275,7 @@ void CharacterCreatorScreen::CharacterConfirm() {
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 	mSymbol->Update();
-	mHP = new Texture("Max Health: " + std::to_string(mPlayer->GetMaxHealth()), "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
-	mHP->Position(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.42f);
-	mHP->Update();
+	
 }
 
 void CharacterCreatorScreen::SetupButtons() {
@@ -347,7 +344,7 @@ void CharacterCreatorScreen::Update() {
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Start);
 				}
 				if (btn.label == "Back") {
-					CharacterCreatorScreen::NewCharacter();
+					NewCharacter();
 				}
 				else if (btn.label == "Quit") {
 					GameManager::Instance()->QuitGame();
@@ -355,76 +352,76 @@ void CharacterCreatorScreen::Update() {
 				}
 				else if (btn.label == "Human") {
 					mPlayer->SetRace("Human");
-					CharacterCreatorScreen::ClassSelection();
+					ClassSelection();
 				}
 				else if (btn.label == "Elf") {
 					mPlayer->SetRace("Elf");
-					CharacterCreatorScreen::ClassSelection();
+					ClassSelection();
 				}
 				else if (btn.label == "Dwarf") {
 					mPlayer->SetRace("Dwarf");
-					CharacterCreatorScreen::ClassSelection();
+					ClassSelection();
 				}
 				else if (btn.label == "Halfling") {
 					mPlayer->SetRace("Halfling");
-					CharacterCreatorScreen::ClassSelection();
+					ClassSelection();
 				}
 				else if (btn.label == "Gnome") {
 					mPlayer->SetRace("Gnome");
-					CharacterCreatorScreen::ClassSelection();
+					ClassSelection();
 				}
 				else if (btn.label == "Tiefling") {
 					mPlayer->SetRace("Tiefling");
-					CharacterCreatorScreen::ClassSelection();
+					ClassSelection();
 				}
 				else if (btn.label == "Fighter") {
 					mPlayer->SetClass("Fighter");
 					mPlayer->SetHitDice(10);
 					mPlayer->calculateHealth();
 					mPlayer->FullHeal();
-					CharacterCreatorScreen::CharacterConfirm();
+					CharacterConfirm();
 				}
 				else if (btn.label == "Paladin") {
 					mPlayer->SetClass("Paladin");
 					mPlayer->SetHitDice(12);
 					mPlayer->calculateHealth();
 					mPlayer->FullHeal();
-					CharacterCreatorScreen::CharacterConfirm();
+					CharacterConfirm();
 				}
 				else if (btn.label == "Druid") {
 					mPlayer->SetClass("Druid");
 					mPlayer->SetHitDice(8);
 					mPlayer->calculateHealth();
 					mPlayer->FullHeal();
-					CharacterCreatorScreen::CharacterConfirm();
+					CharacterConfirm();
 				}
 				else if (btn.label == "Warlock") {
 					mPlayer->SetClass("Warlock");
 					mPlayer->SetHitDice(8);
 					mPlayer->calculateHealth();
 					mPlayer->FullHeal();
-					CharacterCreatorScreen::CharacterConfirm();
+					CharacterConfirm();
 				}
 				else if (btn.label == "Wizard") {
 					mPlayer->SetClass("Wizard");
 					mPlayer->SetHitDice(6);
 					mPlayer->calculateHealth();
 					mPlayer->FullHeal();
-					CharacterCreatorScreen::CharacterConfirm();
+					CharacterConfirm();
 				}
 				else if (btn.label == "Sorceror") {
 					mPlayer->SetClass("Sorceror");
 					mPlayer->SetHitDice(6);
 					mPlayer->calculateHealth();
 					mPlayer->FullHeal();
-					CharacterCreatorScreen::CharacterConfirm();
+					CharacterConfirm();
 				}
 				else if (btn.label == "Ranger") {
 					mPlayer->SetClass("Ranger");
 					mPlayer->SetHitDice(10);
 					mPlayer->calculateHealth();
 					mPlayer->FullHeal();
-					CharacterCreatorScreen::CharacterConfirm();
+					CharacterConfirm();
 				}
 				else if (btn.label == "Confirm") {
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Tavern);
@@ -432,6 +429,9 @@ void CharacterCreatorScreen::Update() {
 			}
 		}
 	}
+	/*mHP = new Texture("Max Health: " + std::to_string(mPlayer->GetMaxHealth()), "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
+	mHP->Position(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.42f);
+	if (mHP->Visible()) mHP->Update();*/
 }
 
 

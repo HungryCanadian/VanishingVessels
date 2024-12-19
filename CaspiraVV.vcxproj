@@ -150,8 +150,6 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CharacterClass.cpp" />
-    <ClCompile Include="CharacterClassSelection.cpp" />
-    <ClCompile Include="CharacterConfirm.cpp" />
     <ClCompile Include="CharacterCreator.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
@@ -172,6 +170,7 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClCompile Include="Scoreboard.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="CaspiraVV.cpp" />
+    <ClCompile Include="Blacksmith.cpp" />
     <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="Tavern.cpp" />
     <ClCompile Include="TextInput.cpp" />
@@ -186,8 +185,6 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CharacterClass.h" />
-    <ClInclude Include="CharacterClassSelection.h" />
-    <ClInclude Include="CharacterConfirm.h" />
     <ClInclude Include="CharacterCreator.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
@@ -209,6 +206,7 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClInclude Include="Random.h" />
     <ClInclude Include="Scoreboard.h" />
     <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="Blacksmith.h" />
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="Tavern.h" />
     <ClInclude Include="TextInput.h" />

@@ -27,6 +27,7 @@ ScreenManager::ScreenManager() {
 	mCharacterCreator = new CharacterCreatorScreen();
 	mInventoryScreen = new InventoryScreen();
 	mTavern = new TavernScreen();
+	mBlacksmith = new BlacksmithScreen();
 
 	mCurrentScreen = Start;
 }
@@ -39,6 +40,20 @@ ScreenManager::~ScreenManager() {
 
 	delete mPlayScreen;
 	mPlayScreen = nullptr;
+
+	delete mCharacterCreator;
+	mCharacterCreator = nullptr;
+
+	delete mInventoryScreen;
+	mInventoryScreen = nullptr;
+
+	delete mTavern;
+	mTavern = nullptr;
+
+	delete mBlacksmith;
+	mBlacksmith = nullptr;
+
+
 }
 
 void ScreenManager::Update() {
@@ -66,6 +81,9 @@ void ScreenManager::Update() {
 	case ScreenManager::Tavern:
 		mTavern->Update();
 		break;
+	case ScreenManager::Blacksmith:
+		mBlacksmith->Update();
+		break;
 	default:
 		std::cerr << "Unknown Screen Found! please supply a valid Screen!\n";
 		break;
@@ -88,6 +106,9 @@ void ScreenManager::Render() {
 		break;
 	case ScreenManager::Tavern:
 		mTavern->Render();
+		break;
+	case ScreenManager::Blacksmith:
+		mBlacksmith->Render();
 		break;
 	}
 }

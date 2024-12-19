@@ -129,12 +129,6 @@
     <ClCompile Include="CharacterClass.cpp">
       <Filter>Caspira\Source</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterClassSelection.cpp">
-      <Filter>Caspira\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="CharacterConfirm.cpp">
-      <Filter>Caspira\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Tavern.cpp">
       <Filter>Caspira\Source</Filter>
     </ClCompile>
@@ -142,6 +136,9 @@
       <Filter>Caspira\Source</Filter>
     </ClCompile>
     <ClCompile Include="InventoryScreen.cpp">
+      <Filter>Caspira\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Blacksmith.cpp">
       <Filter>Caspira\Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -236,12 +233,6 @@
     <ClInclude Include="RaceData.h">
       <Filter>Caspira\Header</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterClassSelection.h">
-      <Filter>Caspira\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterConfirm.h">
-      <Filter>Caspira\Header</Filter>
-    </ClInclude>
     <ClInclude Include="Tavern.h">
       <Filter>Caspira\Header</Filter>
     </ClInclude>
@@ -249,6 +240,9 @@
       <Filter>Caspira\Header</Filter>
     </ClInclude>
     <ClInclude Include="InventoryScreen.h">
+      <Filter>Caspira\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Blacksmith.h">
       <Filter>Caspira\Header</Filter>
     </ClInclude>
   </ItemGroup>

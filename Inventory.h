@@ -57,10 +57,7 @@ public:
     string GetItemName() const;
     Effect GetEffect() const;
     void OpenInventory(Player* player); //function to open the inventory  
-    void ListEquippedItems(Player* player);
-    void DisplayShopInventory(Player* player); //display the shop inventory   
-    void DisplayBlacksmithInventory(Player* player); //display the blacksmith inventory
-    void DisplayPlayerInventory(); //display the player inventory   
+    void ListEquippedItems(Player* player); 
     int GetGoldQuantity() const; //get the gold quantity  
     void IncreaseGold(Player* player, int amount); //increase the gold quantity   
     void DecreaseGold(Player* player, int amount); //decrease the gold quantity   
@@ -81,6 +78,7 @@ private:
     int mValue;
     bool mConsumable;
     bool mEquipped;
+    bool mEquipment;
     ItemType mType;
 
 };

@@ -119,6 +119,7 @@ TavernScreen::TavernScreen() {
 TavernScreen::~TavernScreen() {
 	mTimer = nullptr;
 	mAudio = nullptr;
+	mPlayer = nullptr;
 
 
 	delete mTest;
@@ -180,12 +181,6 @@ TavernScreen::~TavernScreen() {
 	mTextLine23 = nullptr;
 	delete mTextLine24;
 	mTextLine24 = nullptr;
-
-
-
-	delete mPlayer;
-	mPlayer = nullptr;
-
 
 	delete mSymbol;
 	mSymbol = nullptr;
@@ -368,6 +363,9 @@ void TavernScreen::Update() {
 				}
 				else if (btn.label == "Inventory") {
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Inventory);
+				}
+				else if (btn.label == "Leave") {
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Blacksmith);
 				}
 			}
 		}

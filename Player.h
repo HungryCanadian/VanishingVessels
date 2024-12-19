@@ -48,6 +48,8 @@ public:
     int GetCharismaBonus();
     void RemoveDamageReduction(int amount);
     void AddDamageReduction(int amount);
+    int GetGold();
+    void SubtractGold(int value);
 
     void FullHeal();
 

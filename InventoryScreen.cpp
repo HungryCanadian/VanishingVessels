@@ -3,40 +3,54 @@
 
 
 std::vector<Inventory> PlayerInventory = {
-	{ "backpack", Effect(0,0,0), 1, 1, false, ItemType::Item },
-	{ "gold pouch", Effect(0,0,0), 1, 1, false, ItemType::Item },
-	{ "mess kit", Effect(0,0,0), 1, 1, false, ItemType::Item },
-	{ "tinderbox", Effect(0,0,0), 1, 1, false, ItemType::Item },
-	{ "torch", Effect(0,0,0), 10, 1, false, ItemType::Item },
-	{ "rations", Effect(2,0,0), 5, 1, true, ItemType::Consumable },
-	{ "waterskin", Effect(0,0,0), 1, 1, false, ItemType::Item },
-	{ "rope", Effect(0,0,0), 1, 2, false, ItemType::Item },
-	{ "healing potion", Effect(5,0,0), 5, 5, true, ItemType::Consumable },
+	{ "Backpack", Effect(0,0,0), 1, 1, false, ItemType::Item },
+	{ "Gold pouch", Effect(0,0,0), 1, 1, false, ItemType::Item },
+	{ "Mess kit", Effect(0,0,0), 1, 1, false, ItemType::Item },
+	{ "Tinderbox", Effect(0,0,0), 1, 1, false, ItemType::Item },
+	{ "Torch", Effect(0,0,0), 10, 1, false, ItemType::Item },
+	{ "Rations", Effect(2,0,0), 5, 1, true, ItemType::Consumable },
+	{ "Waterskin", Effect(0,0,0), 1, 1, false, ItemType::Item },
+	{ "Rope", Effect(0,0,0), 1, 2, false, ItemType::Item },
+	{ "Healing potion", Effect(5,0,0), 5, 5, true, ItemType::Consumable },
+	{ "Shield", Effect(0,0,0,1), 1, 25, false, ItemType::Gear, false },
+	{ "Sword", Effect(0,3,0), 1, 15, false, ItemType::Weapon, false },
+	{ "Crossbow", Effect(0,2,0), 1, 20, false, ItemType::Weapon, false },
 };
 
 std::vector<Inventory> BlacksmithShop = {
-	{ "sword", Effect(0,3,0), 1, 15, false, ItemType::Weapon, false },
-	{ "shield", Effect(0,0,0,1), 1, 25, false, ItemType::Gear, false },
-	{ "crossbow", Effect(0,2,0), 1, 20, false, ItemType::Weapon, false },
-	{ "armor", Effect(0,0,0,2), 1, 100, false, ItemType::Gear, false },
+	{ "Sword", Effect(0,3,0), 1, 15, false, ItemType::Weapon, false },
+	{ "Shield", Effect(0,0,0,1), 1, 25, false, ItemType::Gear, false },
+	{ "Crossbow", Effect(0,2,0), 1, 20, false, ItemType::Weapon, false },
+	{ "Armor", Effect(0,0,0,2), 1, 100, false, ItemType::Gear, false },
 };
 
 static vector<Inventory> MerchantShop = {
-	{ "healing potion", Effect(5,0,0), 5, 5, true, ItemType::Consumable },
-	{ "rations", Effect(2,0,0), 30, 1, true, ItemType::Consumable },
-	{ "mess kit", Effect(0,0,0), 1, 1, false, ItemType::Item },
-	{ "tinderbox", Effect(0,0,0), 1, 1, false, ItemType::Item },
-	{ "torch", Effect(0,0,0), 10, 1, false, ItemType::Item },
-	{ "waterskin", Effect(0,0,0), 1, 1, false, ItemType::Item },
-	{ "rope", Effect(0,0,0), 1, 2, false, ItemType::Item }
+	{ "Healing potion", Effect(5,0,0), 5, 5, true, ItemType::Consumable },
+	{ "Rations", Effect(2,0,0), 30, 1, true, ItemType::Consumable },
+	{ "Mess kit", Effect(0,0,0), 1, 1, false, ItemType::Item },
+	{ "Tinderbox", Effect(0,0,0), 1, 1, false, ItemType::Item },
+	{ "Torch", Effect(0,0,0), 10, 1, false, ItemType::Item },
+	{ "Waterskin", Effect(0,0,0), 1, 1, false, ItemType::Item },
+	{ "Rope", Effect(0,0,0), 1, 2, false, ItemType::Item }
 
 };
+
+std::vector<Inventory>& InventoryScreen::GetBlacksmithInventory() {
+	return BlacksmithShop;
+}
+std::vector<Inventory>& InventoryScreen::GetMerchantInventory() {
+	return MerchantShop;
+}
+std::vector<Inventory>& InventoryScreen::GetPlayerInventory() {
+	return PlayerInventory;
+}
 
 InventoryScreen::InventoryScreen() {
 	mTimer = Timer::Instance();
 	mAudio = AudioManager::Instance();
 	mInputManager = InputManager::Instance();
 	mInventory = Inventory::Instance();
+	mPlayer = Player::Instance();
 
 
 
@@ -63,6 +77,11 @@ InventoryScreen::InventoryScreen() {
 	mPaperOverlay->Parent(this);
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
+
+	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol->Parent(this);
+	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
+	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
 	mTextLine1 = new Texture("What would you like to do?", "ToThePoint.ttf", 42, {0,0,0});
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.67f);
@@ -163,6 +182,17 @@ void InventoryScreen::DisplayInventoryItem(std::vector<Inventory> inventory) {
 		delete textLine;
 	}
 	mTextLines.clear();
+	for (int i = 3; i < mButtons.size(); i++) {
+		mButtons[i].Visible(false);
+	}
+	for (auto& btn : mButtons) {
+		if (btn.label == "Equip/Unequip Item") {
+			btn.Visible(true);
+		}
+		if (btn.label == "Use an Item") {
+			btn.Visible(true);
+		}
+	}
 
 	// Loop through the inventory and add a texture for each item
 	for (int i = 0; i < inventory.size(); ++i) {
@@ -177,8 +207,8 @@ void InventoryScreen::DisplayInventoryItem(std::vector<Inventory> inventory) {
 		Texture* textLine = new Texture(displayString, "ToThePoint.ttf", 42, { 0, 0, 0 });
 
 		// Adjust Y-position dynamically (previous Y-positioning logic)
-		float itemPosY = Graphics::SCREEN_HEIGHT * (0.22f + i * 0.05f);
-		textLine->Position(Graphics::SCREEN_WIDTH * 0.27f, itemPosY);
+		float itemPosY = Graphics::SCREEN_HEIGHT * (0.22f + i * 0.03f);
+		textLine->Position(Graphics::SCREEN_WIDTH * 0.28f, itemPosY);
 
 		mTextLines.push_back(textLine);
 		mTextLines[i]->Visible(true);
@@ -193,6 +223,15 @@ void InventoryScreen::DisplayConsumableItems(std::vector<Inventory> inventory) {
 	}
 	mTextLines.clear();
 
+	for (int i = 3; i < mButtons.size(); i++) {
+		mButtons[i].Visible(false);
+	}
+	for (auto& btn : mButtons) {
+		if (btn.label == "Equip/Unequip Item") {
+			btn.Visible(true);
+		}
+	}
+
 	// This will keep track of the position for consumable items
 	int positionIndex = 0;
 
@@ -206,7 +245,7 @@ void InventoryScreen::DisplayConsumableItems(std::vector<Inventory> inventory) {
 			int itemQuantity = selectedItem.GetItemQuantity();
 
 			// Combine item name and quantity for the button label
-			std::string buttonLabel = itemName + " x" + std::to_string(itemQuantity);
+			std::string buttonLabel = itemName;
 
 			// Dynamically create a button for each consumable item
 			// We increment positionIndex only for consumable items to adjust the Y position
@@ -239,7 +278,72 @@ void InventoryScreen::DisplayConsumableItems(std::vector<Inventory> inventory) {
 	}
 }
 
+void InventoryScreen::DisplayEquippableItems(std::vector<Inventory> inventory) {
+	// Clear old textures and buttons
+	for (auto textLine : mTextLines) {
+		delete textLine;
+	}
+	mTextLines.clear();
+	for (int i = 3; i < mButtons.size(); i++) {
+		mButtons[i].Visible(false);
+	}
+	for (auto& btn : mButtons) {
+		if (btn.label == "Use an Item") {
+			btn.Visible(true);
+		}
+	}
+
+	// This will keep track of the position for consumable items
+	int positionIndex = 0;
+
+	// Loop through the inventory and create a button for each consumable item
+	for (int i = 0; i < inventory.size(); ++i) {
+		Inventory& selectedItem = inventory[i];
+
+		// Only create a button for consumable items
+		if (selectedItem.GetType() == ItemType::Gear || selectedItem.GetType() == ItemType::Weapon) {
+			std::string itemName = selectedItem.GetItemName();
+			int itemQuantity = selectedItem.GetItemQuantity();
+
+			// Combine item name and quantity for the button label
+			std::string buttonLabel = itemName;
+
+			// Dynamically create a button for each consumable item
+			// We increment positionIndex only for consumable items to adjust the Y position
+			float itemPosY = Graphics::SCREEN_HEIGHT * (0.22f + positionIndex * 0.05f);
+
+			Button* itemButton = new Button(
+				Graphics::SCREEN_WIDTH * 0.25f,  // X position of the button
+				itemPosY,                        // Y position of the button
+				190,                             // Width of the button
+				42,                              // Height of the button
+				buttonLabel,                     // Button label
+				"ToThePoint.ttf",                // Font path
+				32,                              // Font size
+				{ 255, 255, 255, 255 },          // Text color (white)
+				"buttongreen.png"                 // Background texture for the button (you can change this if needed)
+			);
+
+			// Add the button to the mButtons list
+			mButtons.push_back(*itemButton);  // Add pointer to vector (not dereferenced)
+
+			// Increment the position index for the next consumable item
+			positionIndex++;
+
+			for (auto& btn : mButtons) {
+				if (btn.label == "Equip/Unequip Item") {
+					btn.Visible(false);
+				}
+			}
+		}
+	}
+}
+
 void InventoryScreen::Update() {
+	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
+	mSymbol->Scale(Vector2(0.1f, 0.1f));
+	mSymbol->Update();
 	int mouseX, mouseY;
 	SDL_GetMouseState(&mouseX, &mouseY);
 
@@ -264,16 +368,34 @@ void InventoryScreen::Update() {
 					GameManager::Instance()->QuitGame();
 				}
 				else if (btn.label == "Use an Item") {
-					for (int i = 0; i < mTextLines.size(); i++) {
-						mTextLines[i]->Visible(false);  // Hide each texture
-					}
 					DisplayConsumableItems(PlayerInventory);
-					if (btn.label == "Use an Item") {
-						btn.Visible(false);
-					}
 				}
 				else if (btn.label == "Equip/Unequip Item") {
-					std::cout << "Toggle Equip Item Clicked.";
+					DisplayEquippableItems(PlayerInventory);
+				}
+				else if (btn.label == "Sword") {
+					std::cout << "Toggling Sword Equip\n";
+					DisplayInventoryItem(PlayerInventory);
+				}
+				else if (btn.label == "Crossbow") {
+					std::cout << "Toggling Crossbow Equip\n";
+					DisplayInventoryItem(PlayerInventory);
+				}
+				else if (btn.label == "Armor") {
+					std::cout << "Toggling Armor Equip\n";
+					DisplayInventoryItem(PlayerInventory);
+				}
+				else if (btn.label == "Shield") {
+					std::cout << "Toggling Shield Equip\n";
+					DisplayInventoryItem(PlayerInventory);
+				}
+				else if (btn.label == "Rations") {
+					std::cout << "Rations Consumed\n";
+					DisplayInventoryItem(PlayerInventory);
+				}
+				else if (btn.label == "Healing potion") {
+					std::cout << "Healing Potion Consumed\n";
+					DisplayInventoryItem(PlayerInventory);
 				}
 			}
 		}
@@ -288,6 +410,8 @@ void InventoryScreen::Render() {
 	mTopBar->Render();
 	mBottomBar->Render();
 	mTextLine1->Render();
+	mSymbol->Render();
+	
 
 	for (int i = 0; i < mTextLines.size(); i++) {
 		if (mTextLines[i]->Visible()) mTextLines[i]->Render(); 

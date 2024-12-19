@@ -99,6 +99,12 @@ int Player::GetWisdomBonus() {
 int Player::GetCharismaBonus() {
     return mCharismaBonus;
 }
+int Player::GetGold() {
+    return mGold;
+}
+void Player::SubtractGold(int value) {
+    mGold = mGold - value;
+}
 
 void Player::AddDamageReduction(int amount) {
     totalDamageReduction += amount;

@@ -9,6 +9,8 @@ namespace SDLFramework {
         ~Button();
 
         void checkHover(int mouseX, int mouseY);
+        void checkClick(int mouseX, int mouseY, bool mousePressed);
+        void ResetDoubleClick();
         void render();
         void Visible(bool visibility);  // Method to set the visibility of the button
         bool Visible() const;  // Method to get the visibility status of the button
@@ -18,6 +20,13 @@ namespace SDLFramework {
         }
 
         bool isHovered;
+        bool isClicked;
+        bool isDoubleClicked;
+
+        Uint32 mClickStartTime;
+        bool mClickTimerStarted;
+        Uint32 mDoubleClickThreshold;
+
         std::string label;
     private:
         float x, y, width, height;
@@ -27,6 +36,7 @@ namespace SDLFramework {
         int mFontSize;
 
         bool mVisible;
+
         
 
         Texture* mBackgroundTexture;  // Custom background texture for the button

@@ -18,6 +18,10 @@ namespace SDLFramework {
         mTextTexture = new Texture(label, fontPath, fontSize, { 255, 255, 255, 255 }, false);  // White text
         mTextTexture->Parent(mBackgroundTexture);
         mTextTexture->Position(Vec2_Zero);  // Center text on button
+
+        mClickStartTime = 0;
+        mClickTimerStarted = false;
+        mDoubleClickThreshold = 500;
     }
 
     Button::~Button() {}
@@ -30,6 +34,44 @@ namespace SDLFramework {
         }
         // Check if mouse is over the button (simple bounding box check)
         isHovered = (mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height);
+    }
+
+    void Button::checkClick(int mouseX, int mouseY, bool mousePressed) {
+        if (!isHovered) {
+            // If button is not hovered, reset clicked states
+            isClicked = false;
+            isDoubleClicked = false;  // Also reset double-click state
+            return;
+        }
+
+        // Handle first click (start timing) and subsequent clicks
+        if (mousePressed) {
+            // If no click has been detected yet, start the timer for the first click
+            if (!mClickTimerStarted) {
+                mClickStartTime = SDL_GetTicks();
+                mClickTimerStarted = true;
+                isClicked = false;  // Reset previous clicked state to avoid accidental click detection
+                isDoubleClicked = false;  // Reset double-click state
+            }
+            else {
+                // Check if the current time is within the double-click threshold
+                Uint32 clickTime = SDL_GetTicks() - mClickStartTime;
+                if (clickTime < mDoubleClickThreshold) {
+                    isDoubleClicked = true;  // It's a double-click
+                    isClicked = false;  // Ensure it's not marked as a single click
+                }
+                else {
+                    isClicked = true;  // Single-click
+                    isDoubleClicked = false;  // Reset double-click state
+                }
+            }
+        }
+        else {
+            // Reset click timer when the mouse button is released
+            if (mClickTimerStarted) {
+                mClickTimerStarted = false;  // Stop the timer when the mouse is released
+            }
+        }
     }
 
     void Button::render() {
@@ -55,5 +97,9 @@ namespace SDLFramework {
     // Return whether the button is visible
     bool Button::Visible() const {
         return mVisible;  // Return the visibility status
+    }
+
+    void Button::ResetDoubleClick() {
+        isDoubleClicked = false;
     }
 }
