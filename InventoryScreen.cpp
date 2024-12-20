@@ -12,9 +12,6 @@ std::vector<Inventory> PlayerInventory = {
 	{ "Waterskin", Effect(0,0,0), 1, 1, false, ItemType::Item },
 	{ "Rope", Effect(0,0,0), 1, 2, false, ItemType::Item },
 	{ "Healing potion", Effect(5,0,0), 5, 5, true, ItemType::Consumable },
-	{ "Shield", Effect(0,0,0,1), 1, 25, false, ItemType::Gear, false },
-	{ "Sword", Effect(0,3,0), 1, 15, false, ItemType::Weapon, false },
-	{ "Crossbow", Effect(0,2,0), 1, 20, false, ItemType::Weapon, false },
 };
 
 std::vector<Inventory> BlacksmithShop = {
@@ -162,7 +159,7 @@ InventoryScreen::~InventoryScreen() {
 }
 
 void InventoryScreen::SetupButtons() {
-	Button* NewButton = new Button(Graphics::SCREEN_WIDTH * 0.30f, Graphics::SCREEN_HEIGHT * 0.91f, 190, 42, "New Character", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* BackButton = new Button(Graphics::SCREEN_WIDTH * 0.30f, Graphics::SCREEN_HEIGHT * 0.91f, 190, 42, "Back", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* QuitButton = new Button(Graphics::SCREEN_WIDTH * 0.60f, Graphics::SCREEN_HEIGHT * 0.91f, 190, 42, "Quit", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* UseButton = new Button(Graphics::SCREEN_WIDTH * 0.60f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Use an Item", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* EquipButton = new Button(Graphics::SCREEN_WIDTH * 0.30f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Equip/Unequip Item", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
@@ -170,7 +167,7 @@ void InventoryScreen::SetupButtons() {
 
 
 	// Add buttons to the mButtons list
-	mButtons.push_back(*NewButton);
+	mButtons.push_back(*BackButton);
 	mButtons.push_back(*QuitButton);
 	mButtons.push_back(*UseButton);
 	mButtons.push_back(*EquipButton);
@@ -360,8 +357,8 @@ void InventoryScreen::Update() {
 	if (mInputManager->MouseButtonPressed(InputManager::LEFT)) {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
-				if (btn.label == "New Character") {
-					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::NewCharacter);
+				if (btn.label == "Back") {
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Back);
 
 				}
 				else if (btn.label == "Quit") {
@@ -391,10 +388,42 @@ void InventoryScreen::Update() {
 				}
 				else if (btn.label == "Rations") {
 					std::cout << "Rations Consumed\n";
+					// Accessing player inventory
+					InventoryScreen inv;
+					std::vector<Inventory>& inventory = inv.GetPlayerInventory();
+					for (auto& item : inventory) {
+						if (item.GetItemName() == "Rations") {
+							// Item found, increment the quantity
+							if (item.GetItemQuantity() == 0) {
+								std::cout << "You have no more!\n";
+							}
+							else {
+								item.SetItemQuantity(item.GetItemQuantity() - 1);
+								mPlayer->Heal(3);
+							}
+							break;
+						}
+					}
 					DisplayInventoryItem(PlayerInventory);
 				}
 				else if (btn.label == "Healing potion") {
 					std::cout << "Healing Potion Consumed\n";
+					// Accessing player inventory
+					InventoryScreen inv;
+					std::vector<Inventory>& inventory = inv.GetPlayerInventory();
+					for (auto& item : inventory) {
+						if (item.GetItemName() == "Healing potion") {
+							// Item found, increment the quantity
+							if (item.GetItemQuantity() == 0) {
+								std::cout << "You have no more!\n";
+							}
+							else {
+								item.SetItemQuantity(item.GetItemQuantity() - 1);
+								mPlayer->Heal(5);
+							}
+							break;
+						}
+					}
 					DisplayInventoryItem(PlayerInventory);
 				}
 			}

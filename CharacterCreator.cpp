@@ -286,13 +286,13 @@ void CharacterCreatorScreen::SetupButtons() {
 	Button* dwarfButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.60f, 190, 42, "Dwarf", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* gnomeButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.65f, 190, 42, "Gnome", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* tieflingButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Tiefling", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
-	Button* FighterButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.15f, 250, 250, "Fighter", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Fighter.png");
-	Button* PaladinButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.15f, 250, 250, "Paladin", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Paladin.png");
-	Button* DruidButton = new Button(Graphics::SCREEN_WIDTH * 0.235f, Graphics::SCREEN_HEIGHT * 0.33f, 250, 250, "Druid", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Druid.png");
-	Button* WarlockButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.33f, 250, 250, "Warlock", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Warlock.png");
-	Button* WizardButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.65f, 190, 42, "Wizard", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
-	Button* SorcerorButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.65f, 190, 42, "Sorceror", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
-	Button* RangerButton = new Button(Graphics::SCREEN_WIDTH * 0.35f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Ranger", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* FighterButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.15f, 200, 200, "Fighter", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Fighter.png");
+	Button* PaladinButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.15f, 200, 200, "Paladin", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Paladin.png");
+	Button* DruidButton = new Button(Graphics::SCREEN_WIDTH * 0.235f, Graphics::SCREEN_HEIGHT * 0.35f, 200, 200, "Druid", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Druid.png");
+	Button* WarlockButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.35f, 200, 200, "Warlock", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Warlock.png");
+	Button* WizardButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.55f, 200, 200, "Wizard", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Wizard.png");
+	Button* SorcerorButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.55f, 200, 200, "Sorceror", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Sorceror.png");
+	Button* RangerButton = new Button(Graphics::SCREEN_WIDTH * 0.375f, Graphics::SCREEN_HEIGHT * 0.65f, 200, 200, "Ranger", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Ranger.png");
 	Button* BackButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Back", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* ConfirmButton = new Button(Graphics::SCREEN_WIDTH * 0.45f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Confirm", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	// Add buttons to the mButtons list
@@ -422,6 +422,7 @@ void CharacterCreatorScreen::Update() {
 					mPlayer->calculateHealth();
 					mPlayer->FullHeal();
 					CharacterConfirm();
+					mHP->Update();
 				}
 				else if (btn.label == "Confirm") {
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Tavern);

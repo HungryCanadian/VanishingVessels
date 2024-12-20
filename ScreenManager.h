@@ -5,13 +5,14 @@
 #include "InventoryScreen.h"
 #include "Tavern.h"
 #include "Blacksmith.h"
+#include "Merchant.h"
 
 class ScreenManager {
 public:
 	static ScreenManager* Instance();
 	static void Release();
 	enum Screens { Start, Play, NewCharacter, Inventory, Blacksmith,
-					Tavern, Merchant};
+					Tavern, Merchant, Back};
 
 	void Update();
 	void Render();
@@ -23,12 +24,14 @@ public:
 	InventoryScreen* mInventoryScreen;
 	TavernScreen* mTavern;
 	BlacksmithScreen* mBlacksmith;
+	MerchantScreen* mMerchant;
 private:
 	ScreenManager();
 	~ScreenManager();
 
 	
 	Screens mCurrentScreen;
+	Screens mPreviousScreen;
 
 	static ScreenManager* sInstance;
 

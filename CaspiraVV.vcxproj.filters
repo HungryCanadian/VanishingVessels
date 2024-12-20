@@ -141,6 +141,9 @@
     <ClCompile Include="Blacksmith.cpp">
       <Filter>Caspira\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Merchant.cpp">
+      <Filter>Caspira\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MathHelper.h">
@@ -243,6 +246,9 @@
       <Filter>Caspira\Header</Filter>
     </ClInclude>
     <ClInclude Include="Blacksmith.h">
+      <Filter>Caspira\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Merchant.h">
       <Filter>Caspira\Header</Filter>
     </ClInclude>
   </ItemGroup>

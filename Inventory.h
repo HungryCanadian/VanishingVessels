@@ -43,8 +43,8 @@ public:
     void RemoveItem();
     void ListGearItems() const;
     int GetItemQuantity();
-    void DecreaseQuantity(const string& itemName, int howMany);
-    void IncreaseQuantity(const string& itemName, int howMany);
+    void DecreaseQuantity(int howMany);
+    void SetItemQuantity(int howMany);
     vector<Inventory> PlayerInventory;
     vector<Inventory> MerchantInventory;
     vector<Inventory> BlacksmithItems;

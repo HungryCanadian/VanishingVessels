@@ -365,7 +365,7 @@ void TavernScreen::Update() {
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Inventory);
 				}
 				else if (btn.label == "Leave") {
-					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Blacksmith);
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Merchant);
 				}
 			}
 		}

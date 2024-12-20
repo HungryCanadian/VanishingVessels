@@ -16,7 +16,10 @@ void ScreenManager::Release() {
 }
 
 void ScreenManager::SetScreens(Screens screen) {
-	mCurrentScreen = screen;
+	if (screen != Screens::Back) {
+		mPreviousScreen = mCurrentScreen;  // Save the current screen before changing
+	}
+	mCurrentScreen = screen;  // Set the new screen
 }
 
 ScreenManager::ScreenManager() {
@@ -28,8 +31,10 @@ ScreenManager::ScreenManager() {
 	mInventoryScreen = new InventoryScreen();
 	mTavern = new TavernScreen();
 	mBlacksmith = new BlacksmithScreen();
+	mMerchant = new MerchantScreen();
 
 	mCurrentScreen = Start;
+	mPreviousScreen = Start;
 }
 
 ScreenManager::~ScreenManager() {
@@ -52,6 +57,9 @@ ScreenManager::~ScreenManager() {
 
 	delete mBlacksmith;
 	mBlacksmith = nullptr;
+
+	delete mMerchant;
+	mMerchant = nullptr;
 
 
 }
@@ -84,6 +92,43 @@ void ScreenManager::Update() {
 	case ScreenManager::Blacksmith:
 		mBlacksmith->Update();
 		break;
+	case ScreenManager::Merchant:
+		mMerchant->Update();
+		break;
+	case ScreenManager::Back:
+		// Switch to the previous screen
+		if (mPreviousScreen != Screens::Back) {  // Make sure we're not stuck in an invalid state
+			SetScreens(mPreviousScreen);  // Switch to the previous screen
+			// Now that we've set the screen, call the update method of that screen
+			switch (mPreviousScreen) {
+			case Screens::Start:
+				mStartScreen->Update();
+				break;
+			case Screens::Play:
+				mPlayScreen->Update();
+				break;
+			case Screens::NewCharacter:
+				mCharacterCreator->Update();
+				break;
+			case Screens::Inventory:
+				mInventoryScreen->Update();
+				break;
+			case Screens::Tavern:
+				mTavern->Update();
+				break;
+			case Screens::Blacksmith:
+				mBlacksmith->Update();
+				break;
+			case ScreenManager::Merchant:
+				mMerchant->Update();
+				break;
+			default:
+				std::cerr << "Unknown Screen Found! Please supply a valid Screen!\n";
+				break;
+			}
+			mPreviousScreen = Screens::Back;  // Prevent cycling back to the same screen
+		}
+		break;
 	default:
 		std::cerr << "Unknown Screen Found! please supply a valid Screen!\n";
 		break;
@@ -109,6 +154,43 @@ void ScreenManager::Render() {
 		break;
 	case ScreenManager::Blacksmith:
 		mBlacksmith->Render();
+		break;
+	case ScreenManager::Merchant:
+		mMerchant->Render();
+		break;
+	case ScreenManager::Back:
+		// Switch to the previous screen
+		if (mPreviousScreen != Screens::Back) {  // Make sure we're not stuck in an invalid state
+			SetScreens(mPreviousScreen);  // Switch to the previous screen
+			// Now that we've set the screen, call the update method of that screen
+			switch (mPreviousScreen) {
+			case Screens::Start:
+				mStartScreen->Render();
+				break;
+			case Screens::Play:
+				mPlayScreen->Render();
+				break;
+			case Screens::NewCharacter:
+				mCharacterCreator->Render();
+				break;
+			case Screens::Inventory:
+				mInventoryScreen->Render();
+				break;
+			case Screens::Tavern:
+				mTavern->Render();
+				break;
+			case Screens::Blacksmith:
+				mBlacksmith->Render();
+				break;
+			case ScreenManager::Merchant:
+				mMerchant->Render();
+				break;
+			default:
+				std::cerr << "Unknown Screen Found! Please supply a valid Screen!\n";
+				break;
+			}
+			mPreviousScreen = Screens::Back;  // Prevent cycling back to the same screen
+		}
 		break;
 	}
 }

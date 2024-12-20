@@ -52,6 +52,7 @@ public:
     void SubtractGold(int value);
 
     void FullHeal();
+    void Heal(int heal);
 
 
     // Singleton cleanup
@@ -67,11 +68,11 @@ private:
 
     // Player's internal attributes
     std::string mName;
-    int mHealth;
+    int mHealth=10;
     int mGold;
     int mLevel=1;
     int mDamage;
-    int mMaxHealth;
+    int mMaxHealth=10;
     int mExperience;
     int mExpToLevel;
     int mSpecialAttackTotal;

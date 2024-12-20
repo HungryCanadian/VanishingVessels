@@ -43,3 +43,7 @@ ItemType Inventory::GetType() const {
 void Inventory::AddItem() {
 
 }
+
+void Inventory::SetItemQuantity(int howMany) {
+    mQuantity = howMany;
+}

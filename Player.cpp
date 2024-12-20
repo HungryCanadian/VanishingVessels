@@ -22,7 +22,7 @@ Player::Player(std::string name, std::string characterRace,
     int expToLevel, int gold)
     : mName(name), mRace(characterRace), mCharClass(characterClass),
     mLevel(level), mExperience(experience), mExpToLevel(expToLevel),
-    mGold(gold), mHealth(100), mMaxHealth(100), mDamage(10),
+    mGold(gold), mHealth(10), mMaxHealth(10), mDamage(10),
     mSpecialAttackTotal(3), mUltimateAttackTotal(1) {
     // Constructor logic (e.g., apply bonuses, calculate health)
     std::cout << "Player created with race: " << mRace
@@ -185,6 +185,10 @@ int Player::GetHealth() {
 
 int Player::GetMaxHealth() {
     return mMaxHealth;
+}
+
+void Player::Heal(int heal) {
+    mHealth = mHealth + heal;
 }
 
 void Player::SetHealth(int health) {

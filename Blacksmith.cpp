@@ -276,10 +276,48 @@ void BlacksmithScreen::Update() {
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Tavern);
 				}
 				else if (btn.label == "Sword") {
-					// Handle Sword purchase
+					if (mPlayer->GetGold() >= 15) {
+						mPlayer->SubtractGold(15);
+						InventoryScreen inv;
+						std::vector<Inventory>& inventory = inv.GetPlayerInventory();
+						inventory.push_back(Inventory("Sword", Effect(0, 3, 0), 1, 15, false, ItemType::Weapon, false));
+					}
+					else {
+						// When the player doesn't have enough gold, show the broke texture
+						if (mBrokeTimer == 0.0f) {
+							mBroke->Visible(true); // Show the texture when first clicked
+						}
+						mBrokeTimer += mTimer->DeltaTime();
+						if (mBrokeTimer <= mBrokeDelay) {
+							mBroke->Visible(true);
+						}
+						if (mBrokeTimer >= mBrokeDelay) {
+							mBroke->Visible(false);
+							mBrokeTimer = 0.0f;
+						}
+					}
 				}
 				else if (btn.label == "Shield") {
-					// Handle Shield purchase
+					if (mPlayer->GetGold() >= 25) {
+						mPlayer->SubtractGold(25);
+						InventoryScreen inv;
+						std::vector<Inventory>& inventory = inv.GetPlayerInventory();
+						inventory.push_back(Inventory("Shield", Effect(0, 0, 0, 1), 1, 25, false, ItemType::Gear, false));
+					}
+					else {
+						// When the player doesn't have enough gold, show the broke texture
+						if (mBrokeTimer == 0.0f) {
+							mBroke->Visible(true); // Show the texture when first clicked
+						}
+						mBrokeTimer += mTimer->DeltaTime();
+						if (mBrokeTimer <= mBrokeDelay) {
+							mBroke->Visible(true);
+						}
+						if (mBrokeTimer >= mBrokeDelay) {
+							mBroke->Visible(false);
+							mBrokeTimer = 0.0f;
+						}
+					}
 				}
 				else if (btn.label == "Armor") {
 					if (mPlayer->GetGold() >= 100) {
@@ -296,17 +334,34 @@ void BlacksmithScreen::Update() {
 						mBrokeTimer += mTimer->DeltaTime();
 						if (mBrokeTimer <= mBrokeDelay) {
 							mBroke->Visible(true);
-							std::cout << "Texture visible, timer: " << mBrokeTimer << "\n";  // Debugging
 						}
 						if (mBrokeTimer >= mBrokeDelay) {
 							mBroke->Visible(false);
-							std::cout << "Texture hidden, timer: " << mBrokeTimer << "\n";  // Debugging
 							mBrokeTimer = 0.0f; 
 						}
 					}
 				}
 				else if (btn.label == "Crossbow") {
-					// Handle Crossbow purchase
+					if (mPlayer->GetGold() >= 20) {
+						mPlayer->SubtractGold(20);
+						InventoryScreen inv;
+						std::vector<Inventory>& inventory = inv.GetPlayerInventory();
+						inventory.push_back(Inventory("Crossbow", Effect(0, 2, 0), 1, 20, false, ItemType::Weapon, false));
+					}
+					else {
+						// When the player doesn't have enough gold, show the broke texture
+						if (mBrokeTimer == 0.0f) {
+							mBroke->Visible(true); // Show the texture when first clicked
+						}
+						mBrokeTimer += mTimer->DeltaTime();
+						if (mBrokeTimer <= mBrokeDelay) {
+							mBroke->Visible(true);
+						}
+						if (mBrokeTimer >= mBrokeDelay) {
+							mBroke->Visible(false);
+							mBrokeTimer = 0.0f;
+						}
+					}
 				}
 			}
 		}
