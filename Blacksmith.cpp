@@ -35,6 +35,11 @@ BlacksmithScreen::BlacksmithScreen() {
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
 
+	mLabel = new Texture("Blacksmith Shop", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel->Parent(this);
+	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
+	mLabel->Visible(true);
+
 	mTextLine1 = new Texture("What would you like to do?", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.67f);
 	mTextLine2 = new Texture("Welcome to Hooves and Steel!", "ToThePoint.ttf", 42, { 0,0,0 });
@@ -206,6 +211,9 @@ BlacksmithScreen::~BlacksmithScreen() {
 	delete mPaperOverlay;
 	mPaperOverlay = nullptr;
 
+	delete mLabel;
+	mLabel = nullptr;
+
 	delete mTextLine1;
 	mTextLine1 = nullptr;
 	delete mTextLine2;
@@ -250,6 +258,11 @@ void BlacksmithScreen::Update() {
 	SDL_GetMouseState(&mouseX, &mouseY);
 	bool mousePressed = SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(SDL_BUTTON_LEFT);
 
+	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
+	mSymbol->Scale(Vector2(0.1f, 0.1f));
+	mSymbol->Visible(true);
+
 	// Check button hover state
 	for (auto& btn : mButtons) {
 		btn.checkHover(mouseX, mouseY);
@@ -273,7 +286,7 @@ void BlacksmithScreen::Update() {
 					// Add logic for Browse if needed
 				}
 				else if (btn.label == "Leave") {
-					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Tavern);
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Town);
 				}
 				else if (btn.label == "Sword") {
 					if (mPlayer->GetGold() >= 15) {
@@ -383,6 +396,7 @@ void BlacksmithScreen::Render() {
 	mTopBar->Render();
 	mBottomBar->Render();
 	if (mSymbol->Visible()) mSymbol->Render();
+	if (mLabel->Visible()) mLabel->Render();
 	if (mTextLine1->Visible()) mTextLine1->Render();
 	if (mTextLine2->Visible()) mTextLine2->Render();
 	if (mTextLine3->Visible()) mTextLine3->Render();

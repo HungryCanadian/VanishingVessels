@@ -1,6 +1,5 @@
 #include "Tavern.h"
 #include "GameManager.h"
-#include "RaceData.h"
 
 
 TavernScreen::TavernScreen() {
@@ -38,6 +37,11 @@ TavernScreen::TavernScreen() {
 	mSymbol->Parent(this);
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
+
+	mLabel = new Texture("Tavern", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel->Parent(this);
+	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
+	mLabel->Visible(true);
 
 	mTextLine1 = new Texture("You wake up in your cozy bed at the tavern,", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
@@ -112,6 +116,10 @@ TavernScreen::TavernScreen() {
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
 	SDL_ShowCursor(SDL_DISABLE);  // Hide the default SDL cursor
 
+	Mix_VolumeMusic(10);
+	mAudio->PlayMusic("TavernTheme.wav", -1);
+	
+
 	SetupButtons();
 
 }
@@ -184,6 +192,8 @@ TavernScreen::~TavernScreen() {
 
 	delete mSymbol;
 	mSymbol = nullptr;
+	delete mLabel;
+	mLabel = nullptr;
 
 	delete mCursorTexture;
 	mCursorTexture = nullptr;
@@ -365,7 +375,7 @@ void TavernScreen::Update() {
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Inventory);
 				}
 				else if (btn.label == "Leave") {
-					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Merchant);
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Town);
 				}
 			}
 		}
@@ -381,6 +391,7 @@ void TavernScreen::Render() {
 	if (mTopBar->Visible()) mTopBar->Render();
 	if (mSymbol->Visible()) mSymbol->Render();
 	if (mBottomBar->Visible()) mBottomBar->Render();
+	if (mLabel->Visible()) mLabel->Render();
 
 	//First block of text 'waking up'
 	if (mTextLine1->Visible()) mTextLine1->Render();

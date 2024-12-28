@@ -6,13 +6,16 @@
 #include "Tavern.h"
 #include "Blacksmith.h"
 #include "Merchant.h"
+#include "Town.h"
+#include "EastRoad.h"
+#include "DockOutskirts.h"
 
 class ScreenManager {
 public:
 	static ScreenManager* Instance();
 	static void Release();
 	enum Screens { Start, Play, NewCharacter, Inventory, Blacksmith,
-					Tavern, Merchant, Back};
+					Tavern, Merchant, Back, Town, East, Outskirts, Docks, West, North};
 
 	void Update();
 	void Render();
@@ -25,6 +28,10 @@ public:
 	TavernScreen* mTavern;
 	BlacksmithScreen* mBlacksmith;
 	MerchantScreen* mMerchant;
+	TownScreen* mTown;
+	EastRoad* mEast;
+	DockOutskirts* mOutskirts;
+
 private:
 	ScreenManager();
 	~ScreenManager();

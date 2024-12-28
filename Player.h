@@ -3,7 +3,6 @@
 #include <vector>
 #include <string>
 #include "Race.h"
-#include "CharacterClass.h"
 
 class Player {
 public:
@@ -74,14 +73,14 @@ private:
     int mDamage;
     int mMaxHealth=10;
     int mExperience;
-    int mExpToLevel;
+    int mExpToLevel=100;
     int mSpecialAttackTotal;
     int mUltimateAttackTotal;
     int totalDamageReduction;
 
     //base Scores
     int mStrength;
-    int mConstitution;
+    int mConstitution=10;
     int mDexterity;
     int mIntellect;
     int mWisdom;
@@ -94,7 +93,7 @@ private:
     int mCharismaRaceBonus=0;
     int mStrengthBonus;
     int mDexterityBonus;
-    int mConstitutionBonus;
+    int mConstitutionBonus=0;
     int mIntellectBonus;
     int mWisdomBonus;
     int mCharismaBonus;

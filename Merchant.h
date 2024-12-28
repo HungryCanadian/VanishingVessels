@@ -26,6 +26,7 @@ private:
 	std::vector<Texture*> mTextLines;
 	Player* mPlayer;
 	Texture* mSymbol;
+	Texture* mLabel;
 
 	Texture* mTest;
 	Texture* mTextArea;

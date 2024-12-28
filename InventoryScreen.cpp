@@ -80,9 +80,14 @@ InventoryScreen::InventoryScreen() {
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
+	mLabel = new Texture("Inventory", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel->Parent(this);
+	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
+	mLabel->Visible(true);
+
 	mTextLine1 = new Texture("What would you like to do?", "ToThePoint.ttf", 42, {0,0,0});
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.67f);
-	mTextLine2 = new Texture("The islands, known for their lush forests and masterful shipbuilders,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine2 = new Texture("You don't have anymore!", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine3 = new Texture("thrived on exports of fine lumber and swift sailing ships.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
@@ -110,6 +115,9 @@ InventoryScreen::InventoryScreen() {
 	SetupButtons();
 	DisplayInventoryItem(PlayerInventory);
 
+	mFlashTimer = 0.0f;
+	mFlashDelay = 0.57f;
+
 }
 
 InventoryScreen::~InventoryScreen() {
@@ -127,6 +135,8 @@ InventoryScreen::~InventoryScreen() {
 	mTextArea = nullptr;
 	delete mPaperOverlay;
 	mPaperOverlay = nullptr;
+	delete mLabel;
+	mLabel = nullptr;
 
 	delete mTextLine1;
 	mTextLine1 = nullptr;
@@ -396,6 +406,8 @@ void InventoryScreen::Update() {
 							// Item found, increment the quantity
 							if (item.GetItemQuantity() == 0) {
 								std::cout << "You have no more!\n";
+								mTextLine2->Visible(true);
+								mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 							}
 							else {
 								item.SetItemQuantity(item.GetItemQuantity() - 1);
@@ -407,7 +419,6 @@ void InventoryScreen::Update() {
 					DisplayInventoryItem(PlayerInventory);
 				}
 				else if (btn.label == "Healing potion") {
-					std::cout << "Healing Potion Consumed\n";
 					// Accessing player inventory
 					InventoryScreen inv;
 					std::vector<Inventory>& inventory = inv.GetPlayerInventory();
@@ -416,6 +427,19 @@ void InventoryScreen::Update() {
 							// Item found, increment the quantity
 							if (item.GetItemQuantity() == 0) {
 								std::cout << "You have no more!\n";
+								mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.27f);
+								if (mFlashTimer == 0.0f) {
+									mTextLine2->Visible(true); // Show the texture when first clicked
+								}
+								mFlashTimer += mTimer->DeltaTime();
+								if (mFlashTimer <= mFlashDelay) {
+									mTextLine2->Visible(true);
+								}
+								if (mFlashTimer >= mFlashDelay) {
+									mTextLine2->Visible(false);
+									mFlashTimer = 0.0f;
+								}
+								
 							}
 							else {
 								item.SetItemQuantity(item.GetItemQuantity() - 1);
@@ -429,6 +453,12 @@ void InventoryScreen::Update() {
 			}
 		}
 	}
+	if (mFlashTimer > 0.0f && mFlashTimer < mFlashDelay) {
+		mFlashTimer += mTimer->DeltaTime(); // Increment timer on every frame
+		if (mFlashTimer >= mFlashDelay) {
+			mTextLine2->Visible(false);
+		}
+	}
 }
 
 
@@ -440,6 +470,7 @@ void InventoryScreen::Render() {
 	mBottomBar->Render();
 	mTextLine1->Render();
 	mSymbol->Render();
+	mLabel->Render();
 	
 
 	for (int i = 0; i < mTextLines.size(); i++) {

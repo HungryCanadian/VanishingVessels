@@ -33,6 +33,11 @@ PlayScreen::PlayScreen() {
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
 
+	mLabel = new Texture("Prologue", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel->Parent(this);
+	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
+	mLabel->Visible(true);
+
 	mTextLine1 = new Texture("In the shimmering waters of the Caspiran archipelago,", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine2 = new Texture("The islands, known for their lush forests and masterful shipbuilders,", "ToThePoint.ttf", 38, { 0,0,0 });
@@ -185,6 +190,7 @@ void PlayScreen::Render() {
 	mPaperOverlay->Render();
 	mTopBar->Render();
 	mBottomBar->Render();
+	if (mLabel->Visible()) mLabel->Render();
 	mTextLine1->Render();
 	mTextLine2->Render();
 	mTextLine3->Render();

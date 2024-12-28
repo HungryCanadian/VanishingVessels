@@ -1,6 +1,6 @@
 #include "CharacterCreator.h"
 #include "GameManager.h"
-#include "RaceData.h"
+
 
 
 CharacterCreatorScreen::CharacterCreatorScreen() {
@@ -37,6 +37,11 @@ CharacterCreatorScreen::CharacterCreatorScreen() {
 	mSymbol->Parent(this);
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
+
+	mLabel = new Texture("Character Creator", "ToThePoint.ttf", 76, { 53,33,0 });
+	mLabel->Parent(this);
+	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
+	mLabel->Visible(true);
 
 	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
@@ -81,7 +86,8 @@ CharacterCreatorScreen::CharacterCreatorScreen() {
 
 	mConfirmText = new Texture("", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });  // Text, font, size, color
 	mConfirmText->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
-	mHP = new Texture("Max Health: " + std::to_string(mPlayer->GetMaxHealth()), "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
+
+	mHP = new Texture("", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
 	mHP->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.57f);
 	mHP->Visible(false);
 
@@ -103,6 +109,8 @@ CharacterCreatorScreen::~CharacterCreatorScreen() {
 	mTextArea = nullptr;
 	delete mPaperOverlay;
 	mPaperOverlay = nullptr;
+	delete mLabel;
+	mLabel = nullptr;
 
 	delete mHumanText;
 	mHumanText = nullptr;
@@ -286,13 +294,13 @@ void CharacterCreatorScreen::SetupButtons() {
 	Button* dwarfButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.60f, 190, 42, "Dwarf", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* gnomeButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.65f, 190, 42, "Gnome", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* tieflingButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Tiefling", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
-	Button* FighterButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.15f, 200, 200, "Fighter", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Fighter.png");
-	Button* PaladinButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.15f, 200, 200, "Paladin", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Paladin.png");
-	Button* DruidButton = new Button(Graphics::SCREEN_WIDTH * 0.235f, Graphics::SCREEN_HEIGHT * 0.35f, 200, 200, "Druid", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Druid.png");
-	Button* WarlockButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.35f, 200, 200, "Warlock", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Warlock.png");
-	Button* WizardButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.55f, 200, 200, "Wizard", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Wizard.png");
-	Button* SorcerorButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.55f, 200, 200, "Sorceror", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Sorceror.png");
-	Button* RangerButton = new Button(Graphics::SCREEN_WIDTH * 0.375f, Graphics::SCREEN_HEIGHT * 0.65f, 200, 200, "Ranger", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Ranger.png");
+	Button* FighterButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.15f, 175, 175, "Fighter", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Fighter.png");
+	Button* PaladinButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.15f, 175, 175, "Paladin", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Paladin.png");
+	Button* DruidButton = new Button(Graphics::SCREEN_WIDTH * 0.235f, Graphics::SCREEN_HEIGHT * 0.35f, 175, 175, "Druid", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Druid.png");
+	Button* WarlockButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.35f, 175, 175, "Warlock", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Warlock.png");
+	Button* WizardButton = new Button(Graphics::SCREEN_WIDTH * 0.23f, Graphics::SCREEN_HEIGHT * 0.55f, 175, 175, "Wizard", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Wizard.png");
+	Button* SorcerorButton = new Button(Graphics::SCREEN_WIDTH * 0.53f, Graphics::SCREEN_HEIGHT * 0.55f, 175, 175, "Sorceror", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Sorceror.png");
+	Button* RangerButton = new Button(Graphics::SCREEN_WIDTH * 0.375f, Graphics::SCREEN_HEIGHT * 0.65f, 175, 175, "Ranger", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "Ranger.png");
 	Button* BackButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Back", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* ConfirmButton = new Button(Graphics::SCREEN_WIDTH * 0.45f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Confirm", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	// Add buttons to the mButtons list
@@ -334,6 +342,7 @@ void CharacterCreatorScreen::Update() {
 	for (auto& btn : mButtons) {
 		btn.checkHover(mouseX, mouseY);
 	}
+
 
 
 	// Handle mouse clicks on buttons
@@ -430,9 +439,6 @@ void CharacterCreatorScreen::Update() {
 			}
 		}
 	}
-	/*mHP = new Texture("Max Health: " + std::to_string(mPlayer->GetMaxHealth()), "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
-	mHP->Position(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.42f);
-	if (mHP->Visible()) mHP->Update();*/
 }
 
 
@@ -445,6 +451,8 @@ void CharacterCreatorScreen::Render() {
 	if (mTopBar->Visible()) mTopBar->Render();
 	if (mSymbol->Visible()) mSymbol->Render();
 	if (mBottomBar->Visible()) mBottomBar->Render();
+	if (mLabel->Visible()) mLabel->Render();
+
 	if (mHumanText->Visible()) mHumanText->Render();
 	if (mElfText->Visible()) mElfText->Render();
 	if (mDwarfText->Visible()) mDwarfText->Render();

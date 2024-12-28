@@ -59,6 +59,7 @@ private:
 
 
 	Texture* mSymbol;
+	Texture* mLabel;
 
 	Texture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;

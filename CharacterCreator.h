@@ -50,6 +50,7 @@ private:
 	Texture* mConfirmText;
 
 	Texture* mSymbol;
+	Texture* mLabel;
 
 	bool isChoosingRace;
 	bool isChoosingClass;

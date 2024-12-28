@@ -35,6 +35,11 @@ MerchantScreen::MerchantScreen() {
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
 
+    mLabel = new Texture("Merchant Shop", "ToThePoint.ttf", 80, { 53,33,0 });
+    mLabel->Parent(this);
+    mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
+    mLabel->Visible(true);
+
 	mTextLine1 = new Texture("What would you like to do?", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.67f);
 	mTextLine2 = new Texture("Welcome to Caspira's End Trading Post!", "ToThePoint.ttf", 42, { 0,0,0 });
@@ -67,7 +72,6 @@ MerchantScreen::MerchantScreen() {
 	mSymbol = new Texture(mPlayer->GetClass() + ".png");
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
-	mSymbol->Update();
 	mSymbol->Visible(true);
 
 	mBroke = new Texture("You can't afford this", "ToThePoint.ttf", 42, { 0,0,0 });
@@ -233,6 +237,9 @@ MerchantScreen::~MerchantScreen() {
 	mTextArea = nullptr;
 	delete mPaperOverlay;
 	mPaperOverlay = nullptr;
+    delete mLabel;
+    mLabel = nullptr;
+
 
 	delete mTextLine1;
 	mTextLine1 = nullptr;
@@ -291,6 +298,11 @@ void MerchantScreen::Update() {
     SDL_GetMouseState(&mouseX, &mouseY);
     bool mousePressed = SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(SDL_BUTTON_LEFT);
 
+    mSymbol = new Texture(mPlayer->GetClass() + ".png");
+    mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
+    mSymbol->Scale(Vector2(0.1f, 0.1f));
+    mSymbol->Visible(true);
+
     // Check button hover state
     for (auto& btn : mButtons) {
         btn.checkHover(mouseX, mouseY);
@@ -313,7 +325,7 @@ void MerchantScreen::Update() {
                     // Add logic for Browse if needed
                 }
                 else if (btn.label == "Leave") {
-                    ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Tavern);
+                    ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Town);
                 }
                 else if (btn.label == "Healing potion") {
                     std::cout << "Healing Potion Bought\n";
@@ -568,6 +580,12 @@ void MerchantScreen::Update() {
             }
         }
     }
+    if (mBrokeTimer > 0.0f && mBrokeTimer < mBrokeDelay) {
+        mBrokeTimer += mTimer->DeltaTime(); // Increment timer on every frame
+        if (mBrokeTimer >= mBrokeDelay) {
+            mBroke->Visible(false);
+        }
+    }
 }
 
 
@@ -578,6 +596,7 @@ void MerchantScreen::Render() {
 	mTopBar->Render();
 	mBottomBar->Render();
 	if (mSymbol->Visible()) mSymbol->Render();
+    if (mLabel->Visible()) mLabel->Render();
 	if (mTextLine1->Visible()) mTextLine1->Render();
 	if (mTextLine2->Visible()) mTextLine2->Render();
 	if (mTextLine3->Visible()) mTextLine3->Render();
@@ -591,6 +610,7 @@ void MerchantScreen::Render() {
 	if (mBroke->Visible()) mBroke->Render();
 	if (mSold->Visible()) mSold->Render();
 	if (mSoldOut->Visible()) mSoldOut->Render();
+    
 
 	for (int i = 0; i < mTextLines.size(); i++) {
 		if (mTextLines[i]->Visible()) mTextLines[i]->Render();

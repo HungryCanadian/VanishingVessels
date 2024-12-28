@@ -33,6 +33,7 @@ private:
 	TextInput* mName;
 
 	Texture* mSymbol;
+	Texture* mLabel;
 
 	Texture* mTextLine1;
 	Texture* mTextLine2;

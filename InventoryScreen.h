@@ -25,6 +25,8 @@ public:
 	void Render() override;
 
 	bool GameOver();
+	float mFlashTimer;
+	float mFlashDelay;
 
 private:
 	Timer* mTimer;
@@ -42,6 +44,7 @@ private:
 	Texture* mPaperOverlay;
 
 	Texture* mSymbol;
+	Texture* mLabel;
 
 	Texture* mTextLine1;
 	Texture* mTextLine2;

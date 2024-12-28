@@ -32,6 +32,8 @@ ScreenManager::ScreenManager() {
 	mTavern = new TavernScreen();
 	mBlacksmith = new BlacksmithScreen();
 	mMerchant = new MerchantScreen();
+	mTown = new TownScreen();
+	mEast = new EastRoad();
 
 	mCurrentScreen = Start;
 	mPreviousScreen = Start;
@@ -61,6 +63,11 @@ ScreenManager::~ScreenManager() {
 	delete mMerchant;
 	mMerchant = nullptr;
 
+	delete mTown;
+	mTown = nullptr;
+
+	delete mEast;
+	mEast = nullptr;
 
 }
 
@@ -95,6 +102,15 @@ void ScreenManager::Update() {
 	case ScreenManager::Merchant:
 		mMerchant->Update();
 		break;
+	case ScreenManager::Town:
+		mTown->Update();
+		break;
+	case ScreenManager::East:
+		mEast->Update();
+		break;
+	case ScreenManager::Outskirts:
+		mOutskirts->Update();
+		break;
 	case ScreenManager::Back:
 		// Switch to the previous screen
 		if (mPreviousScreen != Screens::Back) {  // Make sure we're not stuck in an invalid state
@@ -121,6 +137,15 @@ void ScreenManager::Update() {
 				break;
 			case ScreenManager::Merchant:
 				mMerchant->Update();
+				break;
+			case ScreenManager::Town:
+				mTown->Update();
+				break;
+			case ScreenManager::East:
+				mEast->Update();
+				break;
+			case ScreenManager::Outskirts:
+				mOutskirts->Update();
 				break;
 			default:
 				std::cerr << "Unknown Screen Found! Please supply a valid Screen!\n";
@@ -158,6 +183,15 @@ void ScreenManager::Render() {
 	case ScreenManager::Merchant:
 		mMerchant->Render();
 		break;
+	case ScreenManager::Town:
+		mTown->Render();
+		break;
+	case ScreenManager::East:
+		mEast->Render();
+		break;
+	case ScreenManager::Outskirts:
+		mOutskirts->Render();
+		break;
 	case ScreenManager::Back:
 		// Switch to the previous screen
 		if (mPreviousScreen != Screens::Back) {  // Make sure we're not stuck in an invalid state
@@ -184,6 +218,15 @@ void ScreenManager::Render() {
 				break;
 			case ScreenManager::Merchant:
 				mMerchant->Render();
+				break;
+			case ScreenManager::Town:
+				mTown->Render();
+				break;
+			case ScreenManager::East:
+				mEast->Render();
+				break;
+			case ScreenManager::Outskirts:
+				mOutskirts->Render();
 				break;
 			default:
 				std::cerr << "Unknown Screen Found! Please supply a valid Screen!\n";
