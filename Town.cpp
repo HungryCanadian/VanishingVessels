@@ -480,7 +480,8 @@ void TownScreen::Update() {
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::East);
 				}
 				else if (btn.label == "West") {
-					std::cout << "West Clicked!\n";
+					DefaultText();
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::West);
 				}
 				else if (btn.label == "North") {
 					std::cout << "North Clicked!\n";

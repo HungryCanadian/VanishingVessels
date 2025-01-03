@@ -1,8 +1,8 @@
-#include "EastRoad.h"
+#include "Graveyard.h"
 #include "GameManager.h"
 
 
-EastRoad::EastRoad() {
+Graveyard::Graveyard() {
 	mTimer = Timer::Instance();
 	mAudio = AudioManager::Instance();
 	mInputManager = InputManager::Instance();
@@ -38,7 +38,7 @@ EastRoad::EastRoad() {
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
-	mLabel = new Texture("East Road", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel = new Texture("Graveyard", "ToThePoint.ttf", 80, { 53,33,0 });
 	mLabel->Parent(this);
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
@@ -83,7 +83,7 @@ EastRoad::EastRoad() {
 
 }
 
-EastRoad::~EastRoad() {
+Graveyard::~Graveyard() {
 	mTimer = nullptr;
 	mAudio = nullptr;
 	mPlayer = nullptr;
@@ -131,7 +131,7 @@ EastRoad::~EastRoad() {
 }
 
 
-void EastRoad::DefaultText() {
+void Graveyard::DefaultText() {
 	mTextLine1->Visible(true);
 	mTextLine2->Visible(true);
 	mTextLine3->Visible(true);
@@ -153,13 +153,13 @@ void EastRoad::DefaultText() {
 
 }
 
-void EastRoad::SetupButtons() {
+void Graveyard::SetupButtons() {
 	Button* BackButton = new Button(Graphics::SCREEN_WIDTH * 0.27f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Back", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* QuitButton = new Button(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Quit", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* InvestigateButton = new Button(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Investigate", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* InventoryButton = new Button(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Inventory", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
-	Button* OutskirtsButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Dock Outskirts", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
-	Button* TownButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Town", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* GraveyardButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Graveyard", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* AncestorButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Hall of Ancestors", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 
 
 
@@ -168,15 +168,15 @@ void EastRoad::SetupButtons() {
 	mButtons.push_back(*QuitButton);
 	mButtons.push_back(*InvestigateButton);
 	mButtons.push_back(*InventoryButton);
-	mButtons.push_back(*OutskirtsButton);
-	mButtons.push_back(*TownButton);
+	mButtons.push_back(*GraveyardButton);
+	mButtons.push_back(*AncestorButton);
 
 
 
 }
 
 
-void EastRoad::Update() {
+void Graveyard::Update() {
 	int mouseX, mouseY;
 	SDL_GetMouseState(&mouseX, &mouseY);
 
@@ -202,19 +202,19 @@ void EastRoad::Update() {
 
 				}
 				else if (btn.label == "Investigate") {
-					
+
 				}
 				else if (btn.label == "Inventory") {
 					DefaultText();
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Inventory);
 				}
-				else if (btn.label == "Dock Outskirts") {
+				else if (btn.label == "West Road") {
 					DefaultText();
-					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Outskirts);
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::West);
 				}
-				else if (btn.label == "Town") {
+				else if (btn.label == "Hall of Ancestors") {
 					DefaultText();
-					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Town);
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Ancestors);
 				}
 			}
 		}
@@ -223,7 +223,7 @@ void EastRoad::Update() {
 
 
 
-void EastRoad::Render() {
+void Graveyard::Render() {
 	if (mTest->Visible()) mTest->Render();
 	if (mTextArea->Visible()) mTextArea->Render();
 	if (mPaperOverlay->Visible()) mPaperOverlay->Render();

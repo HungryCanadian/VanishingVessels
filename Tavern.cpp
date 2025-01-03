@@ -354,22 +354,21 @@ void TavernScreen::Update() {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
 				if (btn.label == "Back") {
-					TavernScreen::DefaultText();
+					DefaultText();
 				}
 				else if (btn.label == "Quit") {
 					GameManager::Instance()->QuitGame();
 
 				}
 				else if (btn.label == "Investigate") {
-					TavernScreen::Description();
+					Description();
 				}
 				else if (btn.label == "Rest") {
-					TavernScreen::Rest();
+					Rest();
 				}
 				else if (btn.label == "Confirm") {
 					mPlayer->FullHeal();
-					std::cout << "Player Healed\n";
-					TavernScreen::DefaultText();
+					DefaultText();
 				}
 				else if (btn.label == "Inventory") {
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Inventory);

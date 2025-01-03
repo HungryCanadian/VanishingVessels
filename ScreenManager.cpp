@@ -34,6 +34,11 @@ ScreenManager::ScreenManager() {
 	mMerchant = new MerchantScreen();
 	mTown = new TownScreen();
 	mEast = new EastRoad();
+	mOutskirts = new DockOutskirts();
+	mDocks = new DockScreen();
+	mWest = new WestRoad();
+	mGrave = new Graveyard();
+	mAncestors = new HallOfAncestors();
 
 	mCurrentScreen = Start;
 	mPreviousScreen = Start;
@@ -69,6 +74,20 @@ ScreenManager::~ScreenManager() {
 	delete mEast;
 	mEast = nullptr;
 
+	delete mOutskirts;
+	mOutskirts = nullptr;
+
+	delete mDocks;
+	mDocks = nullptr;
+
+	delete mWest;
+	mWest = nullptr;
+
+	delete mGrave;
+	mGrave = nullptr;
+
+	delete mAncestors;
+	mAncestors = nullptr;
 }
 
 void ScreenManager::Update() {
@@ -111,6 +130,18 @@ void ScreenManager::Update() {
 	case ScreenManager::Outskirts:
 		mOutskirts->Update();
 		break;
+	case ScreenManager::Docks:
+		mDocks->Update();
+		break;
+	case ScreenManager::West:
+		mWest->Update();
+		break;
+	case ScreenManager::Grave:
+		mGrave->Update();
+		break;
+	case ScreenManager::Ancestors:
+		mAncestors->Update();
+		break;
 	case ScreenManager::Back:
 		// Switch to the previous screen
 		if (mPreviousScreen != Screens::Back) {  // Make sure we're not stuck in an invalid state
@@ -146,6 +177,18 @@ void ScreenManager::Update() {
 				break;
 			case ScreenManager::Outskirts:
 				mOutskirts->Update();
+				break;
+			case ScreenManager::Docks:
+				mDocks->Update();
+				break;
+			case ScreenManager::West:
+				mWest->Update();
+				break;
+			case ScreenManager::Grave:
+				mGrave->Update();
+				break;
+			case ScreenManager::Ancestors:
+				mAncestors->Update();
 				break;
 			default:
 				std::cerr << "Unknown Screen Found! Please supply a valid Screen!\n";
@@ -192,6 +235,18 @@ void ScreenManager::Render() {
 	case ScreenManager::Outskirts:
 		mOutskirts->Render();
 		break;
+	case ScreenManager::Docks:
+		mDocks->Render();
+		break;
+	case ScreenManager::West:
+		mWest->Render();
+		break;
+	case ScreenManager::Grave:
+		mGrave->Render();
+		break;
+	case ScreenManager::Ancestors:
+		mAncestors->Render();
+		break;
 	case ScreenManager::Back:
 		// Switch to the previous screen
 		if (mPreviousScreen != Screens::Back) {  // Make sure we're not stuck in an invalid state
@@ -227,6 +282,18 @@ void ScreenManager::Render() {
 				break;
 			case ScreenManager::Outskirts:
 				mOutskirts->Render();
+				break;
+			case ScreenManager::Docks:
+				mDocks->Render();
+				break;
+			case ScreenManager::West:
+				mWest->Render();
+				break;
+			case ScreenManager::Grave:
+				mGrave->Render();
+				break;
+			case ScreenManager::Ancestors:
+				mAncestors->Render();
 				break;
 			default:
 				std::cerr << "Unknown Screen Found! Please supply a valid Screen!\n";

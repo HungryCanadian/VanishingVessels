@@ -43,10 +43,10 @@ DockOutskirts::DockOutskirts() {
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
 
-	mTextLine1 = new Texture("The atmosphere shifts as the road leads deeper into the neighborhood.", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine1 = new Texture("The atmosphere shifts as the road leads deeper into the neighborhood.", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine1->Visible(true);
-	mTextLine2 = new Texture("Parents linger on porches, their expressions sour and grumpy as they cast", "ToThePoint.ttf", 40, { 0,0,0 });
+	mTextLine2 = new Texture("Parents linger on porches, their expressions sour and grumpy as they cast", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine2->Visible(true);
 	mTextLine3 = new Texture("wary glances at passersby. Their furrowed brows and crossed arms paint ", "ToThePoint.ttf", 38, { 0,0,0 });
@@ -58,19 +58,19 @@ DockOutskirts::DockOutskirts() {
 	mTextLine5 = new Texture("children. Dilapidated houses line the street, their paint peeling", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine5->Visible(true);
-	mTextLine6 = new Texture("and windows cracked, but the resilience of life persists. In this ", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine6 = new Texture("and windows cracked, but the resilience of life persists. In this ", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
 	mTextLine6->Visible(true);
-	mTextLine7 = new Texture("juxtaposition, the road serves as a boundary between the carefree", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine7 = new Texture("juxtaposition, the road serves as a boundary between the carefree", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine7->Visible(true);
-	mTextLine8 = new Texture("laughter of youth and the weary burdens of adulthood, a winding", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine8 = new Texture("laughter of youth and the weary burdens of adulthood, a winding", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
 	mTextLine8->Visible(true);
-	mTextLine9 = new Texture("path that reflects the complexities of life in a community", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine9 = new Texture("path that reflects the complexities of life in a community", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 	mTextLine9->Visible(true);
-	mTextLine10 = new Texture("striving to endure amid its struggles.", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine10 = new Texture("striving to endure amid its struggles.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mTextLine10->Visible(true);
 
@@ -132,16 +132,16 @@ DockOutskirts::~DockOutskirts() {
 
 
 void DockOutskirts::DefaultText() {
-	mTextLine1->Visible(false);
-	mTextLine2->Visible(false);
-	mTextLine3->Visible(false);
-	mTextLine4->Visible(false);
-	mTextLine5->Visible(false);
-	mTextLine6->Visible(false);
-	mTextLine7->Visible(false);
-	mTextLine8->Visible(false);
-	mTextLine9->Visible(false);
-	mTextLine10->Visible(false);
+	mTextLine1->Visible(true);
+	mTextLine2->Visible(true);
+	mTextLine3->Visible(true);
+	mTextLine4->Visible(true);
+	mTextLine5->Visible(true);
+	mTextLine6->Visible(true);
+	mTextLine7->Visible(true);
+	mTextLine8->Visible(true);
+	mTextLine9->Visible(true);
+	mTextLine10->Visible(true);
 
 
 	mButtons[0].Visible(true);
@@ -205,12 +205,15 @@ void DockOutskirts::Update() {
 
 				}
 				else if (btn.label == "Inventory") {
+					DefaultText();
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Inventory);
 				}
 				else if (btn.label == "East Road") {
+					DefaultText();
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::East);
 				}
 				else if (btn.label == "Docks") {
+					DefaultText();
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Docks);
 				}
 			}
