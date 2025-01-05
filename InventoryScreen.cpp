@@ -381,19 +381,78 @@ void InventoryScreen::Update() {
 					DisplayEquippableItems(PlayerInventory);
 				}
 				else if (btn.label == "Sword") {
-					std::cout << "Toggling Sword Equip\n";
+					for (auto& item : BlacksmithShop) {
+						if (item.mName == "Sword") {
+							if (item.mEquipped) {
+								item.mEquipped = false;
+								int damage = item.mEffect.damage;
+								mPlayer->Attack(-damage);
+							}
+							else {
+								item.mEquipped = true;
+								int damage = item.mEffect.damage;
+								mPlayer->Attack(damage);
+							}
+							break;
+						}
+					}					
 					DisplayInventoryItem(PlayerInventory);
 				}
 				else if (btn.label == "Crossbow") {
-					std::cout << "Toggling Crossbow Equip\n";
+					for (auto& item : BlacksmithShop) {
+						if (item.mName == "Crossbow") {
+							if (item.mEquipped) {
+								item.mEquipped = false;
+								int damage = item.mEffect.damage;
+								mPlayer->Attack(-damage);
+							}
+							else {
+								item.mEquipped = true;
+								int damage = item.mEffect.damage;
+								mPlayer->Attack(damage);
+							}
+							break;
+						}
+					}
 					DisplayInventoryItem(PlayerInventory);
 				}
 				else if (btn.label == "Armor") {
-					std::cout << "Toggling Armor Equip\n";
+					for (auto& item : BlacksmithShop) {
+						if (item.mName == "Armor") {
+							if (item.mEquipped) {
+								item.mEquipped = false;
+								int damageReduction = item.mEffect.damageReduction;
+								mPlayer->RemoveDamageReduction(damageReduction);
+							}
+							else {
+								item.mEquipped = true;
+								int damageReduction = item.mEffect.damageReduction;
+								mPlayer->AddDamageReduction(damageReduction);
+							}
+							break;
+						}
+					}
 					DisplayInventoryItem(PlayerInventory);
 				}
 				else if (btn.label == "Shield") {
-					std::cout << "Toggling Shield Equip\n";
+					for (auto& item : BlacksmithShop) {
+						if (item.mName == "Shield") {
+							// Check if the shield is already equipped
+							if (item.mEquipped) {
+								// If equipped, unequip it
+								item.mEquipped = false;
+								int damageReduction = item.mEffect.damageReduction;
+								mPlayer->RemoveDamageReduction(damageReduction);
+							}
+							else {
+								// If not equipped, equip it
+								item.mEquipped = true;
+								int damageReduction = item.mEffect.damageReduction;
+								mPlayer->AddDamageReduction(damageReduction);
+							}
+							break; 
+						}
+					}
 					DisplayInventoryItem(PlayerInventory);
 				}
 				else if (btn.label == "Rations") {

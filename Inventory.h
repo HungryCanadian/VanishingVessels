@@ -66,11 +66,7 @@ public:
     void RunGeneralStore(Player* player); //run the general store 
     int SellGeneralItem(Player* player, int index); //sell the general items  
     int PurchaseEquipItem(Player* player, int index); //purchase the equipment items 
-    int PurchaseGeneralItem(Player* player, int index); //purchase the general items    
-
-private:
-    Inventory() = default;
-    static Inventory* sInstance;
+    int PurchaseGeneralItem(Player* player, int index); //purchase the general items 
 
     string mName;
     Effect mEffect;
@@ -80,5 +76,18 @@ private:
     bool mEquipped;
     bool mEquipment;
     ItemType mType;
+
+private:
+    Inventory() = default;
+    static Inventory* sInstance;
+
+    /*string mName;
+    Effect mEffect;
+    int mQuantity;
+    int mValue;
+    bool mConsumable;
+    bool mEquipped;
+    bool mEquipment;
+    ItemType mType;*/
 
 };

@@ -129,14 +129,22 @@ void Player::AddDamageReduction(int amount) {
     totalDamageReduction += amount;
 }
 
+int Player::GetDamageReduction() {
+    return totalDamageReduction;
+}
+
 int Player::Attack() {
     return mAttack;
+}
+
+void Player::Attack(int value) {
+    mAttack = mAttack + value;
 }
 
 void Player::RemoveDamageReduction(int amount) {
     totalDamageReduction -= amount;
     if (totalDamageReduction < 0) {
-        totalDamageReduction = 0; // make sure you can't take extra damage anymore
+        totalDamageReduction = 0; // make sure you can't take extra damage
     }
 }
 

@@ -75,10 +75,10 @@ CombatScreen::CombatScreen() {
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine7->Visible(false);
 	mTextLine8 = new Texture("LEVEL UP!", "ToThePoint.ttf", 36, { 0,0,0 });
-	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.35f);
+	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.45f);
 	mTextLine8->Visible(false);
 	mTextLine9 = new Texture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, {0,0,0});
-	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.38f);
+	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.48f);
 	mTextLine9->Visible(false);
 	mTextLine10 = new Texture("You Hit them for " + mPlayer->Attack(), "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
@@ -279,8 +279,13 @@ void CombatScreen::GameOver() {
 
 void CombatScreen::EnemyTurn() {
 	if (mCurrentEnemy.IsAlive()) {
-		int damage = mCurrentEnemy.Attack(); // Enemy attacks the player
-		mPlayer->TakeDamage(damage); // Player takes damage
+		int enemyDamage = mCurrentEnemy.Attack(); // Enemy attacks the player
+		int damageReduction = mPlayer->GetDamageReduction();
+		int takendamage = enemyDamage - damageReduction;
+		if (takendamage <= 0) {
+			takendamage = 0;
+		}
+		mPlayer->TakeDamage(takendamage); // Player takes damage
 
 		// Update player's HP on the screen
 		mTextLine2->SetText("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 }, false);
@@ -355,7 +360,7 @@ void CombatScreen::Update() {
 	if (mTextLine5->Visible()) mTextLine5 = new Texture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	if (mTextLine9->Visible()) mTextLine9 = new Texture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, { 0,0,0 });
-	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.38f);
+	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.48f);
 	if (mTextLine10->Visible()) mTextLine10->Update();
 	if (mTextLine11->Visible()) mTextLine11->Update();
 

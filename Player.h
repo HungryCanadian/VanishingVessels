@@ -43,6 +43,7 @@ public:
     int GetIntelligenceBonus();
     int GetWisdomBonus();
     int GetCharismaBonus();
+    int GetDamageReduction();
     void RemoveDamageReduction(int amount);
     void AddDamageReduction(int amount);
     int GetGold();
@@ -54,6 +55,7 @@ public:
     void TakeDamage(int value);
     bool IsAlive();
     int Attack();
+    void Attack(int damage);
 
     void FullHeal();
     void Heal(int heal);
