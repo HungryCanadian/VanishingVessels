@@ -43,34 +43,34 @@ HallOfAncestors::HallOfAncestors() {
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
 
-	mTextLine1 = new Texture("The road leading out of town twists and bends like a lazy river,", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine1 = new Texture("The interior of the Hall of Ancestors exudes an air of faded grandeur,", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine1->Visible(true);
-	mTextLine2 = new Texture("its uneven cobblestones giving way to patches of grass that peek", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine2 = new Texture("where time seems to stand still amidst the encroaching shadows.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine2->Visible(true);
-	mTextLine3 = new Texture("through the cracks. Wildflowers bloom haphazardly along the edges,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine3 = new Texture("Tall stone columns, once polished and adorned with intricate", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
 	mTextLine3->Visible(true);
-	mTextLine4 = new Texture("their vibrant colors a stark contrast to the drab surroundings.", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine4 = new Texture("carvings, now bear the scars of neglect, their surfaces rough and chipped.", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine4->Visible(true);
-	mTextLine5 = new Texture("As the path meanders toward the rundown neighborhood,", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine5 = new Texture("Dim light filters through narrow, arched windows, casting an ethereal glow", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine5->Visible(true);
-	mTextLine6 = new Texture("the laughter of children echoes like a joyful melody,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine6 = new Texture("that dances across the cold stone floor, illuminating the dust motes that", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
 	mTextLine6->Visible(true);
-	mTextLine7 = new Texture("their playful shouts mingling with the rustling leaves overhead.", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine7 = new Texture("hang suspended in the air. The walls are lined with ornate niches,", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine7->Visible(true);
-	mTextLine8 = new Texture("They race along the road, kicking up dust and weaving through the tall grass,", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine8 = new Texture("each housing a stone sarcophagus that tells the story of those interred", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
 	mTextLine8->Visible(true);
-	mTextLine9 = new Texture("their carefree spirits a reminder of the innocence that flourishes even in", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine9 = new Texture("within; wealthy merchants, valiant heroes, and wise leaders, each engraved ", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 	mTextLine9->Visible(true);
-	mTextLine10 = new Texture("less-than-ideal circumstances.", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine10 = new Texture("with symbols of their deeds and legacies.", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mTextLine10->Visible(true);
 
@@ -120,6 +120,8 @@ HallOfAncestors::~HallOfAncestors() {
 	mTextLine8 = nullptr;
 	delete mTextLine9;
 	mTextLine9 = nullptr;
+	delete mTextLine10;
+	mTextLine10 = nullptr;
 
 	delete mSymbol;
 	mSymbol = nullptr;
@@ -149,7 +151,6 @@ void HallOfAncestors::DefaultText() {
 	mButtons[2].Visible(true);
 	mButtons[3].Visible(true);
 	mButtons[4].Visible(true);
-	mButtons[5].Visible(true);
 
 }
 

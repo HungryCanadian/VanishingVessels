@@ -1,48 +1,45 @@
 #pragma once
+#include <cstdlib>
 #include "Level.h"
-#include "Scoreboard.h"
-#include "AnimatedTexture.h"
 #include "Button.h"
-#include "Inventory.h"
-
+#include "Player.h"
+#include "Enemy.h"
 
 using namespace SDLFramework;
 
-class InventoryScreen : public GameEntity {
+class CombatScreen : public GameEntity {
 public:
-	InventoryScreen();
-	~InventoryScreen();
+	CombatScreen();
+	~CombatScreen();
 
 	void SetupButtons();
-	void DisplayInventoryItem(std::vector<Inventory> inventory);
-	void DisplayConsumableItems(std::vector<Inventory> inventory);
-	void DisplayEquippableItems(std::vector<Inventory> inventory);
-	std::vector<Inventory>& GetMerchantInventory();
-	std::vector<Inventory>& GetBlacksmithInventory();
-	std::vector<Inventory>& GetPlayerInventory();
+	void DefaultText();
+	void Attack();
+	void UseItem();
+	void Run();
+	void Victory();
+	void GameOver();
+	void EnemyTurn();
+	void SpecialMove();
+	Enemy GetRandomEnemy();
 
 	void Update() override;
 	void Render() override;
-
-	float mFlashTimer;
-	float mFlashDelay;
 
 private:
 	Timer* mTimer;
 	AudioManager* mAudio;
 	InputManager* mInputManager;
-	Inventory* mInventory;
 	std::vector<Button> mButtons;
-	std::vector<Texture*> mTextLines;
 	Player* mPlayer;
+	Enemy mCurrentEnemy;
+
 
 	Texture* mTest;
 	Texture* mTextArea;
 	Texture* mTopBar;
 	Texture* mBottomBar;
 	Texture* mPaperOverlay;
-
-	Texture* mSymbol;
 	Texture* mLabel;
 
 	Texture* mTextLine1;
@@ -54,11 +51,13 @@ private:
 	Texture* mTextLine7;
 	Texture* mTextLine8;
 	Texture* mTextLine9;
+	Texture* mTextLine10;
+	Texture* mTextLine11;
 
+	Texture* mSymbol;
 
 	Texture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;
 
-	Level* mLevel;
-
 };
+

@@ -104,9 +104,33 @@ int Player::GetGold() {
 void Player::SubtractGold(int value) {
     mGold = mGold - value;
 }
+void Player::AddGold(int value) {
+    mGold = mGold + value;
+}
+void Player::AddEXP(int value) {
+    mExperience = mExperience + value;
+    if (mExperience >= mExpToLevel) {
+        LevelUp();
+    }
+}
+void Player::LevelUp() {
+    mLevel++;
+    mExperience = 0;
+    mExpToLevel *= 2;
+    calculateHealth();
+    mAttack += 1;
+    FullHeal();
+}
+int Player::GetLevel() {
+    return mLevel;
+}
 
 void Player::AddDamageReduction(int amount) {
     totalDamageReduction += amount;
+}
+
+int Player::Attack() {
+    return mAttack;
 }
 
 void Player::RemoveDamageReduction(int amount) {
@@ -116,6 +140,16 @@ void Player::RemoveDamageReduction(int amount) {
     }
 }
 
+bool Player::IsAlive() {
+    return mHealth > 0;
+}
+
+void Player::TakeDamage(int damage) {
+    mHealth -= damage;
+    if (mHealth < 0) {
+        mHealth = 0; // Ensure health does not go below zero
+    }
+}
 
 void Player::RaceBonuses() {
     if (mRace == "Human") {
@@ -188,6 +222,9 @@ int Player::GetMaxHealth() {
 
 void Player::Heal(int heal) {
     mHealth = mHealth + heal;
+    if (mHealth >= mMaxHealth) {
+        mHealth = mMaxHealth;
+    }
 }
 
 void Player::SetHealth(int health) {

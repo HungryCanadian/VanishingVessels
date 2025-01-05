@@ -1,48 +1,35 @@
 #pragma once
 #include "Level.h"
-#include "Scoreboard.h"
-#include "AnimatedTexture.h"
 #include "Button.h"
-#include "Inventory.h"
-
+#include "Player.h"
 
 using namespace SDLFramework;
 
-class InventoryScreen : public GameEntity {
+class Lumberyard : public GameEntity {
 public:
-	InventoryScreen();
-	~InventoryScreen();
+	Lumberyard();
+	~Lumberyard();
 
 	void SetupButtons();
-	void DisplayInventoryItem(std::vector<Inventory> inventory);
-	void DisplayConsumableItems(std::vector<Inventory> inventory);
-	void DisplayEquippableItems(std::vector<Inventory> inventory);
-	std::vector<Inventory>& GetMerchantInventory();
-	std::vector<Inventory>& GetBlacksmithInventory();
-	std::vector<Inventory>& GetPlayerInventory();
+	void DefaultText();
+
 
 	void Update() override;
 	void Render() override;
-
-	float mFlashTimer;
-	float mFlashDelay;
 
 private:
 	Timer* mTimer;
 	AudioManager* mAudio;
 	InputManager* mInputManager;
-	Inventory* mInventory;
 	std::vector<Button> mButtons;
-	std::vector<Texture*> mTextLines;
 	Player* mPlayer;
+	bool mFirstVisit;
 
 	Texture* mTest;
 	Texture* mTextArea;
 	Texture* mTopBar;
 	Texture* mBottomBar;
 	Texture* mPaperOverlay;
-
-	Texture* mSymbol;
 	Texture* mLabel;
 
 	Texture* mTextLine1;
@@ -54,11 +41,11 @@ private:
 	Texture* mTextLine7;
 	Texture* mTextLine8;
 	Texture* mTextLine9;
+	Texture* mTextLine10;
 
+	Texture* mSymbol;
 
 	Texture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;
-
-	Level* mLevel;
 
 };

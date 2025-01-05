@@ -162,6 +162,21 @@
     <ClCompile Include="Ancestors.cpp">
       <Filter>Caspira\Source</Filter>
     </ClCompile>
+    <ClCompile Include="NorthRoad.cpp">
+      <Filter>Caspira\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Lumberyard.cpp">
+      <Filter>Caspira\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Heartwood.cpp">
+      <Filter>Caspira\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatScreen.cpp">
+      <Filter>Caspira\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Caspira\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MathHelper.h">
@@ -282,6 +297,21 @@
       <Filter>Caspira\Header</Filter>
     </ClInclude>
     <ClInclude Include="Ancestors.h">
+      <Filter>Caspira\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="NorthRoad.h">
+      <Filter>Caspira\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Lumberyard.h">
+      <Filter>Caspira\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Heartwood.h">
+      <Filter>Caspira\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatScreen.h">
+      <Filter>Caspira\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
       <Filter>Caspira\Header</Filter>
     </ClInclude>
   </ItemGroup>

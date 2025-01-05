@@ -6,14 +6,12 @@
 
 class Player {
 public:
-    // Singleton Instance method with default parameter values
     static Player* Instance(std::string name = "test",
         std::string characterRace = "Unknown",
         std::string characterClass = "Civilian",
         int level = 1, int experience = 0,
         int expToLevel = 100, int gold = 150);
 
-    // Player's ability scores, bonuses, and stats
 
     // Getter and Setter for Race
     std::string GetRace();
@@ -49,6 +47,13 @@ public:
     void AddDamageReduction(int amount);
     int GetGold();
     void SubtractGold(int value);
+    void AddGold(int value);
+    void AddEXP(int value);
+    void LevelUp();
+    int GetLevel();
+    void TakeDamage(int value);
+    bool IsAlive();
+    int Attack();
 
     void FullHeal();
     void Heal(int heal);
@@ -74,9 +79,10 @@ private:
     int mMaxHealth=10;
     int mExperience;
     int mExpToLevel=100;
-    int mSpecialAttackTotal;
-    int mUltimateAttackTotal;
-    int totalDamageReduction;
+    int mSpecialAttackTotal = 3;
+    int mUltimateAttackTotal = 1;
+    int totalDamageReduction = 0;
+    int mAttack = 3;
 
     //base Scores
     int mStrength;

@@ -120,6 +120,8 @@ DockOutskirts::~DockOutskirts() {
 	mTextLine8 = nullptr;
 	delete mTextLine9;
 	mTextLine9 = nullptr;
+	delete mTextLine10;
+	mTextLine10 = nullptr;
 
 	delete mSymbol;
 	mSymbol = nullptr;

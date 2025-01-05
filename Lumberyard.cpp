@@ -1,8 +1,8 @@
-#include "WestRoad.h"
+#include "Lumberyard.h"
 #include "GameManager.h"
 
 
-WestRoad::WestRoad() {
+Lumberyard::Lumberyard() {
 	mTimer = Timer::Instance();
 	mAudio = AudioManager::Instance();
 	mInputManager = InputManager::Instance();
@@ -38,39 +38,39 @@ WestRoad::WestRoad() {
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
-	mLabel = new Texture("West Road", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel = new Texture("Lumberyard", "ToThePoint.ttf", 80, { 53,33,0 });
 	mLabel->Parent(this);
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
 
-	mTextLine1 = new Texture("The road begins at the edge of the quaint wooden town, where the", "ToThePoint.ttf", 40, { 0,0,0 });
+	mTextLine1 = new Texture("Here the sounds of axes and saws echo through the air. Stacks of timber", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine1->Visible(true);
-	mTextLine2 = new Texture("last remnants of civilization fade into the wild. Weathered cobblestones,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine2 = new Texture("line the rugged path, their fresh scent mingling with the earthy aroma of", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine2->Visible(true);
-	mTextLine3 = new Texture("slick with moss and littered with fallen leaves, peek through", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine3 = new Texture("sawdust. Workers move with purpose among the trees, their muscles flexing", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
 	mTextLine3->Visible(true);
-	mTextLine4 = new Texture("the thick underbrush that encroaches upon the path. Gnarled roots", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine4 = new Texture("as they fell the mighty oaks and pines that have stood for centuries.", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine4->Visible(true);
-	mTextLine5 = new Texture("of ancient trees snake across the way, creating a labyrinthine ", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine5 = new Texture("The air is filled with the sounds of labor and the crackling of fires,", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine5->Visible(true);
-	mTextLine6 = new Texture("effect that seems to pull travelers deeper into the forest. ", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine6 = new Texture("as the lumberyard hums with the energy of progress and growth.", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
 	mTextLine6->Visible(true);
-	mTextLine7 = new Texture("The air is thick with the scent of damp earth and decaying foliage,", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine7 = new Texture("As you make your way through the lumberyard, the towering stacks", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine7->Visible(true);
-	mTextLine8 = new Texture("and the distant cawing of crows adds an unsettling note to the atmosphere.", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine8 = new Texture("of timber create a maze of shadows and light, where the sun filters", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
 	mTextLine8->Visible(true);
-	mTextLine9 = new Texture("Sunlight filters through the dense canopy, casting dappled", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine9 = new Texture("through the canopy above, casting a golden glow on the", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 	mTextLine9->Visible(true);
-	mTextLine10 = new Texture("shadows that dance ominously along the road, hinting at secrets long forgotten.", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine10 = new Texture("work of the lumberjacks.", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mTextLine10->Visible(true);
 
@@ -83,7 +83,7 @@ WestRoad::WestRoad() {
 
 }
 
-WestRoad::~WestRoad() {
+Lumberyard::~Lumberyard() {
 	mTimer = nullptr;
 	mAudio = nullptr;
 	mPlayer = nullptr;
@@ -120,6 +120,8 @@ WestRoad::~WestRoad() {
 	mTextLine8 = nullptr;
 	delete mTextLine9;
 	mTextLine9 = nullptr;
+	delete mTextLine10;
+	mTextLine10 = nullptr;
 
 	delete mSymbol;
 	mSymbol = nullptr;
@@ -131,7 +133,7 @@ WestRoad::~WestRoad() {
 }
 
 
-void WestRoad::DefaultText() {
+void Lumberyard::DefaultText() {
 	mTextLine1->Visible(true);
 	mTextLine2->Visible(true);
 	mTextLine3->Visible(true);
@@ -153,13 +155,13 @@ void WestRoad::DefaultText() {
 
 }
 
-void WestRoad::SetupButtons() {
+void Lumberyard::SetupButtons() {
 	Button* BackButton = new Button(Graphics::SCREEN_WIDTH * 0.27f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Back", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* QuitButton = new Button(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Quit", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* InvestigateButton = new Button(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Investigate", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* InventoryButton = new Button(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Inventory", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
-	Button* GraveyardButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Graveyard", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
-	Button* TownButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Town", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* GroveButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Heartwood Grove", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* NorthButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "North Road", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 
 
 
@@ -168,15 +170,15 @@ void WestRoad::SetupButtons() {
 	mButtons.push_back(*QuitButton);
 	mButtons.push_back(*InvestigateButton);
 	mButtons.push_back(*InventoryButton);
-	mButtons.push_back(*GraveyardButton);
-	mButtons.push_back(*TownButton);
+	mButtons.push_back(*GroveButton);
+	mButtons.push_back(*NorthButton);
 
 
 
 }
 
 
-void WestRoad::Update() {
+void Lumberyard::Update() {
 	int mouseX, mouseY;
 	SDL_GetMouseState(&mouseX, &mouseY);
 
@@ -202,20 +204,19 @@ void WestRoad::Update() {
 
 				}
 				else if (btn.label == "Investigate") {
-					DefaultText();
-					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Combat);
+
 				}
 				else if (btn.label == "Inventory") {
 					DefaultText();
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Inventory);
 				}
-				else if (btn.label == "Graveyard") {
+				else if (btn.label == "North Road") {
 					DefaultText();
-					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Grave);
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::North);
 				}
-				else if (btn.label == "Town") {
+				else if (btn.label == "Heartwood Grove") {
 					DefaultText();
-					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Town);
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Grove);
 				}
 			}
 		}
@@ -224,7 +225,7 @@ void WestRoad::Update() {
 
 
 
-void WestRoad::Render() {
+void Lumberyard::Render() {
 	if (mTest->Visible()) mTest->Render();
 	if (mTextArea->Visible()) mTextArea->Render();
 	if (mPaperOverlay->Visible()) mPaperOverlay->Render();

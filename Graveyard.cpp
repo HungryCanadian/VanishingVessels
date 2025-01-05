@@ -43,34 +43,34 @@ Graveyard::Graveyard() {
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
 
-	mTextLine1 = new Texture("The road leading out of town twists and bends like a lazy river,", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine1 = new Texture("The graveyard sprawls across a gently undulating hillside, its", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine1->Visible(true);
-	mTextLine2 = new Texture("its uneven cobblestones giving way to patches of grass that peek", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine2 = new Texture("uneven terrain dotted with aged headstones that lean at", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine2->Visible(true);
-	mTextLine3 = new Texture("through the cracks. Wildflowers bloom haphazardly along the edges,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine3 = new Texture("precarious angles, as if bowing to the weight of time. At its center,", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
 	mTextLine3->Visible(true);
-	mTextLine4 = new Texture("their vibrant colors a stark contrast to the drab surroundings.", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine4 = new Texture("a once-grand crypt stands in a state of disrepair, its imposing", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine4->Visible(true);
-	mTextLine5 = new Texture("As the path meanders toward the rundown neighborhood,", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine5 = new Texture("structure now draped in creeping vines and moss. Once a monument", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine5->Visible(true);
-	mTextLine6 = new Texture("the laughter of children echoes like a joyful melody,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine6 = new Texture("to the town's esteemed figures, heroes, benefactors, and those of", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
 	mTextLine6->Visible(true);
-	mTextLine7 = new Texture("their playful shouts mingling with the rustling leaves overhead.", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine7 = new Texture("considerable wealth; the crypt's stone facade is now weathered and", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine7->Visible(true);
-	mTextLine8 = new Texture("They race along the road, kicking up dust and weaving through the tall grass,", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine8 = new Texture("cracked, with ornate carvings barely discernible beneath the layers ", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
 	mTextLine8->Visible(true);
-	mTextLine9 = new Texture("their carefree spirits a reminder of the innocence that flourishes even in", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine9 = new Texture("of lichen. The heavy iron door, once polished to a brilliant shine,", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 	mTextLine9->Visible(true);
-	mTextLine10 = new Texture("less-than-ideal circumstances.", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine10 = new Texture("hangs ajar, rusted and forgotten, inviting whispers of curiosity and caution.", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mTextLine10->Visible(true);
 
@@ -120,6 +120,8 @@ Graveyard::~Graveyard() {
 	mTextLine8 = nullptr;
 	delete mTextLine9;
 	mTextLine9 = nullptr;
+	delete mTextLine10;
+	mTextLine10 = nullptr;
 
 	delete mSymbol;
 	mSymbol = nullptr;
@@ -158,7 +160,7 @@ void Graveyard::SetupButtons() {
 	Button* QuitButton = new Button(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Quit", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* InvestigateButton = new Button(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Investigate", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* InventoryButton = new Button(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Inventory", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
-	Button* GraveyardButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Graveyard", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* WestButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "West Road", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* AncestorButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Hall of Ancestors", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 
 
@@ -168,7 +170,7 @@ void Graveyard::SetupButtons() {
 	mButtons.push_back(*QuitButton);
 	mButtons.push_back(*InvestigateButton);
 	mButtons.push_back(*InventoryButton);
-	mButtons.push_back(*GraveyardButton);
+	mButtons.push_back(*WestButton);
 	mButtons.push_back(*AncestorButton);
 
 
