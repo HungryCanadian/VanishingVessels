@@ -370,7 +370,6 @@ void CombatScreen::Update() {
 			if (btn.isHovered) {
 				if (btn.label == "Back") {
 					DefaultText();
-					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Back);
 				}
 				else if (btn.label == "Quit") {
 					GameManager::Instance()->QuitGame();

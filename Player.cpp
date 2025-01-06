@@ -23,9 +23,6 @@ Player::Player(std::string name, std::string characterRace,
     mLevel(level), mExperience(experience), mExpToLevel(expToLevel),
     mGold(gold), mHealth(10), mMaxHealth(10), mDamage(10),
     mSpecialAttackTotal(3), mUltimateAttackTotal(1) {
-    // Constructor logic (e.g., apply bonuses, calculate health)
-    std::cout << "Player created with race: " << mRace
-        << ", class: " << mCharClass << std::endl;
 
     srand(static_cast<unsigned int>(time(0)));
 }

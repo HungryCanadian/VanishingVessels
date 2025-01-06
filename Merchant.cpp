@@ -365,7 +365,6 @@ void MerchantScreen::Update() {
                             mSold->Visible(false);
                             mBrokeTimer = 0.0f;
                         }
-
                     }
                     else {
                         // When the player doesn't have enough gold, show the broke texture
@@ -381,6 +380,7 @@ void MerchantScreen::Update() {
                             mBrokeTimer = 0.0f;
                         }
                     }
+                    DefaultScreen();
                 }
                 else if (btn.label == "Rations") {
                     if (mPlayer->GetGold() >= 1) {

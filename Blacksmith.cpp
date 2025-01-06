@@ -273,7 +273,6 @@ void BlacksmithScreen::Update() {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
 				if (btn.label == "Back") {
-					std::cout << "Try to call the screen back to default state\n";
 					DefaultScreen();
 				}
 				else if (btn.label == "Quit") {
@@ -309,6 +308,7 @@ void BlacksmithScreen::Update() {
 							mBrokeTimer = 0.0f;
 						}
 					}
+					DefaultScreen();
 				}
 				else if (btn.label == "Shield") {
 					if (mPlayer->GetGold() >= 25) {
@@ -331,6 +331,7 @@ void BlacksmithScreen::Update() {
 							mBrokeTimer = 0.0f;
 						}
 					}
+					DefaultScreen();
 				}
 				else if (btn.label == "Armor") {
 					if (mPlayer->GetGold() >= 100) {
@@ -353,6 +354,7 @@ void BlacksmithScreen::Update() {
 							mBrokeTimer = 0.0f; 
 						}
 					}
+					DefaultScreen();
 				}
 				else if (btn.label == "Crossbow") {
 					if (mPlayer->GetGold() >= 20) {
@@ -375,6 +377,7 @@ void BlacksmithScreen::Update() {
 							mBrokeTimer = 0.0f;
 						}
 					}
+					DefaultScreen();
 				}
 			}
 		}

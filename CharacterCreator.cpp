@@ -84,10 +84,11 @@ CharacterCreatorScreen::CharacterCreatorScreen() {
 	mCha->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.57f);
 	mCha->Visible(false);
 
-	mConfirmText = new Texture("", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });  // Text, font, size, color
+	mConfirmText = new Texture("1", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });  // Text, font, size, color
 	mConfirmText->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
+	mConfirmText->Visible(false);
 
-	mHP = new Texture("", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
+	mHP = new Texture("1", "ToThePoint.ttf", 42, { 0, 0, 0, 255 });
 	mHP->Position(Graphics::SCREEN_WIDTH * 0.32f, Graphics::SCREEN_HEIGHT * 0.57f);
 	mHP->Visible(false);
 

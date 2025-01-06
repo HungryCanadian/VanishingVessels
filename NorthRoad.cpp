@@ -70,9 +70,9 @@ NorthRoad::NorthRoad() {
 	mTextLine9 = new Texture("forest's transformation into raw materials for the burgeoning industry.", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 	mTextLine9->Visible(true);
-	mTextLine10 = new Texture("", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine10 = new Texture("1", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
-	mTextLine10->Visible(true);
+	mTextLine10->Visible(false);
 
 
 	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image

@@ -16,9 +16,7 @@ void ScreenManager::Release() {
 }
 
 void ScreenManager::SetScreens(Screens screen) {
-	
 	if (screen != Screens::Back) {
-		mBeforeCombatScreen = mPreviousScreen;
 		mPreviousScreen = mCurrentScreen;
 	}
 	mCurrentScreen = screen;  // Set the new screen
@@ -165,6 +163,7 @@ void ScreenManager::Update() {
 		mGrove->Update();
 		break;
 	case ScreenManager::Combat:
+		mBeforeCombatScreen = mPreviousScreen;
 		mCombat->Update();
 		break;
 	case ScreenManager::Back:
@@ -481,7 +480,6 @@ void ScreenManager::Render() {
 				break;
 			}
 		}
-		mBeforeCombatScreen = mPreviousScreen;
 		mPreviousScreen = Screens::Back;  // Prevent cycling back to the same screen
 
 		break;
