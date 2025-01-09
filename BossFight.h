@@ -54,6 +54,16 @@ private:
 	Texture* mTextLine10;
 	Texture* mTextLine11;
 
+	Texture* mTextLine12;
+	Texture* mTextLine13;
+	Texture* mTextLine14;
+	Texture* mTextLine15;
+	Texture* mTextLine16;
+	Texture* mTextLine17;
+	Texture* mTextLine18;
+	Texture* mTextLine19;
+	Texture* mTextLine20;
+
 	Texture* mSymbol;
 
 	Texture* mCursorTexture;

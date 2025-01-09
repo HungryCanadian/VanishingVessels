@@ -2,7 +2,7 @@
 #include "GameManager.h"
 
 Enemy boss[] = {
-		Enemy("Barbossa", 10, 100, 1000, 1000),
+		Enemy("Barbossa", 10, 250, 1000, 1000),
 };
 
 
@@ -83,6 +83,34 @@ BossScreen::BossScreen() {
 	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.52f);
 	mTextLine11->Visible(false);
 
+	mTextLine12 = new Texture("Victory!", "ToThePoint.ttf", 72, { 0,0,0 }, false);
+	mTextLine12->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
+	mTextLine12->Visible(false);
+	mTextLine13 = new Texture("You have defeated Barbossa!", "ToThePoint.ttf", 60, { 0,0,0 }, false);
+	mTextLine13->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.27f);
+	mTextLine13->Visible(false);
+	mTextLine14 = new Texture("As Barbossa collapses to the ground a small detachment of soldiers", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine14->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.32f);
+	mTextLine14->Visible(false);
+	mTextLine15 = new Texture("and arrest him. The Captain looks at you with a puzzle look on his face.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine15->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.35f);
+	mTextLine15->Visible(false);
+	mTextLine16 = new Texture("he asks how you figured it out so quickly but before you could answer.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine16->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.38f);
+	mTextLine16->Visible(false);
+	mTextLine17 = new Texture("Another guard runs over and whispers something in the Captain's ear.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine17->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.41f);
+	mTextLine17->Visible(false);
+	mTextLine18 = new Texture("Captain Blackwell:", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine18->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.48f);
+	mTextLine18->Visible(false);
+	mTextLine19 = new Texture("I am Captain Leoric Blackwell of Caspira's Royal Guard...", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine19->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.51f);
+	mTextLine19->Visible(false);
+	mTextLine20 = new Texture("... Come see me in the Docks when you are ready, i have some questions.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine20->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.54f);
+	mTextLine20->Visible(false);
+
 
 	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
@@ -131,6 +159,27 @@ BossScreen::~BossScreen() {
 	mTextLine9 = nullptr;
 	delete mTextLine10;
 	mTextLine10 = nullptr;
+	delete mTextLine11;
+	mTextLine11 = nullptr;
+
+	delete mTextLine12;
+	mTextLine12 = nullptr;
+	delete mTextLine13;
+	mTextLine13 = nullptr;
+	delete mTextLine14;
+	mTextLine14 = nullptr;
+	delete mTextLine15;
+	mTextLine15 = nullptr;
+	delete mTextLine16;
+	mTextLine16 = nullptr;
+	delete mTextLine17;
+	mTextLine17 = nullptr;
+	delete mTextLine18;
+	mTextLine18 = nullptr;
+	delete mTextLine19;
+	mTextLine19 = nullptr;
+	delete mTextLine20;
+	mTextLine20 = nullptr;
 
 	delete mSymbol;
 	mSymbol = nullptr;
@@ -213,29 +262,29 @@ void BossScreen::Run() {
 }
 
 void BossScreen::Victory() {
-	int level = mPlayer->GetLevel();
-	mPlayer->AddGold(mCurrentEnemy.GetGold());
-	mPlayer->AddEXP(mCurrentEnemy.GetExp());
-	if (level != mPlayer->GetLevel()) {
-		mTextLine8->Visible(true);
-		mTextLine9->Visible(true);
-	}
-	else {
-		mTextLine8->Visible(false);
-		mTextLine9->Visible(false);
-	}
-
 	mTextLine1->Visible(false);
-	mTextLine2->Visible(true);
-	mTextLine3->Visible(true);
-	mTextLine4->Visible(true);
-	mTextLine5->Visible(true);
+	mTextLine2->Visible(false);
+	mTextLine3->Visible(false);
+	mTextLine4->Visible(false);
+	mTextLine5->Visible(false);
 	mTextLine6->Visible(false);
 	mTextLine7->Visible(false);
+	mTextLine8->Visible(false);
+	mTextLine9->Visible(false);
 	mTextLine10->Visible(false);
 	mTextLine11->Visible(false);
 
-	mButtons[0].Visible(true);
+	mTextLine12->Visible(true);
+	mTextLine13->Visible(true);
+	mTextLine14->Visible(true);
+	mTextLine15->Visible(true);
+	mTextLine16->Visible(true);
+	mTextLine17->Visible(true);
+	mTextLine18->Visible(true);
+	mTextLine19->Visible(true);
+	mTextLine20->Visible(true);
+
+	mButtons[0].Visible(false);
 	mButtons[1].Visible(true);
 	mButtons[2].Visible(false);
 	mButtons[3].Visible(false);
@@ -244,7 +293,7 @@ void BossScreen::Victory() {
 	mButtons[6].Visible(false);
 	mButtons[7].Visible(false);
 	mButtons[8].Visible(false);
-	mButtons[9].Visible(true);
+	mButtons[9].Visible(false);
 	mButtons[10].Visible(false);
 }
 
@@ -350,9 +399,9 @@ void BossScreen::Update() {
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
-	mTextLine2 = new Texture("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
+	if (mTextLine2->Visible()) mTextLine2 = new Texture("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.25f);
-	mTextLine3 = new Texture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
+	if (mTextLine3->Visible()) mTextLine3 = new Texture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.25f);
 	if (mTextLine5->Visible()) mTextLine5 = new Texture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
@@ -560,6 +609,16 @@ void BossScreen::Render() {
 	if (mTextLine9->Visible()) mTextLine9->Render();
 	if (mTextLine10->Visible()) mTextLine10->Render();
 	if (mTextLine11->Visible()) mTextLine11->Render();
+
+	if (mTextLine12->Visible()) mTextLine12->Render();
+	if (mTextLine13->Visible()) mTextLine13->Render();
+	if (mTextLine14->Visible()) mTextLine14->Render();
+	if (mTextLine15->Visible()) mTextLine15->Render();
+	if (mTextLine16->Visible()) mTextLine16->Render();
+	if (mTextLine17->Visible()) mTextLine17->Render();
+	if (mTextLine18->Visible()) mTextLine18->Render();
+	if (mTextLine19->Visible()) mTextLine19->Render();
+	if (mTextLine20->Visible()) mTextLine20->Render();
 
 
 
