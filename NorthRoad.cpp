@@ -70,9 +70,12 @@ NorthRoad::NorthRoad() {
 	mTextLine9 = new Texture("forest's transformation into raw materials for the burgeoning industry.", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 	mTextLine9->Visible(true);
-	mTextLine10 = new Texture("1", "ToThePoint.ttf", 37, { 0,0,0 });
-	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
+	mTextLine10 = new Texture("Guard Nolan:", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine10->Visible(false);
+	mTextLine11 = new Texture("The forests aren't that safe so make sure to take care of yourself.", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
+	mTextLine11->Visible(false);
 
 
 	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
@@ -122,6 +125,8 @@ NorthRoad::~NorthRoad() {
 	mTextLine9 = nullptr;
 	delete mTextLine10;
 	mTextLine10 = nullptr;
+	delete mTextLine11;
+	mTextLine11 = nullptr;
 
 	delete mSymbol;
 	mSymbol = nullptr;
@@ -143,7 +148,8 @@ void NorthRoad::DefaultText() {
 	mTextLine7->Visible(true);
 	mTextLine8->Visible(true);
 	mTextLine9->Visible(true);
-	mTextLine10->Visible(true);
+	mTextLine10->Visible(false);
+	mTextLine11->Visible(false);
 
 
 	mButtons[0].Visible(true);
@@ -153,6 +159,28 @@ void NorthRoad::DefaultText() {
 	mButtons[4].Visible(true);
 	mButtons[5].Visible(true);
 
+}
+
+void NorthRoad::Investigate() {
+	mTextLine10->Visible(true);
+	mTextLine11->Visible(true);
+
+	mTextLine1->Visible(false);
+	mTextLine2->Visible(false);
+	mTextLine3->Visible(false);
+	mTextLine4->Visible(false);
+	mTextLine5->Visible(false);
+	mTextLine6->Visible(false);
+	mTextLine7->Visible(false);
+	mTextLine8->Visible(false);
+	mTextLine9->Visible(false);
+
+	mButtons[0].Visible(true);
+	mButtons[1].Visible(true);
+	mButtons[2].Visible(true);
+	mButtons[3].Visible(true);
+	mButtons[4].Visible(true);
+	mButtons[5].Visible(true);
 }
 
 void NorthRoad::SetupButtons() {
@@ -204,7 +232,14 @@ void NorthRoad::Update() {
 
 				}
 				else if (btn.label == "Investigate") {
-
+					DefaultText();
+					int randomChoice = std::rand() % 4;
+					if (randomChoice == 0) {
+						ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Combat);
+					}
+					else {
+						Investigate();
+					}
 				}
 				else if (btn.label == "Inventory") {
 					DefaultText();
@@ -245,6 +280,7 @@ void NorthRoad::Render() {
 	if (mTextLine8->Visible()) mTextLine8->Render();
 	if (mTextLine9->Visible()) mTextLine9->Render();
 	if (mTextLine10->Visible()) mTextLine10->Render();
+	if (mTextLine11->Visible()) mTextLine11->Render();
 
 
 

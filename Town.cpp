@@ -266,6 +266,7 @@ void TownScreen::Leave() {
 	mButtons[7].Visible(false);
 	mButtons[8].Visible(false);
 	mButtons[9].Visible(false);
+	mButtons[10].Visible(false);
 }
 
 void TownScreen::Description() {
@@ -309,6 +310,7 @@ void TownScreen::Description() {
 	mButtons[7].Visible(false);
 	mButtons[8].Visible(false);
 	mButtons[9].Visible(false);
+	mButtons[10].Visible(true);
 	
 }
 
@@ -353,6 +355,7 @@ void TownScreen::DefaultText() {
 	mButtons[7].Visible(false);
 	mButtons[8].Visible(false);
 	mButtons[9].Visible(false);
+	mButtons[10].Visible(false);
 }
 
 void TownScreen::LeaveTown() {
@@ -394,6 +397,7 @@ void TownScreen::LeaveTown() {
 	mButtons[7].Visible(true);
 	mButtons[8].Visible(true);
 	mButtons[9].Visible(true);
+	mButtons[10].Visible(false);
 }
 
 void TownScreen::SetupButtons() {
@@ -407,6 +411,7 @@ void TownScreen::SetupButtons() {
 	Button* EastButton = new Button(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "East", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* WestButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "West", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 	Button* NorthButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "North", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
+	Button* TavernButton = new Button(Graphics::SCREEN_WIDTH * 0.57f, Graphics::SCREEN_HEIGHT * 0.75f, 190, 42, "Tavern", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
 
 
 
@@ -421,6 +426,7 @@ void TownScreen::SetupButtons() {
 	mButtons.push_back(*EastButton);
 	mButtons.push_back(*WestButton);
 	mButtons.push_back(*NorthButton);
+	mButtons.push_back(*TavernButton);
 
 
 	mButtons[5].Visible(false);
@@ -428,6 +434,7 @@ void TownScreen::SetupButtons() {
 	mButtons[7].Visible(false);
 	mButtons[8].Visible(false);
 	mButtons[9].Visible(false);
+	mButtons[10].Visible(false);
 
 }
 
@@ -486,6 +493,10 @@ void TownScreen::Update() {
 				else if (btn.label == "North") {
 					DefaultText();
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::North);
+				}
+				else if (btn.label == "Tavern") {
+					DefaultText();
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Tavern);
 				}
 			}
 		}

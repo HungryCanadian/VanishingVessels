@@ -155,6 +155,10 @@ void DockOutskirts::DefaultText() {
 
 }
 
+void DockOutskirts::Investigate() {
+
+}
+
 void DockOutskirts::SetupButtons() {
 	Button* BackButton = new Button(Graphics::SCREEN_WIDTH * 0.27f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Back", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* QuitButton = new Button(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Quit", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
@@ -204,7 +208,14 @@ void DockOutskirts::Update() {
 
 				}
 				else if (btn.label == "Investigate") {
-
+					DefaultText();
+					int randomChoice = std::rand() % 4;
+					if (randomChoice == 0) {
+						ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Combat);
+					}
+					else {
+						Investigate();
+					}
 				}
 				else if (btn.label == "Inventory") {
 					DefaultText();

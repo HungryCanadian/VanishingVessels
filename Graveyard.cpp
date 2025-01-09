@@ -204,7 +204,11 @@ void Graveyard::Update() {
 
 				}
 				else if (btn.label == "Investigate") {
-
+					DefaultText();
+					int randomChoice = std::rand() % 2;
+					if (randomChoice == 0) {
+						ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Combat);
+					}
 				}
 				else if (btn.label == "Inventory") {
 					DefaultText();

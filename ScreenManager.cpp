@@ -22,6 +22,10 @@ void ScreenManager::SetScreens(Screens screen) {
 	mCurrentScreen = screen;  // Set the new screen
 }
 
+ScreenManager::Screens ScreenManager::GetPreviousScreen() {
+	return mPreviousScreen;
+}
+
 ScreenManager::ScreenManager() {
 	mInput = InputManager::Instance();
 
@@ -44,6 +48,7 @@ ScreenManager::ScreenManager() {
 	mLumber = new Lumberyard();
 	mGrove = new HeartwoodGrove();
 	mCombat = new CombatScreen();
+	mBoss = new BossScreen();
 
 	mCurrentScreen = Start;
 	mPreviousScreen = Start;
@@ -166,6 +171,9 @@ void ScreenManager::Update() {
 		mBeforeCombatScreen = mPreviousScreen;
 		mCombat->Update();
 		break;
+	case ScreenManager::Boss:
+		mBoss->Update();
+		break;
 	case ScreenManager::Back:
 		if (mPreviousScreen != Screens::Back) {
 			SetScreens(mPreviousScreen);
@@ -223,6 +231,9 @@ void ScreenManager::Update() {
 				break;
 			case ScreenManager::Combat:
 				mCombat->Update();
+				break;
+			case ScreenManager::Boss:
+				mBoss->Update();
 				break;
 			default:
 				std::cerr << "Unknown Screen Found! Please supply a valid Screen!\n";
@@ -285,6 +296,9 @@ void ScreenManager::Update() {
 				break;
 			case ScreenManager::Combat:
 				mCombat->Update();
+				break;
+			case ScreenManager::Boss:
+				mBoss->Update();
 				break;
 			default:
 				std::cerr << "Unknown Screen Found! Please supply a valid Screen!\n";
@@ -355,6 +369,9 @@ void ScreenManager::Render() {
 	case ScreenManager::Combat:
 		mCombat->Render();
 		break;
+	case ScreenManager::Boss:
+		mBoss->Render();
+		break;
 	case ScreenManager::Back:
 		if (mPreviousScreen != Screens::Back) {
 			SetScreens(mPreviousScreen);
@@ -412,6 +429,9 @@ void ScreenManager::Render() {
 				break;
 			case ScreenManager::Combat:
 				mCombat->Render();
+				break;
+			case ScreenManager::Boss:
+				mBoss->Render();
 				break;
 			default:
 
@@ -474,6 +494,9 @@ void ScreenManager::Render() {
 				break;
 			case ScreenManager::Combat:
 				mCombat->Render();
+				break;
+			case ScreenManager::Boss:
+				mBoss->Render();
 				break;
 			default:
 

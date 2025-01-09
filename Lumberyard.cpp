@@ -74,6 +74,25 @@ Lumberyard::Lumberyard() {
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mTextLine10->Visible(true);
 
+	mTextLine11 = new Texture("Lumberjack:", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.24f);
+	mTextLine11->Visible(false);
+	mTextLine12 = new Texture("Hard work, but it pays the bills.", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine12->Position(Graphics::SCREEN_WIDTH * 0.45f, Graphics::SCREEN_HEIGHT * 0.27f);
+	mTextLine12->Visible(false);
+	mTextLine13 = new Texture("Foreman", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine13->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.33f);
+	mTextLine13->Visible(false);
+	mTextLine14 = new Texture("Keep up the pace, we have a quota to meet!", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine14->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.36f);
+	mTextLine14->Visible(false);
+	mTextLine15 = new Texture("Woodcutter:", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine15->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.42f);
+	mTextLine15->Visible(false);
+	mTextLine16 = new Texture("The forest provides, but we must respect it.", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine16->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.45f);
+	mTextLine16->Visible(false);
+
 
 	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
@@ -123,6 +142,19 @@ Lumberyard::~Lumberyard() {
 	delete mTextLine10;
 	mTextLine10 = nullptr;
 
+	delete mTextLine11;
+	mTextLine11 = nullptr;
+	delete mTextLine12;
+	mTextLine12 = nullptr;
+	delete mTextLine13;
+	mTextLine13 = nullptr;
+	delete mTextLine14;
+	mTextLine14 = nullptr;
+	delete mTextLine15;
+	mTextLine15 = nullptr;
+	delete mTextLine16;
+	mTextLine16 = nullptr;
+
 	delete mSymbol;
 	mSymbol = nullptr;
 
@@ -145,6 +177,13 @@ void Lumberyard::DefaultText() {
 	mTextLine9->Visible(true);
 	mTextLine10->Visible(true);
 
+	mTextLine11->Visible(false);
+	mTextLine12->Visible(false);
+	mTextLine13->Visible(false);
+	mTextLine14->Visible(false);
+	mTextLine15->Visible(false);
+	mTextLine16->Visible(false);
+
 
 	mButtons[0].Visible(true);
 	mButtons[1].Visible(true);
@@ -153,6 +192,34 @@ void Lumberyard::DefaultText() {
 	mButtons[4].Visible(true);
 	mButtons[5].Visible(true);
 
+}
+
+void Lumberyard::Investigate() {
+	mTextLine1->Visible(false);
+	mTextLine2->Visible(false);
+	mTextLine3->Visible(false);
+	mTextLine4->Visible(false);
+	mTextLine5->Visible(false);
+	mTextLine6->Visible(false);
+	mTextLine7->Visible(false);
+	mTextLine8->Visible(false);
+	mTextLine9->Visible(false);
+	mTextLine10->Visible(false);
+
+	mTextLine11->Visible(true);
+	mTextLine12->Visible(true);
+	mTextLine13->Visible(true);
+	mTextLine14->Visible(true);
+	mTextLine15->Visible(true);
+	mTextLine16->Visible(true);
+
+
+	mButtons[0].Visible(true);
+	mButtons[1].Visible(true);
+	mButtons[2].Visible(true);
+	mButtons[3].Visible(true);
+	mButtons[4].Visible(true);
+	mButtons[5].Visible(true);
 }
 
 void Lumberyard::SetupButtons() {
@@ -204,7 +271,14 @@ void Lumberyard::Update() {
 
 				}
 				else if (btn.label == "Investigate") {
-
+					DefaultText();
+					int randomChoice = std::rand() % 4;
+					if (randomChoice == 0) {
+						ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Combat);
+					}
+					else {
+						Investigate();
+					}
 				}
 				else if (btn.label == "Inventory") {
 					DefaultText();
@@ -245,6 +319,13 @@ void Lumberyard::Render() {
 	if (mTextLine8->Visible()) mTextLine8->Render();
 	if (mTextLine9->Visible()) mTextLine9->Render();
 	if (mTextLine10->Visible()) mTextLine10->Render();
+
+	if (mTextLine11->Visible()) mTextLine11->Render();
+	if (mTextLine12->Visible()) mTextLine12->Render();
+	if (mTextLine13->Visible()) mTextLine13->Render();
+	if (mTextLine14->Visible()) mTextLine14->Render();
+	if (mTextLine15->Visible()) mTextLine15->Render();
+	if (mTextLine16->Visible()) mTextLine16->Render();
 
 
 

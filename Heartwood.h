@@ -12,6 +12,7 @@ public:
 
 	void SetupButtons();
 	void DefaultText();
+	void Barbossa();
 
 
 	void Update() override;

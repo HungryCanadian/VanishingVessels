@@ -1,19 +1,27 @@
 #pragma once
+#include <cstdlib>
 #include "Level.h"
 #include "Button.h"
 #include "Player.h"
+#include "Enemy.h"
 
 using namespace SDLFramework;
 
-class HallOfAncestors : public GameEntity {
+class BossScreen : public GameEntity {
 public:
-	HallOfAncestors();
-	~HallOfAncestors();
+	BossScreen();
+	~BossScreen();
 
 	void SetupButtons();
 	void DefaultText();
-	void Investigate();
-
+	void Attack();
+	void UseItem();
+	void Run();
+	void Victory();
+	void GameOver();
+	void EnemyTurn();
+	void SpecialMove();
+	Enemy GetRandomEnemy();
 
 	void Update() override;
 	void Render() override;
@@ -24,7 +32,8 @@ private:
 	InputManager* mInputManager;
 	std::vector<Button> mButtons;
 	Player* mPlayer;
-	bool mFirstVisit;
+	Enemy mCurrentEnemy;
+
 
 	Texture* mTest;
 	Texture* mTextArea;
@@ -43,10 +52,7 @@ private:
 	Texture* mTextLine8;
 	Texture* mTextLine9;
 	Texture* mTextLine10;
-
 	Texture* mTextLine11;
-	Texture* mTextLine12;
-	Texture* mTextLine13;
 
 	Texture* mSymbol;
 

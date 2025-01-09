@@ -155,6 +155,10 @@ void HeartwoodGrove::DefaultText() {
 
 }
 
+void HeartwoodGrove::Barbossa() {
+
+}
+
 void HeartwoodGrove::SetupButtons() {
 	Button* BackButton = new Button(Graphics::SCREEN_WIDTH * 0.27f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Back", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* QuitButton = new Button(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Quit", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
@@ -204,6 +208,8 @@ void HeartwoodGrove::Update() {
 
 				}
 				else if (btn.label == "Investigate") {
+					DefaultText();
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Boss);
 
 				}
 				else if (btn.label == "Inventory") {
@@ -216,6 +222,7 @@ void HeartwoodGrove::Update() {
 				}
 				else if (btn.label == "Barbossa") {
 					DefaultText();
+					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Boss);
 					
 				}
 			}

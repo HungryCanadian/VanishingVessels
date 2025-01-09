@@ -19,6 +19,7 @@
 #include "Lumberyard.h"
 #include "Heartwood.h"
 #include "CombatScreen.h"
+#include "BossFight.h"
 
 class ScreenManager {
 public:
@@ -28,11 +29,12 @@ public:
 	enum Screens { Start, Play, NewCharacter, Inventory, Blacksmith,
 					Tavern, Merchant, Back, Town, East, Outskirts, Docks, 
 					West, Grave, Ancestors, North, Lumber, Grove, Combat,
-					EndCombat};
+					EndCombat, Boss};
 
 	void Update();
 	void Render();
 	void SetScreens(Screens screen);
+	Screens GetPreviousScreen();
 
 	//Screens
 	StartScreen* mStartScreen;
@@ -53,14 +55,17 @@ public:
 	Lumberyard* mLumber;
 	HeartwoodGrove* mGrove;
 	CombatScreen* mCombat;
+	BossScreen* mBoss;
+
+
+	Screens mPreviousScreen;
+	Screens mBeforeCombatScreen;
 
 private:
 	ScreenManager();
 	~ScreenManager();
 	
 	Screens mCurrentScreen;
-	Screens mPreviousScreen;
-	Screens mBeforeCombatScreen;
 
 	static ScreenManager* sInstance;
 

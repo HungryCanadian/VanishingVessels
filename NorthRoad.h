@@ -12,6 +12,7 @@ public:
 
 	void SetupButtons();
 	void DefaultText();
+	void Investigate();
 
 
 	void Update() override;
@@ -42,6 +43,7 @@ private:
 	Texture* mTextLine8;
 	Texture* mTextLine9;
 	Texture* mTextLine10;
+	Texture* mTextLine11;
 
 	Texture* mSymbol;
 

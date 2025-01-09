@@ -37,6 +37,8 @@ namespace SDLFramework {
 
         bool mVisible;
 
+        AudioManager* mAudio;
+
         
 
         Texture* mBackgroundTexture;  // Custom background texture for the button

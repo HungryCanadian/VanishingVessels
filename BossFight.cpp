@@ -1,22 +1,18 @@
-#include "CombatScreen.h"
+#include "BossFight.h"
 #include "GameManager.h"
 
-Enemy enemies[] = {
-		Enemy("Goblin", 2, 10, 3, 25),
-		Enemy("Orc", 4, 15, 6, 50),
-		Enemy("Troll", 3, 20, 25, 100),
-		Enemy("Skeleton", 1, 5, 1, 50),
-		Enemy("Werewolf", 4, 40, 100, 250)
+Enemy boss[] = {
+		Enemy("Barbossa", 10, 100, 1000, 1000),
 };
 
 
-CombatScreen::CombatScreen() {
+BossScreen::BossScreen() {
 	mTimer = Timer::Instance();
 	mAudio = AudioManager::Instance();
 	mInputManager = InputManager::Instance();
 	mPlayer = Player::Instance();
 
-	mCurrentEnemy = GetRandomEnemy();
+	mCurrentEnemy = BossScreen::GetRandomEnemy();
 
 	mTest = new Texture("startBackground.png");
 	mTest->Parent(this);
@@ -59,13 +55,13 @@ CombatScreen::CombatScreen() {
 	mTextLine2 = new Texture("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine2->Visible(true);
-	mTextLine3 = new Texture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, {0,0,0});
+	mTextLine3 = new Texture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine3->Visible(true);
 	mTextLine4 = new Texture("Victory!", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine4->Visible(false);
-	mTextLine5 = new Texture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, {0,0,0});
+	mTextLine5 = new Texture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine5->Visible(false);
 	mTextLine6 = new Texture("Game Over!", "ToThePoint.ttf", 38, { 0,0,0 });
@@ -77,7 +73,7 @@ CombatScreen::CombatScreen() {
 	mTextLine8 = new Texture("LEVEL UP!", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.45f);
 	mTextLine8->Visible(false);
-	mTextLine9 = new Texture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, {0,0,0});
+	mTextLine9 = new Texture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.48f);
 	mTextLine9->Visible(false);
 	mTextLine10 = new Texture("You Hit them for " + mPlayer->Attack(), "ToThePoint.ttf", 37, { 0,0,0 });
@@ -96,7 +92,7 @@ CombatScreen::CombatScreen() {
 
 }
 
-CombatScreen::~CombatScreen() {
+BossScreen::~BossScreen() {
 	mTimer = nullptr;
 	mAudio = nullptr;
 	mPlayer = nullptr;
@@ -145,14 +141,14 @@ CombatScreen::~CombatScreen() {
 
 }
 
-Enemy CombatScreen::GetRandomEnemy() {
-	int index = rand() % (sizeof(enemies) / sizeof(enemies[0])); // Random index
-	return enemies[index];
+Enemy BossScreen::GetRandomEnemy() {
+	int index = rand() % (sizeof(boss) / sizeof(boss[0])); // Random index
+	return boss[index];
 
 }
 
 
-void CombatScreen::DefaultText() {
+void BossScreen::DefaultText() {
 	mTextLine1->Visible(true);
 	mTextLine2->Visible(true);
 	mTextLine3->Visible(true);
@@ -180,7 +176,7 @@ void CombatScreen::DefaultText() {
 
 }
 
-void CombatScreen::Attack() {
+void BossScreen::Attack() {
 	mTextLine1->Visible(false);
 	mTextLine2->Visible(true);
 	mTextLine3->Visible(true);
@@ -206,17 +202,17 @@ void CombatScreen::Attack() {
 	mButtons[10].Visible(false);
 }
 
-void CombatScreen::UseItem() {
+void BossScreen::UseItem() {
 
 }
 
-void CombatScreen::Run() {
+void BossScreen::Run() {
 	DefaultText();
 	mCurrentEnemy = GetRandomEnemy();
 	ScreenManager::Instance()->SetScreens(ScreenManager::Screens::EndCombat);
 }
 
-void CombatScreen::Victory() {
+void BossScreen::Victory() {
 	int level = mPlayer->GetLevel();
 	mPlayer->AddGold(mCurrentEnemy.GetGold());
 	mPlayer->AddEXP(mCurrentEnemy.GetExp());
@@ -252,7 +248,7 @@ void CombatScreen::Victory() {
 	mButtons[10].Visible(false);
 }
 
-void CombatScreen::GameOver() {
+void BossScreen::GameOver() {
 	mTextLine1->Visible(false);
 	mTextLine2->Visible(true);
 	mTextLine3->Visible(true);
@@ -278,7 +274,7 @@ void CombatScreen::GameOver() {
 	mButtons[10].Visible(true);
 }
 
-void CombatScreen::EnemyTurn() {
+void BossScreen::EnemyTurn() {
 	if (mCurrentEnemy.IsAlive()) {
 		int enemyDamage = mCurrentEnemy.Attack(); // Enemy attacks the player
 		int damageReduction = mPlayer->GetDamageReduction();
@@ -299,7 +295,7 @@ void CombatScreen::EnemyTurn() {
 }
 
 
-void CombatScreen::SetupButtons() {
+void BossScreen::SetupButtons() {
 	Button* BackButton = new Button(Graphics::SCREEN_WIDTH * 0.27f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Back", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* QuitButton = new Button(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.9325f, 190, 42, "Quit", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttonred.png");
 	Button* AttackButton = new Button(Graphics::SCREEN_WIDTH * 0.25f, Graphics::SCREEN_HEIGHT * 0.70f, 190, 42, "Attack", "ToThePoint.ttf", 32, { 255, 255, 255, 255 }, "buttongreen.png");
@@ -342,7 +338,7 @@ void CombatScreen::SetupButtons() {
 }
 
 
-void CombatScreen::Update() {
+void BossScreen::Update() {
 	int mouseX, mouseY;
 	SDL_GetMouseState(&mouseX, &mouseY);
 
@@ -380,7 +376,7 @@ void CombatScreen::Update() {
 					Attack();
 				}
 				else if (btn.label == "Use an Item") {
-					DefaultText();	
+					DefaultText();
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Inventory);
 				}
 				else if (btn.label == "Run") {
@@ -393,9 +389,9 @@ void CombatScreen::Update() {
 
 					// Update enemy HP on the screen
 					/*mTextLine3->SetText("Enemy HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 }, false);*/
-					mTextLine10->SetText("You Hit them for " + std::to_string(damage), "ToThePoint.ttf", 37, {0,0,0}, false);
+					mTextLine10->SetText("You Hit them for " + std::to_string(damage), "ToThePoint.ttf", 37, { 0,0,0 }, false);
 					mTextLine10->Visible(true);
-					
+
 
 					// Check if the enemy is still alive
 					if (!mCurrentEnemy.IsAlive()) {
@@ -443,7 +439,7 @@ void CombatScreen::Update() {
 	}
 }
 
-void CombatScreen::SpecialMove() {
+void BossScreen::SpecialMove() {
 	if (mPlayer->GetClass() == "Fighter") {
 		mTextLine10->SetText("You spin around, hitting everyone around you.", "ToThePoint.ttf", 37, { 0,0,0 }, false);
 		mTextLine10->Visible(true);
@@ -458,7 +454,7 @@ void CombatScreen::SpecialMove() {
 		}
 
 	}
-	else if (mPlayer->GetClass()  == "Paladin") {
+	else if (mPlayer->GetClass() == "Paladin") {
 		mTextLine10->SetText("You call upon your Diety and Smite them", "ToThePoint.ttf", 37, { 0,0,0 }, false);
 		mTextLine10->Visible(true);
 		mTextLine11->SetText("The Enemy takes 10 Damage", "ToThePoint.ttf", 37, { 0,0,0 }, false);
@@ -543,7 +539,7 @@ void CombatScreen::SpecialMove() {
 
 
 
-void CombatScreen::Render() {
+void BossScreen::Render() {
 	if (mTest->Visible()) mTest->Render();
 	if (mTextArea->Visible()) mTextArea->Render();
 	if (mPaperOverlay->Visible()) mPaperOverlay->Render();

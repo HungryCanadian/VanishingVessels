@@ -7,6 +7,8 @@ namespace SDLFramework {
 
     Button::Button(float x, float y, float w, float h, const std::string& label, const std::string& fontPath, int fontSize, SDL_Color bgColor, const std::string& textureFile)
         : x(x), y(y), width(w), height(h), label(label), mBgColor(bgColor), mFontPath(fontPath), mFontSize(fontSize), isHovered(false), mVisible(true) {
+        
+        mAudio->AudioManager::Instance();
 
         // Create the background texture (using the provided textureFile)
         mBackgroundTexture = new Texture(textureFile, false);  // Create texture with the provided file path
@@ -22,9 +24,16 @@ namespace SDLFramework {
         mClickStartTime = 0;
         mClickTimerStarted = false;
         mDoubleClickThreshold = 500;
+        
     }
 
-    Button::~Button() {}
+    Button::~Button() {
+       /* delete mBackgroundTexture;
+        mBackgroundTexture = nullptr;
+
+        delete mTextTexture;
+        mTextTexture = nullptr;*/
+    }
 
     void Button::checkHover(int mouseX, int mouseY) {
         //Check if the button is visible
@@ -37,6 +46,7 @@ namespace SDLFramework {
     }
 
     void Button::checkClick(int mouseX, int mouseY, bool mousePressed) {
+        Mix_Chunk* buttonClickSound = Mix_LoadWAV("ButtonClick.wav");
         if (!isHovered) {
             // If button is not hovered, reset clicked states
             isClicked = false;
@@ -65,6 +75,8 @@ namespace SDLFramework {
                     isDoubleClicked = false;  // Reset double-click state
                 }
             }
+            Mix_VolumeChunk(buttonClickSound, 10);
+            mAudio->PlaySFX(buttonClickSound, 0);
         }
         else {
             // Reset click timer when the mouse button is released

@@ -12,6 +12,7 @@ public:
 
 	void SetupButtons();
 	void DefaultText();
+	void Investigate();
 
 	void Update() override;
 	void Render() override;
