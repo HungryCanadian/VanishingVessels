@@ -47,7 +47,6 @@ namespace SDLFramework {
 
 		if (tex == nullptr) {
 			std::cerr << "Unable to create a texture from Surface IMG ERROR: " << IMG_GetError() << "\n";
-			SDL_FreeSurface(surface);
 			return nullptr;
 		}
 
@@ -90,6 +89,48 @@ namespace SDLFramework {
 
 	void Graphics::Render() {
 		SDL_RenderPresent(mRenderer);
+
+		glClearDepth(1.0);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		glEnableClientState(GL_COLOR_ARRAY);
+
+		glBegin(GL_TRIANGLES);
+		glColor3f(1.0f, 0.0f, 0.0f);
+
+		glVertex2f(0, 0);
+		glVertex2f(0, 500);
+		glVertex2f(500, 500);
+
+		//glEnd();
+
+		
+		glBegin(GL_TRIANGLES);
+		glColor3f(0.5f, 0.0f, 0.5f);
+
+		glVertex2f(0, 0);
+		glVertex2f(0, -500);
+		glVertex2f(-500, -500);
+
+		glBegin(GL_TRIANGLES);
+		glColor3f(0.5f, 0.0f, 0.5f);
+
+		glVertex2f(0, 0);
+		glVertex2f(-500, 0);
+		glVertex2f(-500, -500);
+
+		glBegin(GL_TRIANGLES);
+		glColor3f(0.0f, 0.1f, 0.5f);
+
+		glVertex2f(0, 0);
+		glVertex2f(500, 0);
+		glVertex2f(500, -500);
+
+		glEnd();
+
+		SDL_GL_SwapWindow(mWindow);
+
+		
 	}
 
 	Graphics::Graphics() : mRenderer(nullptr) {
@@ -114,7 +155,7 @@ namespace SDLFramework {
 			SDL_WINDOWPOS_UNDEFINED,
 			SCREEN_WIDTH,
 			SCREEN_HEIGHT,
-			SDL_WINDOW_SHOWN
+			SDL_WINDOW_OPENGL
 		);
 
 		if (mWindow == nullptr) {
@@ -122,7 +163,20 @@ namespace SDLFramework {
 			return false;
 		}
 
-		mRenderer = SDL_CreateRenderer(
+		glContext = SDL_GL_CreateContext(mWindow);
+
+		if (glContext == nullptr) {
+			std::cerr << "SDL_GL_Context could not be created! " << SDL_GetError() << std::endl;
+			return false;
+		}
+
+		GLenum error = glewInit();
+
+		if (error != GLEW_OK) {
+			std::cerr << "Could not initialize glew! " << glewGetErrorString(error) << std::endl;
+		}
+
+		/*mRenderer = SDL_CreateRenderer(
 			mWindow,
 			-1,
 			SDL_RENDERER_ACCELERATED
@@ -131,12 +185,15 @@ namespace SDLFramework {
 		if (mRenderer == nullptr) {
 			std::cerr << "Failed to create a renderer! SDL_Error: " << SDL_GetError() << "\n;";
 			return false;
-		}
+		}*/
 
 		if (TTF_Init() == -1) {
 			std::cerr << "Unable to initialize SDL_TTF! TTF Error: " << TTF_GetError() << "\n";
 			return false;
 		}
+
+		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+		glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
 
 		return true;
 	}

@@ -117,7 +117,7 @@ TavernScreen::TavernScreen() {
 	SDL_ShowCursor(SDL_DISABLE);  // Hide the default SDL cursor
 
 	Mix_VolumeMusic(10);
-	mAudio->PlayMusic("TavernTheme.wav", -1);
+	//mAudio->PlayMusic("TavernTheme.wav", -1);
 	
 
 	SetupButtons();

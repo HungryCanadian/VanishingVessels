@@ -100,12 +100,11 @@ void StartScreen::Update() {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
 				if (btn.label == "Play") {
-					std::cout << "Play Clicked\n";
+					mAudioManager->PlaySFX("buttonClick.wav", 0, -1, 50);
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Play);
 
 				}
 				else if (btn.label == "Exit") {
-					std::cout << "Quit Clicked\n";
 					GameManager::Instance()->QuitGame();
 				}
 			}

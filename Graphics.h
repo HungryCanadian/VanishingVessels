@@ -4,6 +4,7 @@
 #include <string>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include "glew.h"
 
 namespace SDLFramework {
 	class Graphics {
@@ -43,5 +44,7 @@ namespace SDLFramework {
 		static bool sInitialized;
 		SDL_Window* mWindow = nullptr;
 		SDL_Renderer* mRenderer = nullptr;
+
+		SDL_GLContext glContext;
 	};
 }

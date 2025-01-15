@@ -76,7 +76,7 @@ namespace SDLFramework {
                 }
             }
             Mix_VolumeChunk(buttonClickSound, 10);
-            mAudio->PlaySFX(buttonClickSound, 0);
+            mAudio->PlaySFX(buttonClickSound, 0, -1, 50);
         }
         else {
             // Reset click timer when the mouse button is released
