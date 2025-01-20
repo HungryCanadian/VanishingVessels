@@ -8,123 +8,123 @@ DockScreen::DockScreen() {
 	mInputManager = InputManager::Instance();
 	mPlayer = Player::Instance();
 
-	mTest = new Texture("startBackground.png");
+	mTest = new SDLTexture("startBackground.png");
 	mTest->Parent(this);
 	mTest->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 
-	mTopBar = new Texture("TopCornerBar.png");
+	mTopBar = new SDLTexture("TopCornerBar.png");
 	mTopBar->Parent(this);
 	mTopBar->Position(Graphics::SCREEN_WIDTH * 0.285f, Graphics::SCREEN_HEIGHT * 0.065);
 	mTopBar->Scale(Vector2(0.5f, 0.5f));
 
-	mBottomBar = new Texture("BottomBar.png");
+	mBottomBar = new SDLTexture("BottomBar.png");
 	mBottomBar->Parent(this);
 	mBottomBar->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.94f);
 	mBottomBar->Scale(Vector2(0.4f, 0.3f));
 
-	mTextArea = new Texture("PanelDarkSquare.png");
+	mTextArea = new SDLTexture("PanelDarkSquare.png");
 	mTextArea->Parent(this);
 	mTextArea->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mTextArea->Scale(Vector2(0.5f, 0.5f));
 
-	mPaperOverlay = new Texture("LargePaperOverlay.png");
+	mPaperOverlay = new SDLTexture("LargePaperOverlay.png");
 	mPaperOverlay->Parent(this);
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
 
 
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Parent(this);
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
-	mLabel = new Texture("Caspira Docks", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel = new SDLTexture("Caspira Docks", "ToThePoint.ttf", 80, { 53,33,0 });
 	mLabel->Parent(this);
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
 
 	//default text
-	mTextLine1 = new Texture("From the heart of the rundown neighborhood, a marvelous stone gatehouse rises majestically,", "ToThePoint.ttf", 30, { 0,0,0 });
+	mTextLine1 = new SDLTexture("From the heart of the rundown neighborhood, a marvelous stone gatehouse rises majestically,", "ToThePoint.ttf", 30, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine1->Visible(true);
-	mTextLine2 = new Texture("its formidable walls encircling the Official Caspiran Docks like a guardian of prosperity.", "ToThePoint.ttf", 32, { 0,0,0 });
+	mTextLine2 = new SDLTexture("its formidable walls encircling the Official Caspiran Docks like a guardian of prosperity.", "ToThePoint.ttf", 32, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine2->Visible(true);
-	mTextLine3 = new Texture("The entrance, adorned with intricate carvings of maritime symbols, stands as a striking", "ToThePoint.ttf", 32, { 0,0,0 });
+	mTextLine3 = new SDLTexture("The entrance, adorned with intricate carvings of maritime symbols, stands as a striking", "ToThePoint.ttf", 32, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
 	mTextLine3->Visible(true);
-	mTextLine4 = new Texture("contrast to the surrounding dilapidation, beckoning travelers and townsfolk alike", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine4 = new SDLTexture("contrast to the surrounding dilapidation, beckoning travelers and townsfolk alike", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine4->Visible(true);
-	mTextLine5 = new Texture("to experience the allure within. As one passes through the arched gates, ", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine5 = new SDLTexture("to experience the allure within. As one passes through the arched gates, ", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine5->Visible(true);
-	mTextLine6 = new Texture("the atmosphere shifts dramatically, revealing a bustling hub of activity", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine6 = new SDLTexture("the atmosphere shifts dramatically, revealing a bustling hub of activity", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
 	mTextLine6->Visible(true);
-	mTextLine7 = new Texture("that breathes life into the port city.", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine7 = new SDLTexture("that breathes life into the port city.", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine7->Visible(true);
-	mTextLine8 = new Texture("Inside the walls, the docks present an epitome of wealth and extravagance,", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine8 = new SDLTexture("Inside the walls, the docks present an epitome of wealth and extravagance,", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
 	mTextLine8->Visible(true);
-	mTextLine9 = new Texture("with wide stone wharfs stretching out toward the shimmering waters. Several opulent", "ToThePoint.ttf", 30, { 0,0,0 });
+	mTextLine9 = new SDLTexture("with wide stone wharfs stretching out toward the shimmering waters. Several opulent", "ToThePoint.ttf", 30, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 	mTextLine9->Visible(true);
-	mTextLine10 = new Texture("ships are anchored in the harbor, their sails furled and decks alive with ", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine10 = new SDLTexture("ships are anchored in the harbor, their sails furled and decks alive with ", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mTextLine10->Visible(true);
-	mTextLine11 = new Texture("crew members unloading cargo of all kinds. The air is filled with the", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine11 = new SDLTexture("crew members unloading cargo of all kinds. The air is filled with the", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.52f);
 	mTextLine11->Visible(true);
-	mTextLine12 = new Texture("sounds of shouts and laughter, mingling with the creaking of wood and the", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine12 = new SDLTexture("sounds of shouts and laughter, mingling with the creaking of wood and the", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine12->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
 	mTextLine12->Visible(true);
-	mTextLine13 = new Texture("sloshing of waves against the hulls. Merchants barter energetically, their voices", "ToThePoint.ttf", 33, { 0,0,0 });
+	mTextLine13 = new SDLTexture("sloshing of waves against the hulls. Merchants barter energetically, their voices", "ToThePoint.ttf", 33, { 0,0,0 });
 	mTextLine13->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.58f);
 	mTextLine13->Visible(true);
-	mTextLine14 = new Texture("rising above the din as they display their wares, exotic spices, silks, and shimmering", "ToThePoint.ttf", 30, { 0,0,0 });
+	mTextLine14 = new SDLTexture("rising above the din as they display their wares, exotic spices, silks, and shimmering", "ToThePoint.ttf", 30, { 0,0,0 });
 	mTextLine14->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.61f);
 	mTextLine14->Visible(true);
-	mTextLine15 = new Texture("trinkets, all promising tales of distant lands and adventures untold.", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine15 = new SDLTexture("trinkets, all promising tales of distant lands and adventures untold.", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine15->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.64f);
 	mTextLine15->Visible(true);
 
 	//Investigate Text
-	mTextLine16 = new Texture("As the sun bathes the docks in golden light, the delightful aroma of", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine16 = new SDLTexture("As the sun bathes the docks in golden light, the delightful aroma of", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine16->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.24f);
 	mTextLine16->Visible(false);
-	mTextLine17 = new Texture("freshly cooked food wafts through the air, mingling with the rich scent", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine17 = new SDLTexture("freshly cooked food wafts through the air, mingling with the rich scent", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine17->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.27f);
 	mTextLine17->Visible(false);
-	mTextLine18 = new Texture("of ale poured from tankards at nearby taverns. The laughter of patrons", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine18 = new SDLTexture("of ale poured from tankards at nearby taverns. The laughter of patrons", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine18->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.30f);
 	mTextLine18->Visible(false);
-	mTextLine19 = new Texture("spills into the streets, creating a vibrant backdrop to the industriousness", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine19 = new SDLTexture("spills into the streets, creating a vibrant backdrop to the industriousness", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine19->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.33f);
 	mTextLine19->Visible(false);
-	mTextLine20 = new Texture("of the docks. Here, amidst the contrast of wealth and the bustling life", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine20 = new SDLTexture("of the docks. Here, amidst the contrast of wealth and the bustling life", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine20->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.36f);
 	mTextLine20->Visible(false);
-	mTextLine21 = new Texture("of the port, one can feel the pulse ofthe city. A place where dreams of", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine21 = new SDLTexture("of the port, one can feel the pulse ofthe city. A place where dreams of", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine21->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.39f);
 	mTextLine21->Visible(false);
-	mTextLine22 = new Texture("adventure and fortune intertwine, drawing in both the weary and.", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine22 = new SDLTexture("adventure and fortune intertwine, drawing in both the weary and.", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine22->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.42f);
 	mTextLine22->Visible(false);
-	mTextLine23 = new Texture("the hopeful to partake in its splendor.", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine23 = new SDLTexture("the hopeful to partake in its splendor.", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine23->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.45f);
 	mTextLine23->Visible(false);
 
 	//Rest
-	mTextLine24 = new Texture("Welcome to the Weary Wanderer!", "ToThePoint.ttf", 52, { 0,0,0 });
+	mTextLine24 = new SDLTexture("Welcome to the Weary Wanderer!", "ToThePoint.ttf", 52, { 0,0,0 });
 	mTextLine24->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.32f);
 	mTextLine24->Visible(false);
-	mTextLine25 = new Texture("Want to rest for the night?", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine25 = new SDLTexture("Want to rest for the night?", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine25->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.36f);
 	mTextLine25->Visible(false);
 
-	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
+	mCursorTexture = new SDLTexture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
 	SDL_ShowCursor(SDL_DISABLE);  // Hide the default SDL cursor
 
@@ -363,7 +363,7 @@ void DockScreen::Update() {
 	for (auto& btn : mButtons) {
 		btn.checkHover(mouseX, mouseY);
 	}
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 	mSymbol->Update();
@@ -373,6 +373,7 @@ void DockScreen::Update() {
 	if (mInputManager->MouseButtonPressed(InputManager::LEFT)) {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
+				mAudio->PlaySFX("buttonClick.wav", 0, -1, 50);
 				if (btn.label == "Back") {
 					DefaultText();
 				}

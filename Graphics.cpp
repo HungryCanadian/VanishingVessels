@@ -1,4 +1,5 @@
-#include "Graphics.h"
+#include "SDLGraphics.h"
+#include "GLGraphics.h"
 
 
 namespace SDLFramework {
@@ -12,7 +13,7 @@ namespace SDLFramework {
 		//we are checking if sInstance already has an instance of Graphics stored in it.
 		if (sInstance == nullptr) {
 			//if not, create a new instance of graphics
-			sInstance = new Graphics();
+			sInstance = new GLGraphics();
 		}
 		//returns our graphics instance after making sure there is one.
 		return sInstance;
@@ -31,7 +32,7 @@ namespace SDLFramework {
 	SDL_Texture* Graphics::LoadTexture(std::string path) {
 		SDL_Texture* tex = nullptr;
 
-		SDL_Surface* surface = IMG_Load(path.c_str());
+		SDL_Surface* surface = GetSurfaceTexture(path);
 
 		if (surface == nullptr) {
 			//This means we have failed to fin the image
@@ -62,11 +63,11 @@ namespace SDLFramework {
 	}
 
 	void Graphics::DrawTexture(SDL_Texture* texture, SDL_Rect* srcrect, SDL_Rect* dstrect, float angle, SDL_RendererFlip flip) {
-		SDL_RenderCopyEx(mRenderer, texture, srcrect, dstrect, angle, nullptr, flip);
+		//SDL_RenderCopyEx(mRenderer, texture, srcrect, dstrect, angle, nullptr, flip);
 	}
 
 	SDL_Texture* Graphics::CreateTextTexture(TTF_Font* font, std::string text, SDL_Color color) {
-		SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), color);
+		SDL_Surface* surface = GetSurfaceText(font, text.c_str(), color);
 
 		if (surface == nullptr) {
 			std::cerr << "CreateTextTexture:: SDL_CreateTextureFromSurface ERROR:  " << SDL_GetError() << "\n";
@@ -83,55 +84,6 @@ namespace SDLFramework {
 		return tex;
 	}
 
-	void Graphics::ClearBackBuffer() {
-		SDL_RenderClear(mRenderer);
-	}
-
-	void Graphics::Render() {
-		SDL_RenderPresent(mRenderer);
-
-		glClearDepth(1.0);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		glEnableClientState(GL_COLOR_ARRAY);
-
-		glBegin(GL_TRIANGLES);
-		glColor3f(1.0f, 0.0f, 0.0f);
-
-		glVertex2f(0, 0);
-		glVertex2f(0, 500);
-		glVertex2f(500, 500);
-
-		//glEnd();
-
-		
-		glBegin(GL_TRIANGLES);
-		glColor3f(0.5f, 0.0f, 0.5f);
-
-		glVertex2f(0, 0);
-		glVertex2f(0, -500);
-		glVertex2f(-500, -500);
-
-		glBegin(GL_TRIANGLES);
-		glColor3f(0.5f, 0.0f, 0.5f);
-
-		glVertex2f(0, 0);
-		glVertex2f(-500, 0);
-		glVertex2f(-500, -500);
-
-		glBegin(GL_TRIANGLES);
-		glColor3f(0.0f, 0.1f, 0.5f);
-
-		glVertex2f(0, 0);
-		glVertex2f(500, 0);
-		glVertex2f(500, -500);
-
-		glEnd();
-
-		SDL_GL_SwapWindow(mWindow);
-
-		
-	}
 
 	Graphics::Graphics() : mRenderer(nullptr) {
 		sInitialized = Init();
@@ -155,7 +107,7 @@ namespace SDLFramework {
 			SDL_WINDOWPOS_UNDEFINED,
 			SCREEN_WIDTH,
 			SCREEN_HEIGHT,
-			SDL_WINDOW_OPENGL
+			SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL
 		);
 
 		if (mWindow == nullptr) {
@@ -163,20 +115,7 @@ namespace SDLFramework {
 			return false;
 		}
 
-		glContext = SDL_GL_CreateContext(mWindow);
-
-		if (glContext == nullptr) {
-			std::cerr << "SDL_GL_Context could not be created! " << SDL_GetError() << std::endl;
-			return false;
-		}
-
-		GLenum error = glewInit();
-
-		if (error != GLEW_OK) {
-			std::cerr << "Could not initialize glew! " << glewGetErrorString(error) << std::endl;
-		}
-
-		/*mRenderer = SDL_CreateRenderer(
+		mRenderer = SDL_CreateRenderer(
 			mWindow,
 			-1,
 			SDL_RENDERER_ACCELERATED
@@ -185,20 +124,39 @@ namespace SDLFramework {
 		if (mRenderer == nullptr) {
 			std::cerr << "Failed to create a renderer! SDL_Error: " << SDL_GetError() << "\n;";
 			return false;
-		}*/
+		}
 
 		if (TTF_Init() == -1) {
 			std::cerr << "Unable to initialize SDL_TTF! TTF Error: " << TTF_GetError() << "\n";
 			return false;
 		}
 
-		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-		glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
-
 		return true;
 	}
 
 	SDL_Renderer* Graphics::GetRenderer() const {
 		return mRenderer;  // return the SDL_Renderer instance
+	}
+
+	SDL_Surface* Graphics::GetSurfaceTexture(std::string filepath) {
+		SDL_Surface* surface = IMG_Load(filepath.c_str());
+
+		if (surface == nullptr) {
+			std::cerr << "Unable to load " << filepath << ". Surface Error: " << IMG_GetError() << std::endl;
+			return nullptr;
+		}
+
+		return surface;
+	}
+
+	SDL_Surface* Graphics::GetSurfaceText(TTF_Font* font, std::string text, SDL_Color color) {
+		SDL_Surface* surface = TTF_RenderText_Blended(font, text.c_str(), color);
+
+		if (surface == nullptr) {
+			std::cerr << "CreateSurfaceText: TTF_RenderText_Blended Error: " << TTF_GetError() << std::endl;
+			return nullptr;
+		}
+
+		return surface;
 	}
 }

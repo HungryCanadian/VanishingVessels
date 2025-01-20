@@ -21,7 +21,7 @@ namespace SDLFramework {
 		return mType;
 	}
 
-	void Collider::SetDebugTexture(Texture* texture) {
+	void Collider::SetDebugTexture(SDLTexture* texture) {
 		delete mDebugTexture;
 		mDebugTexture = texture;
 		mDebugTexture->Parent(this);

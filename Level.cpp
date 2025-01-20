@@ -13,7 +13,7 @@ Level::Level(int stage) {
 
 	mLabelTimer = 0.0f;
 
-	mStageLabel = new Texture("STAGE", "ToThePoint.ttf", 32, { 75,75,200 });
+	mStageLabel = new SDLTexture("STAGE", "ToThePoint.ttf", 32, { 75,75,200 });
 	mStageLabel->Parent(this);
 	mStageLabel->Position(Graphics::SCREEN_WIDTH * 0.35f, Graphics::SCREEN_HEIGHT * 0.5f);
 
@@ -25,7 +25,7 @@ Level::Level(int stage) {
 	mStageLabelOnScreen = 0.0f;
 	mStageLabelOffScreen = 1.5f;
 
-	mReadyLabel = new Texture("GET READY", "ToThePoint.ttf", 32, { 150,0,0 });
+	mReadyLabel = new SDLTexture("GET READY", "ToThePoint.ttf", 32, { 150,0,0 });
 	mReadyLabel->Parent(this);
 	mReadyLabel->Position(Graphics::SCREEN_WIDTH * 0.4f, Graphics::SCREEN_HEIGHT * 0.5f);
 
@@ -36,7 +36,7 @@ Level::Level(int stage) {
 	mRespawnDelay = 3.0f;
 	mRespawnLabelOnScreen = 2.0f;
 
-	mGameOverLabel = new Texture("Game Over!", "ToThePoint.ttf", 32, { 150,0,0 });
+	mGameOverLabel = new SDLTexture("Game Over!", "ToThePoint.ttf", 32, { 150,0,0 });
 	mGameOverLabel->Parent(this);
 	mGameOverLabel->Position(Graphics::SCREEN_WIDTH * 0.4f, Graphics::SCREEN_HEIGHT * 0.5f);
 	

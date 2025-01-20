@@ -4,7 +4,7 @@
 #include <string>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
-#include "glew.h"
+//#include "glew.h"
 
 namespace SDLFramework {
 	class Graphics {
@@ -20,7 +20,7 @@ namespace SDLFramework {
 
 		SDL_Texture* LoadTexture(std::string path);
 
-		void DrawTexture(SDL_Texture* texture, SDL_Rect* srcRect = nullptr, SDL_Rect* dst_Rect = nullptr,
+		virtual void DrawTexture(SDL_Texture* texture, SDL_Rect* srcRect = nullptr, SDL_Rect* dst_Rect = nullptr,
 			float angle = 0.0f, SDL_RendererFlip = SDL_FLIP_NONE);
 
 		SDL_Texture* CreateTextTexture(TTF_Font*, std::string text, SDL_Color color);
@@ -28,23 +28,27 @@ namespace SDLFramework {
 		SDL_Renderer* GetRenderer() const;
 
 		//Clean up that happens to the area in memory that draws the next frame
-		void ClearBackBuffer();
-		void Render();
+		virtual void ClearBackBuffer() = 0;
+		virtual void Render() = 0;
+
+		SDL_Surface* GetSurfaceTexture(std::string fullpath);
+		SDL_Surface* GetSurfaceText(TTF_Font* font, std::string text, SDL_Color color);
 
 		Graphics();
 		~Graphics();
 
-		bool Init();
+		
 
 
 
-	private:
+	protected:
+		virtual bool Init();
 		//This is going to hold the ONE instance of our Graphics class
 		static Graphics* sInstance;
 		static bool sInitialized;
 		SDL_Window* mWindow = nullptr;
 		SDL_Renderer* mRenderer = nullptr;
 
-		SDL_GLContext glContext;
+		//SDL_GLContext glContext;
 	};
 }

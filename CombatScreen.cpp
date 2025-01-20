@@ -18,77 +18,77 @@ CombatScreen::CombatScreen() {
 
 	mCurrentEnemy = GetRandomEnemy();
 
-	mTest = new Texture("startBackground.png");
+	mTest = new SDLTexture("startBackground.png");
 	mTest->Parent(this);
 	mTest->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 
-	mTopBar = new Texture("TopCornerBar.png");
+	mTopBar = new SDLTexture("TopCornerBar.png");
 	mTopBar->Parent(this);
 	mTopBar->Position(Graphics::SCREEN_WIDTH * 0.285f, Graphics::SCREEN_HEIGHT * 0.065);
 	mTopBar->Scale(Vector2(0.5f, 0.5f));
 
-	mBottomBar = new Texture("BottomBar.png");
+	mBottomBar = new SDLTexture("BottomBar.png");
 	mBottomBar->Parent(this);
 	mBottomBar->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.94f);
 	mBottomBar->Scale(Vector2(0.4f, 0.3f));
 
-	mTextArea = new Texture("PanelDarkSquare.png");
+	mTextArea = new SDLTexture("PanelDarkSquare.png");
 	mTextArea->Parent(this);
 	mTextArea->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mTextArea->Scale(Vector2(0.5f, 0.5f));
 
-	mPaperOverlay = new Texture("LargePaperOverlay.png");
+	mPaperOverlay = new SDLTexture("LargePaperOverlay.png");
 	mPaperOverlay->Parent(this);
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
 
 
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Parent(this);
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
-	mLabel = new Texture("Combat", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel = new SDLTexture("Combat", "ToThePoint.ttf", 80, { 53,33,0 });
 	mLabel->Parent(this);
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
 
-	mTextLine1 = new Texture("You were Ambushed! What would you like to do?", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine1 = new SDLTexture("You were Ambushed! What would you like to do?", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine1->Visible(true);
-	mTextLine2 = new Texture("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine2 = new SDLTexture("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine2->Visible(true);
-	mTextLine3 = new Texture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, {0,0,0});
+	mTextLine3 = new SDLTexture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, {0,0,0});
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine3->Visible(true);
-	mTextLine4 = new Texture("Victory!", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine4 = new SDLTexture("Victory!", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine4->Visible(false);
-	mTextLine5 = new Texture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, {0,0,0});
+	mTextLine5 = new SDLTexture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, {0,0,0});
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine5->Visible(false);
-	mTextLine6 = new Texture("Game Over!", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine6 = new SDLTexture("Game Over!", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
 	mTextLine6->Visible(false);
-	mTextLine7 = new Texture("Try again and Good luck!", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine7 = new SDLTexture("Try again and Good luck!", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine7->Visible(false);
-	mTextLine8 = new Texture("LEVEL UP!", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine8 = new SDLTexture("LEVEL UP!", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.45f);
 	mTextLine8->Visible(false);
-	mTextLine9 = new Texture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, {0,0,0});
+	mTextLine9 = new SDLTexture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, {0,0,0});
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.48f);
 	mTextLine9->Visible(false);
-	mTextLine10 = new Texture("You Hit them for " + mPlayer->Attack(), "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine10 = new SDLTexture("You Hit them for " + mPlayer->Attack(), "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mTextLine10->Visible(false);
-	mTextLine11 = new Texture("The Enemy takes " + mPlayer->Attack(), "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine11 = new SDLTexture("The Enemy takes " + mPlayer->Attack(), "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.52f);
 	mTextLine11->Visible(false);
 
 
-	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
+	mCursorTexture = new SDLTexture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
 	SDL_ShowCursor(SDL_DISABLE);  // Hide the default SDL cursor
 
@@ -350,17 +350,17 @@ void CombatScreen::Update() {
 	for (auto& btn : mButtons) {
 		btn.checkHover(mouseX, mouseY);
 	}
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
-	mTextLine2 = new Texture("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine2 = new SDLTexture("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.25f);
-	mTextLine3 = new Texture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine3 = new SDLTexture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.25f);
-	if (mTextLine5->Visible()) mTextLine5 = new Texture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, { 0,0,0 });
+	if (mTextLine5->Visible()) mTextLine5 = new SDLTexture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
-	if (mTextLine9->Visible()) mTextLine9 = new Texture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, { 0,0,0 });
+	if (mTextLine9->Visible()) mTextLine9 = new SDLTexture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.48f);
 	if (mTextLine10->Visible()) mTextLine10->Update();
 	if (mTextLine11->Visible()) mTextLine11->Update();
@@ -369,6 +369,7 @@ void CombatScreen::Update() {
 	if (mInputManager->MouseButtonPressed(InputManager::LEFT)) {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
+				mAudio->PlaySFX("buttonClick.wav", 0, -1, 50);
 				if (btn.label == "Back") {
 					DefaultText();
 				}

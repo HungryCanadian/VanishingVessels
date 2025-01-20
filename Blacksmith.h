@@ -23,29 +23,29 @@ private:
 	InputManager* mInputManager;
 	Inventory* mInventory;
 	std::vector<Button> mButtons;
-	std::vector<Texture*> mTextLines;
+	std::vector<GLTexture*> mTextLines;
 	Player* mPlayer;
-	Texture* mSymbol;
-	Texture* mLabel;
+	GLTexture* mSymbol;
+	GLTexture* mLabel;
 
-	Texture* mTest;
-	Texture* mTextArea;
-	Texture* mTopBar;
-	Texture* mBottomBar;
-	Texture* mPaperOverlay;
-	Texture* mTextLine1;
-	Texture* mTextLine2;
-	Texture* mTextLine3;
-	Texture* mPrice1;
-	Texture* mPrice2;
-	Texture* mPrice3;
-	Texture* mPrice4;
-	Texture* mBroke;
+	GLTexture* mTest;
+	GLTexture* mTextArea;
+	GLTexture* mTopBar;
+	GLTexture* mBottomBar;
+	GLTexture* mPaperOverlay;
+	GLTexture* mTextLine1;
+	GLTexture* mTextLine2;
+	GLTexture* mTextLine3;
+	GLTexture* mPrice1;
+	GLTexture* mPrice2;
+	GLTexture* mPrice3;
+	GLTexture* mPrice4;
+	GLTexture* mBroke;
 
 	float mBrokeTimer;
 	float mBrokeDelay;
 
-	Texture* mCursorTexture;
+	GLTexture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;
 
 };

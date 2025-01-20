@@ -40,6 +40,9 @@
     <Filter Include="Source Files\Singletons">
       <UniqueIdentifier>{f52fc8a5-a7c8-4c1f-8b42-65fda6dab6d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Shaders">
+      <UniqueIdentifier>{17d45dd8-ae92-464f-9a62-c2997a93c698}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CaspiraVV.cpp">
@@ -179,6 +182,21 @@
     </ClCompile>
     <ClCompile Include="BossFight.cpp">
       <Filter>Caspira\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLGraphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLTexture.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GLGraphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GLTexture.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -320,5 +338,28 @@
     <ClInclude Include="BossFight.h">
       <Filter>Caspira\Header</Filter>
     </ClInclude>
+    <ClInclude Include="GLGraphics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLGraphics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLTexture.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTexture.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\fs.shader">
+      <Filter>Header Files\Shaders</Filter>
+    </None>
+    <None Include="Assets\Shaders\vs.shader">
+      <Filter>Header Files\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

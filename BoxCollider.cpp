@@ -8,7 +8,7 @@ namespace SDLFramework {
 		AddVert(3, Vector2(0.5f * size.x, 0.5f * size.y));
 
 		if (DEBUG_COLLIDERS == true) {
-			SetDebugTexture(new Texture("BoxCollider.png"));
+			SetDebugTexture(new SDLTexture("BoxCollider.png"));
 			mDebugTexture->Scale(size);
 		}
 	}

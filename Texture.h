@@ -33,7 +33,7 @@ namespace SDLFramework {
         Vector2 ScaledDimensions();
 
         // Render the texture to the screen
-        void Render() override;
+        virtual void Render() override;
 
     protected:
         SDL_Texture* mTexture;      // SDL texture to render

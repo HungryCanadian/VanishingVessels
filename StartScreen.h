@@ -27,18 +27,18 @@ private:
 	AudioManager* mAudioManager;
 
 
-	Texture* mBackground;
-	Texture* mTitleHeadboard;
-	Texture* mTitleBackground;
-	Texture* mPaperOverlay;
-	Texture* mCaspiraLogo;
-	Texture* mVanishVessels;
-	Texture* mOfCaspira;
+	SDLTexture* mBackground;
+	SDLTexture* mTitleHeadboard;
+	SDLTexture* mTitleBackground;
+	SDLTexture* mPaperOverlay;
+	SDLTexture* mCaspiraLogo;
+	SDLTexture* mVanishVessels;
+	SDLTexture* mOfCaspira;
 
-	Texture* mCursorTexture;
+	SDLTexture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;
 
-	Texture* mButtonTexture;
+	SDLTexture* mButtonTexture;
 	AudioManager* mMusic;
 
 	//Top Bar Entities

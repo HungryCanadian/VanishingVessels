@@ -33,30 +33,30 @@ private:
 	InputManager* mInputManager;
 	Inventory* mInventory;
 	std::vector<Button> mButtons;
-	std::vector<Texture*> mTextLines;
+	std::vector<SDLTexture*> mTextLines;
 	Player* mPlayer;
 
-	Texture* mTest;
-	Texture* mTextArea;
-	Texture* mTopBar;
-	Texture* mBottomBar;
-	Texture* mPaperOverlay;
+	SDLTexture* mTest;
+	SDLTexture* mTextArea;
+	SDLTexture* mTopBar;
+	SDLTexture* mBottomBar;
+	SDLTexture* mPaperOverlay;
 
-	Texture* mSymbol;
-	Texture* mLabel;
+	SDLTexture* mSymbol;
+	SDLTexture* mLabel;
 
-	Texture* mTextLine1;
-	Texture* mTextLine2;
-	Texture* mTextLine3;
-	Texture* mTextLine4;
-	Texture* mTextLine5;
-	Texture* mTextLine6;
-	Texture* mTextLine7;
-	Texture* mTextLine8;
-	Texture* mTextLine9;
+	SDLTexture* mTextLine1;
+	SDLTexture* mTextLine2;
+	SDLTexture* mTextLine3;
+	SDLTexture* mTextLine4;
+	SDLTexture* mTextLine5;
+	SDLTexture* mTextLine6;
+	SDLTexture* mTextLine7;
+	SDLTexture* mTextLine8;
+	SDLTexture* mTextLine9;
 
 
-	Texture* mCursorTexture;
+	SDLTexture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;
 
 	Level* mLevel;

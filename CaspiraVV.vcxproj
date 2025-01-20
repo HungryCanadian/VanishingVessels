@@ -161,6 +161,8 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GLGraphics.cpp" />
+    <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Graveyard.cpp" />
     <ClCompile Include="Heartwood.cpp" />
@@ -182,6 +184,9 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="CaspiraVV.cpp" />
     <ClCompile Include="Blacksmith.cpp" />
+    <ClCompile Include="SDLGraphics.cpp" />
+    <ClCompile Include="SDLTexture.cpp" />
+    <ClCompile Include="ShaderUtil.cpp" />
     <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="Tavern.cpp" />
     <ClCompile Include="TextInput.cpp" />
@@ -209,6 +214,8 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GLGraphics.h" />
+    <ClInclude Include="GLTexture.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Graveyard.h" />
     <ClInclude Include="Heartwood.h" />
@@ -230,6 +237,9 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClInclude Include="Scoreboard.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Blacksmith.h" />
+    <ClInclude Include="SDLGraphics.h" />
+    <ClInclude Include="SDLTexture.h" />
+    <ClInclude Include="ShaderUtil.h" />
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="Tavern.h" />
     <ClInclude Include="TextInput.h" />
@@ -237,6 +247,10 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Town.h" />
     <ClInclude Include="WestRoad.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\fs.shader" />
+    <None Include="Assets\Shaders\vs.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

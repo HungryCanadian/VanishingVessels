@@ -8,111 +8,111 @@ TavernScreen::TavernScreen() {
 	mInputManager = InputManager::Instance();
 	mPlayer = Player::Instance();
 
-	mTest = new Texture("startBackground.png");
+	mTest = new SDLTexture("startBackground.png");
 	mTest->Parent(this);
 	mTest->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 
-	mTopBar = new Texture("TopCornerBar.png");
+	mTopBar = new SDLTexture("TopCornerBar.png");
 	mTopBar->Parent(this);
 	mTopBar->Position(Graphics::SCREEN_WIDTH * 0.285f, Graphics::SCREEN_HEIGHT * 0.065);
 	mTopBar->Scale(Vector2(0.5f, 0.5f));
 
-	mBottomBar = new Texture("BottomBar.png");
+	mBottomBar = new SDLTexture("BottomBar.png");
 	mBottomBar->Parent(this);
 	mBottomBar->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.94f);
 	mBottomBar->Scale(Vector2(0.4f, 0.3f));
 
-	mTextArea = new Texture("PanelDarkSquare.png");
+	mTextArea = new SDLTexture("PanelDarkSquare.png");
 	mTextArea->Parent(this);
 	mTextArea->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mTextArea->Scale(Vector2(0.5f, 0.5f));
 
-	mPaperOverlay = new Texture("LargePaperOverlay.png");
+	mPaperOverlay = new SDLTexture("LargePaperOverlay.png");
 	mPaperOverlay->Parent(this);
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
 
 
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Parent(this);
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
-	mLabel = new Texture("Tavern", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel = new SDLTexture("Tavern", "ToThePoint.ttf", 80, { 53,33,0 });
 	mLabel->Parent(this);
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
 
-	mTextLine1 = new Texture("You wake up in your cozy bed at the tavern,", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine1 = new SDLTexture("You wake up in your cozy bed at the tavern,", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
-	mTextLine2 = new Texture("the smell of breakfast wafting through the air.", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine2 = new SDLTexture("the smell of breakfast wafting through the air.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
-	mTextLine3 = new Texture("You can hear the chatter of patrons and the clinking of mugs,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine3 = new SDLTexture("You can hear the chatter of patrons and the clinking of mugs,", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
-	mTextLine4 = new Texture("but your head is pounding. As you sit up, a wave of nausea hits you,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine4 = new SDLTexture("but your head is pounding. As you sit up, a wave of nausea hits you,", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
-	mTextLine5 = new Texture("and you remember last night's revelry.", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine5 = new SDLTexture("and you remember last night's revelry.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
-	mTextLine6 = new Texture("You feel dehydrated and your mouth is dry; you crave water.", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine6 = new SDLTexture("You feel dehydrated and your mouth is dry; you crave water.", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
-	mTextLine7 = new Texture("A faint light coming through the window only intensifies your headache.", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine7 = new SDLTexture("A faint light coming through the window only intensifies your headache.", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
-	mTextLine8 = new Texture("You get up slowly and gather your things.", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine8 = new SDLTexture("You get up slowly and gather your things.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
-	mTextLine9 = new Texture("You meander your way out of the room and down the stairs to the tavern", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine9 = new SDLTexture("You meander your way out of the room and down the stairs to the tavern", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 
-	mTextLine10 = new Texture("Barbossa: You alright there? you seem a little dazed and confused.", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine10 = new SDLTexture("Barbossa: You alright there? you seem a little dazed and confused.", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
 	mTextLine10->Visible(false);
-	mTextLine11 = new Texture("Barbossa: Well, I would have a hangover too if I drank several bottles of rum.", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine11 = new SDLTexture("Barbossa: Well, I would have a hangover too if I drank several bottles of rum.", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine11->Visible(false);
-	mTextLine12 = new Texture("Barbossa: I do have some Errands to run, but breakfast is on the house!", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine12 = new SDLTexture("Barbossa: I do have some Errands to run, but breakfast is on the house!", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine12->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine12->Visible(false);
-	mTextLine13 = new Texture("Barbossa: If you need anything, Varun can help you!", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine13 = new SDLTexture("Barbossa: If you need anything, Varun can help you!", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine13->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
 	mTextLine13->Visible(false);
 
-	mTextLine14 = new Texture("Varun: Would you like to rest for the night?", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine14 = new SDLTexture("Varun: Would you like to rest for the night?", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine14->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine14->Visible(false);
 
-	mTextLine15 = new Texture("The old tavern, with its creaky wooden floorboards and dimly lit corners,", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine15 = new SDLTexture("The old tavern, with its creaky wooden floorboards and dimly lit corners,", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine15->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine15->Visible(false);
-	mTextLine16 = new Texture("feels almost forgotten in the morning light. The air is thick", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine16 = new SDLTexture("feels almost forgotten in the morning light. The air is thick", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine16->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine16->Visible(false);
-	mTextLine17 = new Texture("with the scent of stale ale and smoke, remnants of last night's", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine17 = new SDLTexture("with the scent of stale ale and smoke, remnants of last night's", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine17->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
 	mTextLine17->Visible(false);
-	mTextLine18 = new Texture("revelry still hanging heavy. A few weary patrons sit hunched", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine18 = new SDLTexture("revelry still hanging heavy. A few weary patrons sit hunched", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine18->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine18->Visible(false);
-	mTextLine19 = new Texture("over at the bar, nursing mugs of water or weak coffee,", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine19 = new SDLTexture("over at the bar, nursing mugs of water or weak coffee,", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine19->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine19->Visible(false);
-	mTextLine20 = new Texture("their eyes tired and unfocused. The once-lively space now ", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine20 = new SDLTexture("their eyes tired and unfocused. The once-lively space now ", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine20->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
 	mTextLine20->Visible(false);
-	mTextLine21 = new Texture("holds only the soft clink of glass and the quiet hum of murmurs,", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine21 = new SDLTexture("holds only the soft clink of glass and the quiet hum of murmurs,", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine21->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine21->Visible(false);
-	mTextLine22 = new Texture("as sunlight filters lazily through dusty windows, casting long", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine22 = new SDLTexture("as sunlight filters lazily through dusty windows, casting long", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine22->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
 	mTextLine22->Visible(false);
-	mTextLine23 = new Texture("shadows across the worn furniture. The rowdy energy ", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine23 = new SDLTexture("shadows across the worn furniture. The rowdy energy ", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine23->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 	mTextLine23->Visible(false); 
-	mTextLine24 = new Texture("of the night has faded, leaving only the quiet hum of recovery.", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine24 = new SDLTexture("of the night has faded, leaving only the quiet hum of recovery.", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine24->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mTextLine24->Visible(false);
 
 	mFirstVisit = true;
 
-	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
+	mCursorTexture = new SDLTexture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
 	SDL_ShowCursor(SDL_DISABLE);  // Hide the default SDL cursor
 
@@ -343,7 +343,7 @@ void TavernScreen::Update() {
 	for (auto& btn : mButtons) {
 		btn.checkHover(mouseX, mouseY);
 	}
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 	mSymbol->Update();
@@ -353,6 +353,7 @@ void TavernScreen::Update() {
 	if (mInputManager->MouseButtonPressed(InputManager::LEFT)) {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
+				mAudio->PlaySFX("buttonClick.wav", 0, -1, 50);
 				if (btn.label == "Back") {
 					DefaultText();
 				}

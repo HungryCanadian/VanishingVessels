@@ -1,5 +1,5 @@
 #pragma once
-#include "Texture.h"
+#include "GLTexture.h"
 
 namespace SDLFramework {
 
@@ -41,7 +41,7 @@ namespace SDLFramework {
 
         
 
-        Texture* mBackgroundTexture;  // Custom background texture for the button
-        Texture* mTextTexture;        // Text on the button
+        GLTexture* mBackgroundTexture;  // Custom background texture for the button
+        GLTexture* mTextTexture;        // Text on the button
     };
 }

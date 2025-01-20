@@ -94,8 +94,6 @@ namespace SDLFramework {
 
 	GameManager::~GameManager() {
 		//Release Variables
-		delete mBackground2;
-		mBackground2 = nullptr;
 
 		//Release Modules
 		Graphics::Release();

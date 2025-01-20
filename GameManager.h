@@ -44,14 +44,14 @@ namespace SDLFramework {
 
 
 		//Example Variables
-		AnimatedTexture* mTex;
-		Texture* mRedShip;
-		
-		Texture* mFontTex;
-		Texture* mBackground2;
+		//AnimatedTexture* mTex;
+		//SDLTexture* mRedShip;
+		//
+		//SDLTexture* mFontTex;
+		//SDLTexture* mBackground2;
 
-		PhysicsEntity* mPhysone;
-		PhysicsEntity* mPhystwo;
+		//PhysicsEntity* mPhysone;
+		//PhysicsEntity* mPhystwo;
 
 		SDL_Event mEvents;
 

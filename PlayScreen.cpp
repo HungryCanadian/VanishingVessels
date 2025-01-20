@@ -9,74 +9,74 @@ PlayScreen::PlayScreen() {
 
 
 	
-	mTest = new Texture("startBackground.png");
+	mTest = new SDLTexture("startBackground.png");
 	mTest->Parent(this);
 	mTest->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 
-	mTopBar = new Texture("TopCornerBar.png");
+	mTopBar = new SDLTexture("TopCornerBar.png");
 	mTopBar->Parent(this);
 	mTopBar->Position(Graphics::SCREEN_WIDTH * 0.285f, Graphics::SCREEN_HEIGHT * 0.065);
 	mTopBar->Scale(Vector2(0.5f, 0.5f));
 
-	mBottomBar = new Texture("BottomBar.png");
+	mBottomBar = new SDLTexture("BottomBar.png");
 	mBottomBar->Parent(this);
 	mBottomBar->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.94f);
 	mBottomBar->Scale(Vector2(0.4f, 0.3f));
 
-	mTextArea = new Texture("PanelDarkSquare.png");
+	mTextArea = new SDLTexture("PanelDarkSquare.png");
 	mTextArea->Parent(this);
 	mTextArea->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mTextArea->Scale(Vector2(0.5f, 0.5f));
 
-	mPaperOverlay = new Texture("LargePaperOverlay.png");
+	mPaperOverlay = new SDLTexture("LargePaperOverlay.png");
 	mPaperOverlay->Parent(this);
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
 
-	mLabel = new Texture("Prologue", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel = new SDLTexture("Prologue", "ToThePoint.ttf", 80, { 53,33,0 });
 	mLabel->Parent(this);
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
 
-	mTextLine1 = new Texture("In the shimmering waters of the Caspiran archipelago,", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine1 = new SDLTexture("In the shimmering waters of the Caspiran archipelago,", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
-	mTextLine2 = new Texture("The islands, known for their lush forests and masterful shipbuilders,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine2 = new SDLTexture("The islands, known for their lush forests and masterful shipbuilders,", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
-	mTextLine3 = new Texture("thrived on exports of fine lumber and swift sailing ships.", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine3 = new SDLTexture("thrived on exports of fine lumber and swift sailing ships.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
-	mTextLine4 = new Texture("Yet, a dark cloud loomed over the vibrant trade routes;", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine4 = new SDLTexture("Yet, a dark cloud loomed over the vibrant trade routes;", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
-	mTextLine5 = new Texture("vessels laden with precious cargo had begun to vanish without a trace.", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine5 = new SDLTexture("vessels laden with precious cargo had begun to vanish without a trace.", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
-	mTextLine6 = new Texture("The people of Caspira grew anxious.", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine6 = new SDLTexture("The people of Caspira grew anxious.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.385f);
-	mTextLine7 = new Texture("Whispers of curses and sea spirits filled the air,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine7 = new SDLTexture("Whispers of curses and sea spirits filled the air,", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
-	mTextLine8 = new Texture("as merchants and sailors traded tales of the lost ships.", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine8 = new SDLTexture("as merchants and sailors traded tales of the lost ships.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
-	mTextLine9 = new Texture("One night, as the village gathered by the flickering lanterns,", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine9 = new SDLTexture("One night, as the village gathered by the flickering lanterns,", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
-	mTextLine10 = new Texture("an elderly sailor recounted a haunting legend,", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine10 = new SDLTexture("an elderly sailor recounted a haunting legend,", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.52f);
-	mTextLine11 = new Texture("a specter known as the Wraith of the Waves,", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine11 = new SDLTexture("a specter known as the Wraith of the Waves,", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
-	mTextLine12 = new Texture("said to haunt the waters, claiming ships that dared to leave", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine12 = new SDLTexture("said to haunt the waters, claiming ships that dared to leave", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine12->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.58f);
-	mTextLine13 = new Texture("with timber from the sacred Heartwood Grove.", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine13 = new SDLTexture("with timber from the sacred Heartwood Grove.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine13->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.61f);
-	mTextLine14 = new Texture("Amidst the crowd, a newcomer emerged. With eyes like stormy seas", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine14 = new SDLTexture("Amidst the crowd, a newcomer emerged. With eyes like stormy seas", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine14->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.64f);
-	mTextLine15 = new Texture("and a unyielding spirit, they had journeyed to Caspira seeking adventure.", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine15 = new SDLTexture("and a unyielding spirit, they had journeyed to Caspira seeking adventure.", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine15->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.67f);
-	mTextLine16 = new Texture("Hearing the villagers' plight, they felt a calling to uncover the truth", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine16 = new SDLTexture("Hearing the villagers' plight, they felt a calling to uncover the truth", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine16->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.70f);
-	mTextLine17 = new Texture("about the disappearances. they gathered their courage,", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine17 = new SDLTexture("about the disappearances. they gathered their courage,", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine17->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.73f);
-	mTextLine18 = new Texture("determined to face whatever lay beneath the waves.", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine18 = new SDLTexture("determined to face whatever lay beneath the waves.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine18->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.76f);
 
 	
-	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
+	mCursorTexture = new SDLTexture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
 	SDL_ShowCursor(SDL_DISABLE);  // Hide the default SDL cursor
 
@@ -171,6 +171,7 @@ void PlayScreen::Update() {
 	if (mInputManager->MouseButtonPressed(InputManager::LEFT)) {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
+				mAudio->PlaySFX("buttonClick.wav", 0, -1, 50);
 				if (btn.label == "New Character") {
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::NewCharacter);
 

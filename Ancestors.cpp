@@ -8,84 +8,84 @@ HallOfAncestors::HallOfAncestors() {
 	mInputManager = InputManager::Instance();
 	mPlayer = Player::Instance();
 
-	mTest = new Texture("startBackground.png");
+	mTest = new GLTexture("startBackground.png");
 	mTest->Parent(this);
 	mTest->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 
-	mTopBar = new Texture("TopCornerBar.png");
+	mTopBar = new GLTexture("TopCornerBar.png");
 	mTopBar->Parent(this);
 	mTopBar->Position(Graphics::SCREEN_WIDTH * 0.285f, Graphics::SCREEN_HEIGHT * 0.065);
 	mTopBar->Scale(Vector2(0.5f, 0.5f));
 
-	mBottomBar = new Texture("BottomBar.png");
+	mBottomBar = new GLTexture("BottomBar.png");
 	mBottomBar->Parent(this);
 	mBottomBar->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.94f);
 	mBottomBar->Scale(Vector2(0.4f, 0.3f));
 
-	mTextArea = new Texture("PanelDarkSquare.png");
+	mTextArea = new GLTexture("PanelDarkSquare.png");
 	mTextArea->Parent(this);
 	mTextArea->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mTextArea->Scale(Vector2(0.5f, 0.5f));
 
-	mPaperOverlay = new Texture("LargePaperOverlay.png");
+	mPaperOverlay = new GLTexture("LargePaperOverlay.png");
 	mPaperOverlay->Parent(this);
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
 
 
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new GLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Parent(this);
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
-	mLabel = new Texture("Hall Of Ancestors", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel = new GLTexture("Hall Of Ancestors", "ToThePoint.ttf", 80, { 53,33,0 });
 	mLabel->Parent(this);
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
 
-	mTextLine1 = new Texture("The interior of the Hall of Ancestors exudes an air of faded grandeur,", "ToThePoint.ttf", 40, { 0,0,0 });
+	mTextLine1 = new GLTexture("The interior of the Hall of Ancestors exudes an air of faded grandeur,", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine1->Visible(true);
-	mTextLine2 = new Texture("where time seems to stand still amidst the encroaching shadows.", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine2 = new GLTexture("where time seems to stand still amidst the encroaching shadows.", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine2->Visible(true);
-	mTextLine3 = new Texture("Tall stone columns, once polished and adorned with intricate", "ToThePoint.ttf", 40, { 0,0,0 });
+	mTextLine3 = new GLTexture("Tall stone columns, once polished and adorned with intricate", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
 	mTextLine3->Visible(true);
-	mTextLine4 = new Texture("carvings, now bear the scars of neglect, their surfaces rough and chipped.", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine4 = new GLTexture("carvings, now bear the scars of neglect, their surfaces rough and chipped.", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine4->Visible(true);
-	mTextLine5 = new Texture("Dim light filters through narrow, arched windows, casting an ethereal glow", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine5 = new GLTexture("Dim light filters through narrow, arched windows, casting an ethereal glow", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine5->Visible(true);
-	mTextLine6 = new Texture("that dances across the cold stone floor, illuminating the dust motes that", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine6 = new GLTexture("that dances across the cold stone floor, illuminating the dust motes that", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
 	mTextLine6->Visible(true);
-	mTextLine7 = new Texture("hang suspended in the air. The walls are lined with ornate niches,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine7 = new GLTexture("hang suspended in the air. The walls are lined with ornate niches,", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine7->Visible(true);
-	mTextLine8 = new Texture("each housing a stone sarcophagus that tells the story of those interred", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine8 = new GLTexture("each housing a stone sarcophagus that tells the story of those interred", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
 	mTextLine8->Visible(true);
-	mTextLine9 = new Texture("within; wealthy merchants, valiant heroes, and wise leaders, each engraved ", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine9 = new GLTexture("within; wealthy merchants, valiant heroes, and wise leaders, each engraved ", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 	mTextLine9->Visible(true);
-	mTextLine10 = new Texture("with symbols of their deeds and legacies.", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine10 = new GLTexture("with symbols of their deeds and legacies.", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mTextLine10->Visible(true);
 
-	mTextLine11 = new Texture("Ghost of Dani", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine11 = new GLTexture("Ghost of Dani", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.3f);
 	mTextLine11->Visible(false);
-	mTextLine12 = new Texture("Nice to meet you, but it's dangerous out here!", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine12 = new GLTexture("Nice to meet you, but it's dangerous out here!", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine12->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.33f);
 	mTextLine12->Visible(false);
-	mTextLine13 = new Texture("You must be insane, this is the most dangerous spot on the archipelago", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine13 = new GLTexture("You must be insane, this is the most dangerous spot on the archipelago", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine13->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.36f);
 	mTextLine13->Visible(false);
 
 
-	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
+	mCursorTexture = new GLTexture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
 	SDL_ShowCursor(SDL_DISABLE);  // Hide the default SDL cursor
 
@@ -228,7 +228,7 @@ void HallOfAncestors::Update() {
 	for (auto& btn : mButtons) {
 		btn.checkHover(mouseX, mouseY);
 	}
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new GLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 	mSymbol->Update();
@@ -238,6 +238,7 @@ void HallOfAncestors::Update() {
 	if (mInputManager->MouseButtonPressed(InputManager::LEFT)) {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
+				mAudio->PlaySFX("buttonClick.wav", 0, -1, 50);
 				if (btn.label == "Back") {
 					DefaultText();
 				}

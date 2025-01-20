@@ -1,5 +1,6 @@
 #include "StartScreen.h"
 #include "GameManager.h"
+#include "SDLTexture.h"
 
 StartScreen::StartScreen() {
 	mTimer = Timer::Instance();
@@ -17,44 +18,44 @@ StartScreen::StartScreen() {
 	mTopBar->Parent(this);
 
 	mPlayModes = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.75f);
-	mButtonTexture = new Texture("PanelDarkButtonHolder.png");
+	mButtonTexture = new SDLTexture("PanelDarkButtonHolder.png");
 	mButtonTexture->Parent(mPlayModes);
 	mButtonTexture->Scale(Vector2(0.2f, 0.2f));
 	mButtonTexture->Position(Vec2_Zero);
 
-	mBackground = new Texture("startBackground.png");
+	mBackground = new SDLTexture("startBackground.png");
 	mBackground->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.5f));
 
-	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
+	mCursorTexture = new SDLTexture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
 	SDL_ShowCursor(SDL_DISABLE);  // Hide the default SDL cursor
 	
 
-	// Logo Texture
+	// Logo SDLTexture
 	mLogoSpace = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mLogoSpace->Parent(this);
 
-	mTitleHeadboard = new Texture("HeaderBackgroundDark.png");
+	mTitleHeadboard = new SDLTexture("HeaderBackgroundDark.png");
 	mTitleHeadboard->Parent(this);
 	mTitleHeadboard->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.10f));
 	mTitleHeadboard->Scale(Vector2(0.4f, 0.2f));
-	mTitleBackground = new Texture("PanelDarkSquare.png");
+	mTitleBackground = new SDLTexture("PanelDarkSquare.png");
 	mTitleBackground->Parent(this);
 	mTitleBackground->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.25f));
 	mTitleBackground->Scale(Vector2(0.3f, 0.2f));
-	mPaperOverlay = new Texture("LargePaperOverlay.png");
+	mPaperOverlay = new SDLTexture("LargePaperOverlay.png");
 	mPaperOverlay->Parent(this);
 	mPaperOverlay->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.25f));
 	mPaperOverlay->Scale(Vector2(0.29f, 0.19f));
-	mCaspiraLogo = new Texture("World of Caspira", "ToThePoint.ttf", 162, { 53,33,0 });
+	mCaspiraLogo = new SDLTexture("World of Caspira", "ToThePoint.ttf", 162, { 53,33,0 });
 	mCaspiraLogo->Scale(Vector2(0.45f, 0.5f));
 	mCaspiraLogo->Parent(this);
 	mCaspiraLogo->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.10f));
-	mVanishVessels = new Texture("Vanishing Vessels", "ToThePoint.ttf", 142, { 0,0,0 });
+	mVanishVessels = new SDLTexture("Vanishing Vessels", "ToThePoint.ttf", 142, { 0,0,0 });
 	mVanishVessels->Scale(Vector2(0.5f, 0.5f));
 	mVanishVessels->Parent(this);
 	mVanishVessels->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.22f));
-	mOfCaspira = new Texture("Of Caspira", "ToThePoint.ttf", 142, { 0,0,0 });
+	mOfCaspira = new SDLTexture("Of Caspira", "ToThePoint.ttf", 142, { 0,0,0 });
 	mOfCaspira->Scale(Vector2(0.5f, 0.5f));
 	mOfCaspira->Parent(this);
 	mOfCaspira->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.27f));
@@ -99,8 +100,9 @@ void StartScreen::Update() {
 	if (mInputManager->MouseButtonPressed(InputManager::LEFT)) {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
+				mAudioManager->PlaySFX("buttonClick.wav", 0, -1, 50);
 				if (btn.label == "Play") {
-					mAudioManager->PlaySFX("buttonClick.wav", 0, -1, 50);
+					/*mAudioManager->PlaySFX("buttonClick.wav", 0, -1, 50);*/
 					ScreenManager::Instance()->SetScreens(ScreenManager::Screens::Play);
 
 				}

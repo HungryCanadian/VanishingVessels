@@ -14,105 +14,105 @@ BossScreen::BossScreen() {
 
 	mCurrentEnemy = BossScreen::GetRandomEnemy();
 
-	mTest = new Texture("startBackground.png");
+	mTest = new GLTexture("startBackground.png");
 	mTest->Parent(this);
 	mTest->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 
-	mTopBar = new Texture("TopCornerBar.png");
+	mTopBar = new GLTexture("TopCornerBar.png");
 	mTopBar->Parent(this);
 	mTopBar->Position(Graphics::SCREEN_WIDTH * 0.285f, Graphics::SCREEN_HEIGHT * 0.065);
 	mTopBar->Scale(Vector2(0.5f, 0.5f));
 
-	mBottomBar = new Texture("BottomBar.png");
+	mBottomBar = new GLTexture("BottomBar.png");
 	mBottomBar->Parent(this);
 	mBottomBar->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.94f);
 	mBottomBar->Scale(Vector2(0.4f, 0.3f));
 
-	mTextArea = new Texture("PanelDarkSquare.png");
+	mTextArea = new GLTexture("PanelDarkSquare.png");
 	mTextArea->Parent(this);
 	mTextArea->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mTextArea->Scale(Vector2(0.5f, 0.5f));
 
-	mPaperOverlay = new Texture("LargePaperOverlay.png");
+	mPaperOverlay = new GLTexture("LargePaperOverlay.png");
 	mPaperOverlay->Parent(this);
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
 
 
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new GLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Parent(this);
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
-	mLabel = new Texture("Combat", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel = new GLTexture("Combat", "ToThePoint.ttf", 80, { 53,33,0 });
 	mLabel->Parent(this);
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
 
-	mTextLine1 = new Texture("You were Ambushed! What would you like to do?", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine1 = new GLTexture("You were Ambushed! What would you like to do?", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine1->Visible(true);
-	mTextLine2 = new Texture("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine2 = new GLTexture("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine2->Visible(true);
-	mTextLine3 = new Texture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine3 = new GLTexture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine3->Visible(true);
-	mTextLine4 = new Texture("Victory!", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine4 = new GLTexture("Victory!", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine4->Visible(false);
-	mTextLine5 = new Texture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, { 0,0,0 });
+	mTextLine5 = new GLTexture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine5->Visible(false);
-	mTextLine6 = new Texture("Game Over!", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine6 = new GLTexture("Game Over!", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
 	mTextLine6->Visible(false);
-	mTextLine7 = new Texture("Try again and Good luck!", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine7 = new GLTexture("Try again and Good luck!", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine7->Visible(false);
-	mTextLine8 = new Texture("LEVEL UP!", "ToThePoint.ttf", 36, { 0,0,0 });
+	mTextLine8 = new GLTexture("LEVEL UP!", "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.45f);
 	mTextLine8->Visible(false);
-	mTextLine9 = new Texture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine9 = new GLTexture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.48f);
 	mTextLine9->Visible(false);
-	mTextLine10 = new Texture("You Hit them for " + mPlayer->Attack(), "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine10 = new GLTexture("You Hit them for " + mPlayer->Attack(), "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mTextLine10->Visible(false);
-	mTextLine11 = new Texture("The Enemy takes " + mPlayer->Attack(), "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine11 = new GLTexture("The Enemy takes " + mPlayer->Attack(), "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.52f);
 	mTextLine11->Visible(false);
 
-	mTextLine12 = new Texture("Victory!", "ToThePoint.ttf", 72, { 0,0,0 }, false);
+	mTextLine12 = new GLTexture("Victory!", "ToThePoint.ttf", 72, { 0,0,0 }, false);
 	mTextLine12->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine12->Visible(false);
-	mTextLine13 = new Texture("You have defeated Barbossa!", "ToThePoint.ttf", 60, { 0,0,0 }, false);
+	mTextLine13 = new GLTexture("You have defeated Barbossa!", "ToThePoint.ttf", 60, { 0,0,0 }, false);
 	mTextLine13->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.27f);
 	mTextLine13->Visible(false);
-	mTextLine14 = new Texture("As Barbossa collapses to the ground a small detachment of soldiers", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine14 = new GLTexture("As Barbossa collapses to the ground a small detachment of soldiers", "ToThePoint.ttf", 36, { 0,0,0 }, false);
 	mTextLine14->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.32f);
 	mTextLine14->Visible(false);
-	mTextLine15 = new Texture("and arrest him. The Captain looks at you with a puzzle look on his face.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine15 = new GLTexture("and arrest him. The Captain looks at you with a puzzle look on his face.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
 	mTextLine15->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.35f);
 	mTextLine15->Visible(false);
-	mTextLine16 = new Texture("he asks how you figured it out so quickly but before you could answer.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine16 = new GLTexture("he asks how you figured it out so quickly but before you could answer.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
 	mTextLine16->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.38f);
 	mTextLine16->Visible(false);
-	mTextLine17 = new Texture("Another guard runs over and whispers something in the Captain's ear.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine17 = new GLTexture("Another guard runs over and whispers something in the Captain's ear.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
 	mTextLine17->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.41f);
 	mTextLine17->Visible(false);
-	mTextLine18 = new Texture("Captain Blackwell:", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine18 = new GLTexture("Captain Blackwell:", "ToThePoint.ttf", 36, { 0,0,0 }, false);
 	mTextLine18->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.48f);
 	mTextLine18->Visible(false);
-	mTextLine19 = new Texture("I am Captain Leoric Blackwell of Caspira's Royal Guard...", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine19 = new GLTexture("I am Captain Leoric Blackwell of Caspira's Royal Guard...", "ToThePoint.ttf", 36, { 0,0,0 }, false);
 	mTextLine19->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.51f);
 	mTextLine19->Visible(false);
-	mTextLine20 = new Texture("... Come see me in the Docks when you are ready, i have some questions.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
+	mTextLine20 = new GLTexture("... Come see me in the Docks when you are ready, i have some questions.", "ToThePoint.ttf", 36, { 0,0,0 }, false);
 	mTextLine20->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.54f);
 	mTextLine20->Visible(false);
 
 
-	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
+	mCursorTexture = new GLTexture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
 	SDL_ShowCursor(SDL_DISABLE);  // Hide the default SDL cursor
 
@@ -395,17 +395,17 @@ void BossScreen::Update() {
 	for (auto& btn : mButtons) {
 		btn.checkHover(mouseX, mouseY);
 	}
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new GLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
-	if (mTextLine2->Visible()) mTextLine2 = new Texture("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
+	if (mTextLine2->Visible()) mTextLine2 = new GLTexture("Current HP: " + std::to_string(mPlayer->GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.25f);
-	if (mTextLine3->Visible()) mTextLine3 = new Texture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
+	if (mTextLine3->Visible()) mTextLine3 = new GLTexture(mCurrentEnemy.GetName() + " HP: " + std::to_string(mCurrentEnemy.GetHealth()), "ToThePoint.ttf", 36, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.65f, Graphics::SCREEN_HEIGHT * 0.25f);
-	if (mTextLine5->Visible()) mTextLine5 = new Texture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, { 0,0,0 });
+	if (mTextLine5->Visible()) mTextLine5 = new GLTexture("You gain: " + std::to_string(mCurrentEnemy.GetGold()) + " Gold and " + std::to_string(mCurrentEnemy.GetExp()) + " EXP!", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
-	if (mTextLine9->Visible()) mTextLine9 = new Texture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, { 0,0,0 });
+	if (mTextLine9->Visible()) mTextLine9 = new GLTexture("You are now Level " + std::to_string(mPlayer->GetLevel()), "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.48f);
 	if (mTextLine10->Visible()) mTextLine10->Update();
 	if (mTextLine11->Visible()) mTextLine11->Update();
@@ -414,6 +414,7 @@ void BossScreen::Update() {
 	if (mInputManager->MouseButtonPressed(InputManager::LEFT)) {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
+				mAudio->PlaySFX("buttonClick.wav", 0, -1, 50);
 				if (btn.label == "Back") {
 					DefaultText();
 				}

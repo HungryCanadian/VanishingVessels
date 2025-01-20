@@ -28,35 +28,35 @@ private:
 	std::vector<Button> mButtons;
 	Player* mPlayer;
 
-	Texture* mTest;
-	Texture* mTextArea;
-	Texture* mTopBar;
-	Texture* mBottomBar;
-	Texture* mPaperOverlay;
+	SDLTexture* mTest;
+	SDLTexture* mTextArea;
+	SDLTexture* mTopBar;
+	SDLTexture* mBottomBar;
+	SDLTexture* mPaperOverlay;
 	std::string mInputText;
-	Texture* mHumanText;
-	Texture* mElfText;
-	Texture* mDwarfText;
-	Texture* mGnomeText;
-	Texture* mHalflingText;
-	Texture* mTieflingText;
-	Texture* mStr;
-	Texture* mDex;
-	Texture* mCon;
-	Texture* mInt;
-	Texture* mWis;
-	Texture* mCha;
-	Texture* mHP;
-	Texture* mConfirmText;
+	SDLTexture* mHumanText;
+	SDLTexture* mElfText;
+	SDLTexture* mDwarfText;
+	SDLTexture* mGnomeText;
+	SDLTexture* mHalflingText;
+	SDLTexture* mTieflingText;
+	SDLTexture* mStr;
+	SDLTexture* mDex;
+	SDLTexture* mCon;
+	SDLTexture* mInt;
+	SDLTexture* mWis;
+	SDLTexture* mCha;
+	SDLTexture* mHP;
+	SDLTexture* mConfirmText;
 
-	Texture* mSymbol;
-	Texture* mLabel;
+	SDLTexture* mSymbol;
+	SDLTexture* mLabel;
 
 	bool isChoosingRace;
 	bool isChoosingClass;
 	std::string mRace;
 
-	Texture* mCursorTexture;
+	SDLTexture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;
 	SDL_Renderer* mRenderer;
 

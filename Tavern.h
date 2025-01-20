@@ -26,42 +26,42 @@ private:
 	Player* mPlayer;
 	bool mFirstVisit;
 
-	Texture* mTest;
-	Texture* mTextArea;
-	Texture* mTopBar;
-	Texture* mBottomBar;
-	Texture* mPaperOverlay;
+	SDLTexture* mTest;
+	SDLTexture* mTextArea;
+	SDLTexture* mTopBar;
+	SDLTexture* mBottomBar;
+	SDLTexture* mPaperOverlay;
 
-	Texture* mTextLine1;
-	Texture* mTextLine2;
-	Texture* mTextLine3;
-	Texture* mTextLine4;
-	Texture* mTextLine5;
-	Texture* mTextLine6;
-	Texture* mTextLine7;
-	Texture* mTextLine8;
-	Texture* mTextLine9;
-	Texture* mTextLine10;
-	Texture* mTextLine11;
-	Texture* mTextLine12;
-	Texture* mTextLine13;
-	Texture* mTextLine14;
-	Texture* mTextLine15;
-	Texture* mTextLine16;
-	Texture* mTextLine17;
-	Texture* mTextLine18;
-	Texture* mTextLine19;
-	Texture* mTextLine20;
-	Texture* mTextLine21;
-	Texture* mTextLine22;
-	Texture* mTextLine23;
-	Texture* mTextLine24;
+	SDLTexture* mTextLine1;
+	SDLTexture* mTextLine2;
+	SDLTexture* mTextLine3;
+	SDLTexture* mTextLine4;
+	SDLTexture* mTextLine5;
+	SDLTexture* mTextLine6;
+	SDLTexture* mTextLine7;
+	SDLTexture* mTextLine8;
+	SDLTexture* mTextLine9;
+	SDLTexture* mTextLine10;
+	SDLTexture* mTextLine11;
+	SDLTexture* mTextLine12;
+	SDLTexture* mTextLine13;
+	SDLTexture* mTextLine14;
+	SDLTexture* mTextLine15;
+	SDLTexture* mTextLine16;
+	SDLTexture* mTextLine17;
+	SDLTexture* mTextLine18;
+	SDLTexture* mTextLine19;
+	SDLTexture* mTextLine20;
+	SDLTexture* mTextLine21;
+	SDLTexture* mTextLine22;
+	SDLTexture* mTextLine23;
+	SDLTexture* mTextLine24;
 
 
-	Texture* mSymbol;
-	Texture* mLabel;
+	SDLTexture* mSymbol;
+	SDLTexture* mLabel;
 
-	Texture* mCursorTexture;
+	SDLTexture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;
 
 };

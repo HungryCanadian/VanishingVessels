@@ -1,5 +1,5 @@
 #pragma once
-#include "Texture.h"
+#include "SDLTexture.h"
 #include <vector>
 
 using namespace SDLFramework;

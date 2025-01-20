@@ -11,83 +11,83 @@ MerchantScreen::MerchantScreen() {
 
 
 
-	mTest = new Texture("startBackground.png");
+	mTest = new SDLTexture("startBackground.png");
 	mTest->Parent(this);
 	mTest->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 
-	mTopBar = new Texture("TopCornerBar.png");
+	mTopBar = new SDLTexture("TopCornerBar.png");
 	mTopBar->Parent(this);
 	mTopBar->Position(Graphics::SCREEN_WIDTH * 0.285f, Graphics::SCREEN_HEIGHT * 0.065);
 	mTopBar->Scale(Vector2(0.5f, 0.5f));
 
-	mBottomBar = new Texture("BottomBar.png");
+	mBottomBar = new SDLTexture("BottomBar.png");
 	mBottomBar->Parent(this);
 	mBottomBar->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.94f);
 	mBottomBar->Scale(Vector2(0.4f, 0.3f));
 
-	mTextArea = new Texture("PanelDarkSquare.png");
+	mTextArea = new SDLTexture("PanelDarkSquare.png");
 	mTextArea->Parent(this);
 	mTextArea->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mTextArea->Scale(Vector2(0.5f, 0.5f));
 
-	mPaperOverlay = new Texture("LargePaperOverlay.png");
+	mPaperOverlay = new SDLTexture("LargePaperOverlay.png");
 	mPaperOverlay->Parent(this);
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
 
-    mLabel = new Texture("Merchant Shop", "ToThePoint.ttf", 80, { 53,33,0 });
+    mLabel = new SDLTexture("Merchant Shop", "ToThePoint.ttf", 80, { 53,33,0 });
     mLabel->Parent(this);
     mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
     mLabel->Visible(true);
 
-	mTextLine1 = new Texture("What would you like to do?", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine1 = new SDLTexture("What would you like to do?", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.67f);
-	mTextLine2 = new Texture("Welcome to Caspira's End Trading Post!", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine2 = new SDLTexture("Welcome to Caspira's End Trading Post!", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.47f);
-	mTextLine3 = new Texture("We are the best and only source of General Goods in town!", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine3 = new SDLTexture("We are the best and only source of General Goods in town!", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.50f);
 
-	mPrice1 = new Texture("Gold: 5", "ToThePoint.ttf", 42, { 0,0,0 });
+	mPrice1 = new SDLTexture("Gold: 5", "ToThePoint.ttf", 42, { 0,0,0 });
 	mPrice1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.24f);
 	mPrice1->Visible(false);
-	mPrice2 = new Texture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
+	mPrice2 = new SDLTexture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
 	mPrice2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.29f);
 	mPrice2->Visible(false);
-	mPrice3 = new Texture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
+	mPrice3 = new SDLTexture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
 	mPrice3->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mPrice3->Visible(false);
-	mPrice4 = new Texture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
+	mPrice4 = new SDLTexture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
 	mPrice4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.39f);
 	mPrice4->Visible(false);
-	mPrice5 = new Texture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
+	mPrice5 = new SDLTexture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
 	mPrice5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.44f);
 	mPrice5->Visible(false);
-	mPrice6 = new Texture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
+	mPrice6 = new SDLTexture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
 	mPrice6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mPrice6->Visible(false);
-	mPrice7 = new Texture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
+	mPrice7 = new SDLTexture("Gold: 1", "ToThePoint.ttf", 42, { 0,0,0 });
 	mPrice7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.54f);
 	mPrice7->Visible(false);
 
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 	mSymbol->Visible(true);
 
-	mBroke = new Texture("You can't afford this", "ToThePoint.ttf", 42, { 0,0,0 });
+	mBroke = new SDLTexture("You can't afford this", "ToThePoint.ttf", 42, { 0,0,0 });
 	mBroke->Position(Graphics::SCREEN_WIDTH * 0.6f, Graphics::SCREEN_HEIGHT * 0.55f);
 	mBroke->Visible(false);
 
-	mSold = new Texture("You Bought Something!", "ToThePoint.ttf", 42, { 0,0,0 });
+	mSold = new SDLTexture("You Bought Something!", "ToThePoint.ttf", 42, { 0,0,0 });
 	mSold->Position(Graphics::SCREEN_WIDTH * 0.6f, Graphics::SCREEN_HEIGHT * 0.55f);
 	mSold->Visible(false);
 
-	mSoldOut = new Texture("There is no more of this Item!", "ToThePoint.ttf", 42, { 0,0,0 });
+	mSoldOut = new SDLTexture("There is no more of this Item!", "ToThePoint.ttf", 42, { 0,0,0 });
 	mSoldOut->Position(Graphics::SCREEN_WIDTH * 0.6f, Graphics::SCREEN_HEIGHT * 0.55f);
 	mSoldOut->Visible(false);
 
 
-	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
+	mCursorTexture = new SDLTexture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
 	SDL_ShowCursor(SDL_DISABLE);  // Hide the default SDL cursor
 
@@ -101,7 +101,7 @@ MerchantScreen::MerchantScreen() {
 }
 
 void MerchantScreen::RunMerchant(Player* player) {
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 	mSymbol->Update();
@@ -186,7 +186,7 @@ void MerchantScreen::RunMerchant(Player* player) {
 }
 
 void MerchantScreen::DefaultScreen() {
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 	mSymbol->Update();
@@ -298,7 +298,7 @@ void MerchantScreen::Update() {
     SDL_GetMouseState(&mouseX, &mouseY);
     bool mousePressed = SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(SDL_BUTTON_LEFT);
 
-    mSymbol = new Texture(mPlayer->GetClass() + ".png");
+    mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
     mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
     mSymbol->Scale(Vector2(0.1f, 0.1f));
     mSymbol->Visible(true);
@@ -312,6 +312,7 @@ void MerchantScreen::Update() {
     if (mInputManager->MouseButtonPressed(InputManager::LEFT)) {
         for (auto& btn : mButtons) {
             if (btn.isHovered) {
+                mAudio->PlaySFX("buttonClick.wav", 0, -1, 50);
                 if (btn.label == "Back") {
                     DefaultScreen();
                 }

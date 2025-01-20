@@ -1,4 +1,5 @@
 #include "AssetManager.h"
+#include <fstream>
 
 namespace SDLFramework {
 	AssetManager* AssetManager::sInstance = nullptr;
@@ -16,7 +17,52 @@ namespace SDLFramework {
 		sInstance = nullptr;
 	}
 
+	void AssetManager::LoadShader(const GLchar* vShader, const GLchar* fShader, const GLchar* gShader, std::string name) {
+		std::string vFileContents;
+		std::string fFileContents;
+		std::string gFileContents;
 
+		try {
+			//Open files
+			std::fstream vShaderFile(vShader);
+			std::fstream fShaderFile(fShader);
+			std::stringstream vBuffer;
+			std::stringstream fBuffer;
+			//read files buffer content into streams
+			vBuffer << vShaderFile.rdbuf();
+			vShaderFile.close();
+			vFileContents = vBuffer.str();
+			fBuffer << fShaderFile.rdbuf();
+			fShaderFile.close();
+			fFileContents = fBuffer.str();
+
+			if (gShader != nullptr) {
+				std::fstream gShaderFile(gShader);
+				std::stringstream gBuffer;
+
+				gBuffer << gShaderFile.rdbuf();
+				gShaderFile.close();
+				gFileContents = gBuffer.str();
+			}
+
+			const GLchar* vShaderCode = vFileContents.c_str();
+			const GLchar* fShaderCode = fFileContents.c_str();
+			const GLchar* gShaderCode = gFileContents.c_str();
+
+			AssetManager::Instance()->mShaders[name].Compile(vShaderCode, fShaderCode, gShader != nullptr ? gShaderCode : nullptr);
+		}
+		catch (std::exception e) {
+			std::cerr << "Unable to read Shader files for shader " << name << "!\n";
+		}
+	}
+
+	ShaderUtil AssetManager::GetShaderUtil(std::string name) {
+		if (mShaders.find(name) == mShaders.end()) {
+			std::cerr << "GetShaderUtil:: unable to find shader " << name << "!\n";
+		}
+
+		return mShaders[name];
+	}
 
 	SDL_Texture* AssetManager::getTexture(std::string filename, bool managed) {
 		std::string fullPath = SDL_GetBasePath();
@@ -110,6 +156,39 @@ namespace SDLFramework {
 		return mSFX[fullPath];
 	}
 
+	SDL_Surface* AssetManager::GetSurfaceTexture(std::string filename, bool managed) {
+		std::string fullPath = SDL_GetBasePath();
+		fullPath.append("Assets/" + filename);
+
+		if (mSurfaceTextures[fullPath] == nullptr) {
+			mSurfaceTextures[fullPath] = Graphics::Instance()->GetSurfaceTexture(fullPath);
+		}
+
+		if (mSurfaceTextures[fullPath] != nullptr && managed) {
+			mSurfaceRefCount[mSurfaceTextures[fullPath]] += 1;
+		}
+
+		return mSurfaceTextures[fullPath];
+	}
+
+	SDL_Surface* AssetManager::GetSurfaceText(std::string text, std::string filename, int size, SDL_Color color, bool managed) {
+		std::stringstream ss;
+
+		ss << size << (int)color.r << (int)color.g << (int)color.b;
+		std::string key = text + filename + ss.str();
+
+		if (mSurfaceText[key] == nullptr) {
+			TTF_Font* font = getFont(filename, size);
+			mSurfaceText[key] = Graphics::Instance()->GetSurfaceText(font, text, color);
+		}
+
+		if (mSurfaceText[key] != nullptr && managed) {
+			mSurfaceRefCount[mSurfaceText[key]] += 1;
+		}
+
+		return mSurfaceText[key];
+	}
+
 	void AssetManager::DestroyTexture(SDL_Texture* texture) {
 		std::map<SDL_Texture*, unsigned>::iterator it = mTextureRefCount.find(texture);
 
@@ -174,6 +253,30 @@ namespace SDLFramework {
 		}
 		else {
 			UnloadSFX(sfx);
+		}
+	}
+
+	void AssetManager::DestroySurface(SDL_Surface* surface) {
+		if (mSurfaceRefCount.find(surface) != mSurfaceRefCount.end()) {
+			mSurfaceRefCount[surface] -= 1;
+
+			if (mSurfaceRefCount[surface] == 0) {
+				for (auto elem : mSurfaceTextures) {
+					if (elem.second == surface) {
+						SDL_FreeSurface(elem.second);
+						mSurfaceTextures.erase(elem.first);
+						return;
+					}
+				}
+
+				for (auto elem : mSurfaceText) {
+					if (elem.second == surface) {
+						SDL_FreeSurface(elem.second);
+						mSurfaceText.erase(elem.first);
+						return;
+					}
+				}
+			}
 		}
 	}
 

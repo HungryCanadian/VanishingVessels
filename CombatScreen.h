@@ -35,28 +35,28 @@ private:
 	Enemy mCurrentEnemy;
 
 
-	Texture* mTest;
-	Texture* mTextArea;
-	Texture* mTopBar;
-	Texture* mBottomBar;
-	Texture* mPaperOverlay;
-	Texture* mLabel;
+	SDLTexture* mTest;
+	SDLTexture* mTextArea;
+	SDLTexture* mTopBar;
+	SDLTexture* mBottomBar;
+	SDLTexture* mPaperOverlay;
+	SDLTexture* mLabel;
 
-	Texture* mTextLine1;
-	Texture* mTextLine2;
-	Texture* mTextLine3;
-	Texture* mTextLine4;
-	Texture* mTextLine5;
-	Texture* mTextLine6;
-	Texture* mTextLine7;
-	Texture* mTextLine8;
-	Texture* mTextLine9;
-	Texture* mTextLine10;
-	Texture* mTextLine11;
+	SDLTexture* mTextLine1;
+	SDLTexture* mTextLine2;
+	SDLTexture* mTextLine3;
+	SDLTexture* mTextLine4;
+	SDLTexture* mTextLine5;
+	SDLTexture* mTextLine6;
+	SDLTexture* mTextLine7;
+	SDLTexture* mTextLine8;
+	SDLTexture* mTextLine9;
+	SDLTexture* mTextLine10;
+	SDLTexture* mTextLine11;
 
-	Texture* mSymbol;
+	SDLTexture* mSymbol;
 
-	Texture* mCursorTexture;
+	SDLTexture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;
 
 };

@@ -26,34 +26,34 @@ private:
 	Player* mPlayer;
 	bool mFirstVisit;
 
-	Texture* mTest;
-	Texture* mTextArea;
-	Texture* mTopBar;
-	Texture* mBottomBar;
-	Texture* mPaperOverlay;
-	Texture* mLabel;
+	SDLTexture* mTest;
+	SDLTexture* mTextArea;
+	SDLTexture* mTopBar;
+	SDLTexture* mBottomBar;
+	SDLTexture* mPaperOverlay;
+	SDLTexture* mLabel;
 
-	Texture* mTextLine1;
-	Texture* mTextLine2;
-	Texture* mTextLine3;
-	Texture* mTextLine4;
-	Texture* mTextLine5;
-	Texture* mTextLine6;
-	Texture* mTextLine7;
-	Texture* mTextLine8;
-	Texture* mTextLine9;
-	Texture* mTextLine10;
+	SDLTexture* mTextLine1;
+	SDLTexture* mTextLine2;
+	SDLTexture* mTextLine3;
+	SDLTexture* mTextLine4;
+	SDLTexture* mTextLine5;
+	SDLTexture* mTextLine6;
+	SDLTexture* mTextLine7;
+	SDLTexture* mTextLine8;
+	SDLTexture* mTextLine9;
+	SDLTexture* mTextLine10;
 
-	Texture* mTextLine11;
-	Texture* mTextLine12;
-	Texture* mTextLine13;
-	Texture* mTextLine14;
-	Texture* mTextLine15;
-	Texture* mTextLine16;
+	SDLTexture* mTextLine11;
+	SDLTexture* mTextLine12;
+	SDLTexture* mTextLine13;
+	SDLTexture* mTextLine14;
+	SDLTexture* mTextLine15;
+	SDLTexture* mTextLine16;
 
-	Texture* mSymbol;
+	SDLTexture* mSymbol;
 
-	Texture* mCursorTexture;
+	SDLTexture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;
 
 };

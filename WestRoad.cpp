@@ -8,81 +8,81 @@ WestRoad::WestRoad() {
 	mInputManager = InputManager::Instance();
 	mPlayer = Player::Instance();
 
-	mTest = new Texture("startBackground.png");
+	mTest = new SDLTexture("startBackground.png");
 	mTest->Parent(this);
 	mTest->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 
-	mTopBar = new Texture("TopCornerBar.png");
+	mTopBar = new SDLTexture("TopCornerBar.png");
 	mTopBar->Parent(this);
 	mTopBar->Position(Graphics::SCREEN_WIDTH * 0.285f, Graphics::SCREEN_HEIGHT * 0.065);
 	mTopBar->Scale(Vector2(0.5f, 0.5f));
 
-	mBottomBar = new Texture("BottomBar.png");
+	mBottomBar = new SDLTexture("BottomBar.png");
 	mBottomBar->Parent(this);
 	mBottomBar->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.94f);
 	mBottomBar->Scale(Vector2(0.4f, 0.3f));
 
-	mTextArea = new Texture("PanelDarkSquare.png");
+	mTextArea = new SDLTexture("PanelDarkSquare.png");
 	mTextArea->Parent(this);
 	mTextArea->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mTextArea->Scale(Vector2(0.5f, 0.5f));
 
-	mPaperOverlay = new Texture("LargePaperOverlay.png");
+	mPaperOverlay = new SDLTexture("LargePaperOverlay.png");
 	mPaperOverlay->Parent(this);
 	mPaperOverlay->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mPaperOverlay->Scale(Vector2(0.5f, 0.5f));
 
 
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Parent(this);
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 
-	mLabel = new Texture("West Road", "ToThePoint.ttf", 80, { 53,33,0 });
+	mLabel = new SDLTexture("West Road", "ToThePoint.ttf", 80, { 53,33,0 });
 	mLabel->Parent(this);
 	mLabel->Position(Graphics::SCREEN_WIDTH * 0.38f, Graphics::SCREEN_HEIGHT * 0.06f);
 	mLabel->Visible(true);
 
-	mTextLine1 = new Texture("The road begins at the edge of the quaint wooden town, where the", "ToThePoint.ttf", 40, { 0,0,0 });
+	mTextLine1 = new SDLTexture("The road begins at the edge of the quaint wooden town, where the", "ToThePoint.ttf", 40, { 0,0,0 });
 	mTextLine1->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.22f);
 	mTextLine1->Visible(true);
-	mTextLine2 = new Texture("last remnants of civilization fade into the wild. Weathered cobblestones,", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine2 = new SDLTexture("last remnants of civilization fade into the wild. Weathered cobblestones,", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine2->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.25f);
 	mTextLine2->Visible(true);
-	mTextLine3 = new Texture("slick with moss and littered with fallen leaves, peek through", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine3 = new SDLTexture("slick with moss and littered with fallen leaves, peek through", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine3->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.28f);
 	mTextLine3->Visible(true);
-	mTextLine4 = new Texture("the thick underbrush that encroaches upon the path. Gnarled roots", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine4 = new SDLTexture("the thick underbrush that encroaches upon the path. Gnarled roots", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine4->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.31f);
 	mTextLine4->Visible(true);
-	mTextLine5 = new Texture("of ancient trees snake across the way, creating a labyrinthine ", "ToThePoint.ttf", 42, { 0,0,0 });
+	mTextLine5 = new SDLTexture("of ancient trees snake across the way, creating a labyrinthine ", "ToThePoint.ttf", 42, { 0,0,0 });
 	mTextLine5->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.34f);
 	mTextLine5->Visible(true);
-	mTextLine6 = new Texture("effect that seems to pull travelers deeper into the forest. ", "ToThePoint.ttf", 38, { 0,0,0 });
+	mTextLine6 = new SDLTexture("effect that seems to pull travelers deeper into the forest. ", "ToThePoint.ttf", 38, { 0,0,0 });
 	mTextLine6->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.37f);
 	mTextLine6->Visible(true);
-	mTextLine7 = new Texture("The air is thick with the scent of damp earth and decaying foliage,", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine7 = new SDLTexture("The air is thick with the scent of damp earth and decaying foliage,", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine7->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.40f);
 	mTextLine7->Visible(true);
-	mTextLine8 = new Texture("and the distant cawing of crows adds an unsettling note to the atmosphere.", "ToThePoint.ttf", 35, { 0,0,0 });
+	mTextLine8 = new SDLTexture("and the distant cawing of crows adds an unsettling note to the atmosphere.", "ToThePoint.ttf", 35, { 0,0,0 });
 	mTextLine8->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.43f);
 	mTextLine8->Visible(true);
-	mTextLine9 = new Texture("Sunlight filters through the dense canopy, casting dappled", "ToThePoint.ttf", 37, { 0,0,0 });
+	mTextLine9 = new SDLTexture("Sunlight filters through the dense canopy, casting dappled", "ToThePoint.ttf", 37, { 0,0,0 });
 	mTextLine9->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.46f);
 	mTextLine9->Visible(true);
-	mTextLine10 = new Texture("shadows that dance ominously along the road, hinting at secrets long forgotten.", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine10 = new SDLTexture("shadows that dance ominously along the road, hinting at secrets long forgotten.", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine10->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.49f);
 	mTextLine10->Visible(true);
 
-	mTextLine11 = new Texture("Guard Winston:", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine11 = new SDLTexture("Guard Winston:", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine11->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.3f);
 	mTextLine11->Visible(false);
-	mTextLine12 = new Texture("I've heard rumors of strange creatures lurking in the woods.", "ToThePoint.ttf", 34, { 0,0,0 });
+	mTextLine12 = new SDLTexture("I've heard rumors of strange creatures lurking in the woods.", "ToThePoint.ttf", 34, { 0,0,0 });
 	mTextLine12->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.33f);
 	mTextLine12->Visible(false);
 
 
-	mCursorTexture = new Texture("Mouse.png");  // Adjust the path to your custom cursor image
+	mCursorTexture = new SDLTexture("Mouse.png");  // Adjust the path to your custom cursor image
 	SDL_QueryTexture(mCursorTexture->GetSDLTexture(), nullptr, nullptr, &mCursorWidth, &mCursorHeight);  // Get the cursor's width and height
 	SDL_ShowCursor(SDL_DISABLE);  // Hide the default SDL cursor
 
@@ -226,7 +226,7 @@ void WestRoad::Update() {
 	for (auto& btn : mButtons) {
 		btn.checkHover(mouseX, mouseY);
 	}
-	mSymbol = new Texture(mPlayer->GetClass() + ".png");
+	mSymbol = new SDLTexture(mPlayer->GetClass() + ".png");
 	mSymbol->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.11f);
 	mSymbol->Scale(Vector2(0.1f, 0.1f));
 	mSymbol->Update();
@@ -236,6 +236,7 @@ void WestRoad::Update() {
 	if (mInputManager->MouseButtonPressed(InputManager::LEFT)) {
 		for (auto& btn : mButtons) {
 			if (btn.isHovered) {
+				mAudio->PlaySFX("buttonClick.wav", 0, -1, 50);
 				if (btn.label == "Back") {
 					DefaultText();
 				}

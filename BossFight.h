@@ -35,38 +35,38 @@ private:
 	Enemy mCurrentEnemy;
 
 
-	Texture* mTest;
-	Texture* mTextArea;
-	Texture* mTopBar;
-	Texture* mBottomBar;
-	Texture* mPaperOverlay;
-	Texture* mLabel;
+	GLTexture* mTest;
+	GLTexture* mTextArea;
+	GLTexture* mTopBar;
+	GLTexture* mBottomBar;
+	GLTexture* mPaperOverlay;
+	GLTexture* mLabel;
 
-	Texture* mTextLine1;
-	Texture* mTextLine2;
-	Texture* mTextLine3;
-	Texture* mTextLine4;
-	Texture* mTextLine5;
-	Texture* mTextLine6;
-	Texture* mTextLine7;
-	Texture* mTextLine8;
-	Texture* mTextLine9;
-	Texture* mTextLine10;
-	Texture* mTextLine11;
+	GLTexture* mTextLine1;
+	GLTexture* mTextLine2;
+	GLTexture* mTextLine3;
+	GLTexture* mTextLine4;
+	GLTexture* mTextLine5;
+	GLTexture* mTextLine6;
+	GLTexture* mTextLine7;
+	GLTexture* mTextLine8;
+	GLTexture* mTextLine9;
+	GLTexture* mTextLine10;
+	GLTexture* mTextLine11;
 
-	Texture* mTextLine12;
-	Texture* mTextLine13;
-	Texture* mTextLine14;
-	Texture* mTextLine15;
-	Texture* mTextLine16;
-	Texture* mTextLine17;
-	Texture* mTextLine18;
-	Texture* mTextLine19;
-	Texture* mTextLine20;
+	GLTexture* mTextLine12;
+	GLTexture* mTextLine13;
+	GLTexture* mTextLine14;
+	GLTexture* mTextLine15;
+	GLTexture* mTextLine16;
+	GLTexture* mTextLine17;
+	GLTexture* mTextLine18;
+	GLTexture* mTextLine19;
+	GLTexture* mTextLine20;
 
-	Texture* mSymbol;
+	GLTexture* mSymbol;
 
-	Texture* mCursorTexture;
+	GLTexture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;
 
 };

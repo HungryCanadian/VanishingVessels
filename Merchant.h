@@ -23,34 +23,34 @@ private:
 	InputManager* mInputManager;
 	Inventory* mInventory;
 	std::vector<Button> mButtons;
-	std::vector<Texture*> mTextLines;
+	std::vector<SDLTexture*> mTextLines;
 	Player* mPlayer;
-	Texture* mSymbol;
-	Texture* mLabel;
+	SDLTexture* mSymbol;
+	SDLTexture* mLabel;
 
-	Texture* mTest;
-	Texture* mTextArea;
-	Texture* mTopBar;
-	Texture* mBottomBar;
-	Texture* mPaperOverlay;
-	Texture* mTextLine1;
-	Texture* mTextLine2;
-	Texture* mTextLine3;
-	Texture* mPrice1;
-	Texture* mPrice2;
-	Texture* mPrice3;
-	Texture* mPrice4;
-	Texture* mPrice5;
-	Texture* mPrice6;
-	Texture* mPrice7;
-	Texture* mBroke;
-	Texture* mSold;
-	Texture* mSoldOut;
+	SDLTexture* mTest;
+	SDLTexture* mTextArea;
+	SDLTexture* mTopBar;
+	SDLTexture* mBottomBar;
+	SDLTexture* mPaperOverlay;
+	SDLTexture* mTextLine1;
+	SDLTexture* mTextLine2;
+	SDLTexture* mTextLine3;
+	SDLTexture* mPrice1;
+	SDLTexture* mPrice2;
+	SDLTexture* mPrice3;
+	SDLTexture* mPrice4;
+	SDLTexture* mPrice5;
+	SDLTexture* mPrice6;
+	SDLTexture* mPrice7;
+	SDLTexture* mBroke;
+	SDLTexture* mSold;
+	SDLTexture* mSoldOut;
 
 	float mBrokeTimer;
 	float mBrokeDelay;
 
-	Texture* mCursorTexture;
+	SDLTexture* mCursorTexture;
 	int mCursorWidth, mCursorHeight;
 
 };
